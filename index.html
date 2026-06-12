@@ -17,99 +17,82 @@ nav.solid{background:rgba(6,6,6,0.92);padding:1.2rem 3rem;backdrop-filter:blur(2
 .nav-links a:hover{color:#c9a96e}
 
 /* SCROLL STAGE */
-.build-stage{position:relative;height:900vh;background:#060606}
-.build-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.build-stage{position:relative;height:800vh}
+.build-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
 
-/* Background subtle texture */
-.build-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(201,169,110,0.04) 0%,transparent 70%)}
+/* PHOTO LAYERS */
+.photo-layer{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity 1.4s cubic-bezier(0.4,0,0.2,1);
+  will-change:opacity;
+}
+.photo-layer.active{opacity:1;animation:slowzoom 10s ease-in-out forwards}
+@keyframes slowzoom{0%{transform:scale(1.06)}100%{transform:scale(1.0)}}
 
-/* The bed scene — isometric perspective */
-.bed-scene{position:relative;width:700px;height:420px;transform-style:preserve-3d;margin-top:40px}
+.p0{background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=2400&q=90')}
+.p1{background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=2400&q=90')}
+.p2{background-image:url('https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=2400&q=90')}
+.p3{background-image:url('https://images.unsplash.com/photo-1600518464441-9154a4dea21b?w=2400&q=90')}
+.p4{background-image:url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=2400&q=90')}
+.p5{background-image:url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=2400&q=90')}
+.p6{background-image:url('https://images.unsplash.com/photo-1540518614846-7eded433c457?w=2400&q=90')}
 
-/* Each layer */
-.layer{position:absolute;left:50%;bottom:0;transform:translateX(-50%);opacity:0;transition:opacity 0.6s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1)}
+/* Cinematic overlay */
+.cin-overlay{position:absolute;inset:0;z-index:2;pointer-events:none}
+.cin-top{position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(to bottom,rgba(6,6,6,0.9),transparent)}
+.cin-bottom{position:absolute;bottom:0;left:0;right:0;height:260px;background:linear-gradient(to top,rgba(6,6,6,1),rgba(6,6,6,0.3),transparent)}
+.cin-sides{position:absolute;inset:0;background:linear-gradient(to right,rgba(6,6,6,0.25),transparent 15%,transparent 85%,rgba(6,6,6,0.25))}
 
-/* LAYER 0 — Floor / shadow */
-.l-floor{width:600px;height:20px;bottom:0;left:50%;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(201,169,110,0.12) 0%,transparent 70%);opacity:0;transition:opacity 0.8s ease}
-.l-floor.show{opacity:1}
+/* Layer announcement — centre screen */
+.layer-announce{
+  position:absolute;inset:0;z-index:10;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-end;
+  padding-bottom:7rem;
+  pointer-events:none;
+}
+.la-step{
+  font-size:9px;letter-spacing:6px;text-transform:uppercase;
+  color:#c9a96e;margin-bottom:1rem;
+  opacity:0;transform:translateY(12px);
+  transition:opacity 0.7s ease,transform 0.7s ease;
+}
+.la-name{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,4vw,3rem);
+  color:#fff;font-weight:400;
+  opacity:0;transform:translateY(16px);
+  transition:opacity 0.8s ease 0.15s,transform 0.8s ease 0.15s;
+  text-align:center;
+}
+.la-name em{font-style:italic;color:#c9a96e}
+.la-sub{
+  font-size:11px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,0.35);margin-top:1rem;
+  opacity:0;transform:translateY(10px);
+  transition:opacity 0.7s ease 0.3s,transform 0.7s ease 0.3s;
+}
+.la-step.in,.la-name.in,.la-sub.in{opacity:1;transform:translateY(0)}
 
-/* LAYER 1 — Bed frame legs */
-.l-legs{width:560px;height:80px;bottom:16px}
-.l-legs.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.l-legs{transform:translateX(-50%) translateY(30px)}
+/* Progress dots */
+.prog-dots{
+  position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);
+  z-index:20;display:flex;gap:10px;align-items:center;
+}
+.dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.2);transition:all 0.4s ease}
+.dot.active{background:#c9a96e;width:20px;border-radius:2px}
 
-/* LAYER 2 — Bed frame base */
-.l-base{width:560px;height:50px;bottom:88px}
-.l-base{transform:translateX(-50%) translateY(40px)}
-.l-base.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-/* LAYER 3 — Slats */
-.l-slats{width:520px;height:18px;bottom:135px}
-.l-slats{transform:translateX(-50%) translateY(40px)}
-.l-slats.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-/* LAYER 4 — Mattress */
-.l-mattress{width:540px;height:60px;bottom:148px}
-.l-mattress{transform:translateX(-50%) translateY(50px)}
-.l-mattress.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-/* LAYER 5 — Sheet */
-.l-sheet{width:536px;height:200px;bottom:204px}
-.l-sheet{transform:translateX(-50%) translateY(50px)}
-.l-sheet.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-/* LAYER 6 — Duvet */
-.l-duvet{width:530px;height:160px;bottom:220px}
-.l-duvet{transform:translateX(-50%) translateY(50px)}
-.l-duvet.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-/* LAYER 7 — Pillows */
-.l-pillows{width:480px;height:80px;bottom:360px}
-.l-pillows{transform:translateX(-50%) translateY(40px)}
-.l-pillows.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-/* LAYER 8 — Headboard */
-.l-headboard{width:540px;height:170px;bottom:210px;left:50%;transform:translateX(-50%) translateY(40px)}
-.l-headboard.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-/* SVG bed elements */
-.bed-svg{width:100%;height:100%}
-
-/* Label system */
-.layer-label{position:absolute;right:-180px;top:50%;transform:translateY(-50%);opacity:0;transition:opacity 0.5s ease 0.3s;text-align:left;pointer-events:none;white-space:nowrap}
-.layer-label.show{opacity:1}
-.ll-num{font-size:9px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;margin-bottom:4px}
-.ll-name{font-family:'Playfair Display',serif;font-size:1rem;color:#fff}
-.ll-desc{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:1px;margin-top:3px}
-.ll-line{position:absolute;right:100%;top:50%;width:60px;height:1px;background:rgba(201,169,110,0.3);margin-right:8px;top:calc(50% - 0.5px)}
-
-/* Left side label */
-.layer-label.left{right:auto;left:-180px;text-align:right}
-.layer-label.left .ll-line{right:auto;left:100%;margin-left:8px;margin-right:0}
-
-/* Hero title overlay */
-.hero-overlay{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;flex-direction:column;align-items:center;padding-top:130px;pointer-events:none;text-align:center}
-.hero-eyebrow{font-size:9px;letter-spacing:6px;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem;opacity:0;transition:opacity 1s ease 0.4s}
-.hero-eyebrow.in{opacity:1}
-.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);color:#fff;font-weight:400;line-height:1.1;opacity:0;transition:opacity 1s ease 0.6s}
-.hero-title.in{opacity:1}
-.hero-title em{font-style:italic;color:#c9a96e}
-
-/* Progress bar */
-.build-progress{position:absolute;left:3rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:0;z-index:20}
-.prog-track{width:1px;height:200px;background:rgba(201,169,110,0.15);position:relative}
-.prog-fill{position:absolute;top:0;left:0;width:1px;background:#c9a96e;transition:height 0.15s linear}
-.prog-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-top:1rem;writing-mode:vertical-lr}
-
-/* Step counter */
-.step-counter{position:absolute;right:3rem;bottom:3rem;z-index:20;text-align:right}
-.step-num{font-family:'Playfair Display',serif;font-size:3rem;color:rgba(201,169,110,0.15);line-height:1}
-.step-of{font-size:9px;letter-spacing:3px;color:rgba(255,255,255,0.2);text-transform:uppercase}
+/* Step counter top right */
+.step-counter{position:absolute;top:6rem;right:3rem;z-index:20;text-align:right}
+.sc-num{font-family:'Playfair Display',serif;font-size:4rem;line-height:1;color:rgba(201,169,110,0.12);transition:color 0.5s}
+.sc-total{font-size:8px;letter-spacing:3px;color:rgba(255,255,255,0.2);text-transform:uppercase}
 
 /* Scroll hint */
-.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(255,255,255,0.25);font-size:9px;letter-spacing:3px;text-transform:uppercase;transition:opacity 0.5s}
-.s-line{width:1px;height:50px;background:linear-gradient(to bottom,#c9a96e,transparent);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:0.3}50%{opacity:1}}
+.scroll-hint{position:absolute;bottom:2.5rem;right:3rem;z-index:20;display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.25);font-size:9px;letter-spacing:3px;text-transform:uppercase;transition:opacity 0.5s}
+.sh-line{width:50px;height:1px;background:rgba(201,169,110,0.3)}
 
 /* SECTIONS */
 .section-panel{opacity:0;transform:translateY(60px);transition:opacity 0.9s ease,transform 0.9s ease;min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
@@ -117,6 +100,7 @@ nav.solid{background:rgba(6,6,6,0.92);padding:1.2rem 3rem;backdrop-filter:blur(2
 .panel-bg{position:absolute;inset:0;background-size:cover;background-position:center}
 .panel-overlay{position:absolute;inset:0}
 .panel-content{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:6rem 4rem;width:100%}
+
 .section-label{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem}
 .gold-line{width:40px;height:1px;background:#c9a96e;margin-bottom:2rem}
 .section-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:400;line-height:1.1;color:#fff;margin-bottom:2rem}
@@ -146,7 +130,7 @@ nav.solid{background:rgba(6,6,6,0.92);padding:1.2rem 3rem;backdrop-filter:blur(2
 .catalog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border:1px solid rgba(201,169,110,0.1);margin-top:3rem}
 .cat{overflow:hidden;background:rgba(6,6,6,0.5);transition:background 0.4s}
 .cat:hover{background:rgba(201,169,110,0.03)}
-.cat-img{height:200px;background-size:cover;background-position:center;transition:transform 0.7s cubic-bezier(0.4,0,0.2,1);overflow:hidden}
+.cat-img{height:200px;background-size:cover;background-position:center;transition:transform 0.7s cubic-bezier(0.4,0,0.2,1)}
 .cat:hover .cat-img{transform:scale(1.04)}
 .c1{background-image:url('https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80')}
 .c2{background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80')}
@@ -174,17 +158,15 @@ footer{background:#030303;padding:4rem 2rem;text-align:center;border-top:1px sol
 .footer-links a:hover{color:#c9a96e}
 .footer-copy{font-size:8px;color:rgba(255,255,255,0.1);letter-spacing:2px}
 
-@media(max-width:900px){
-.bed-scene{width:360px;height:240px;transform:scale(0.7)}
-.layer-label{display:none}
-.services-grid{grid-template-columns:1fr 1fr}
-.catalog-grid{grid-template-columns:1fr 1fr}
+@media(max-width:768px){
+.services-grid,.catalog-grid{grid-template-columns:1fr 1fr}
 .contact-split{grid-template-columns:1fr}
 .gallery-grid{grid-template-columns:1fr 1fr}
 .gi1,.gi2,.gi3,.gi4,.gi5{grid-column:auto;height:220px}
 nav{padding:1.5rem}
 .nav-links{display:none}
-.build-progress{display:none}
+.panel-content{padding:4rem 2rem}
+.step-counter{display:none}
 }
 </style>
 </head>
@@ -201,227 +183,52 @@ nav{padding:1.5rem}
   </div>
 </nav>
 
-<!-- BED BUILD STAGE -->
 <div class="build-stage" id="buildStage">
   <div class="build-sticky">
-    <div class="build-bg"></div>
 
-    <!-- Hero titles -->
-    <div class="hero-overlay">
-      <div class="hero-eyebrow" id="heroEyebrow">Nairobi, Kenya &nbsp;·&nbsp; Premium Interiors</div>
-      <h1 class="hero-title" id="heroTitle">Built Layer<br>by <em>Layer.</em></h1>
+    <!-- Photo layers — each one = next stage of bed build -->
+    <div class="photo-layer p0 active" id="p0"></div>
+    <div class="photo-layer p1" id="p1"></div>
+    <div class="photo-layer p2" id="p2"></div>
+    <div class="photo-layer p3" id="p3"></div>
+    <div class="photo-layer p4" id="p4"></div>
+    <div class="photo-layer p5" id="p5"></div>
+    <div class="photo-layer p6" id="p6"></div>
+
+    <!-- Cinematic framing -->
+    <div class="cin-overlay">
+      <div class="cin-top"></div>
+      <div class="cin-bottom"></div>
+      <div class="cin-sides"></div>
     </div>
 
-    <!-- Progress bar left -->
-    <div class="build-progress">
-      <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
-      <div class="prog-label">Building</div>
-    </div>
-
-    <!-- Step counter right -->
+    <!-- Step counter -->
     <div class="step-counter">
-      <div class="step-num" id="stepNum">00</div>
-      <div class="step-of" id="stepOf">/ 08 Layers</div>
+      <div class="sc-num" id="scNum">01</div>
+      <div class="sc-total">/ 07</div>
     </div>
 
-    <!-- THE BED SCENE -->
-    <div class="bed-scene" id="bedScene">
+    <!-- Layer announcement -->
+    <div class="layer-announce">
+      <div class="la-step" id="laStep">Step 01</div>
+      <div class="la-name" id="laName">The <em>Frame</em></div>
+      <div class="la-sub" id="laSub">Where it all begins</div>
+    </div>
 
-      <!-- Floor shadow -->
-      <div class="l-floor layer" id="l0"></div>
-
-      <!-- HEADBOARD -->
-      <div class="layer l-headboard" id="l1">
-        <svg class="bed-svg" viewBox="0 0 540 170" xmlns="http://www.w3.org/2000/svg">
-          <!-- Main headboard panel -->
-          <rect x="20" y="10" width="500" height="145" rx="8" fill="#1a1410" stroke="#3d2e1e" stroke-width="1.5"/>
-          <!-- Upholstered panel -->
-          <rect x="35" y="22" width="470" height="118" rx="6" fill="#2a1f14" stroke="#4a3520" stroke-width="1"/>
-          <!-- Button tufting grid -->
-          <g fill="#c9a96e" opacity="0.5">
-            <circle cx="100" cy="55" r="3"/><circle cx="180" cy="55" r="3"/><circle cx="260" cy="55" r="3"/><circle cx="340" cy="55" r="3"/><circle cx="420" cy="55" r="3"/>
-            <circle cx="140" cy="90" r="3"/><circle cx="220" cy="90" r="3"/><circle cx="300" cy="90" r="3"/><circle cx="380" cy="90" r="3"/>
-            <circle cx="100" cy="125" r="3"/><circle cx="180" cy="125" r="3"/><circle cx="260" cy="125" r="3"/><circle cx="340" cy="125" r="3"/><circle cx="420" cy="125" r="3"/>
-          </g>
-          <!-- Gold trim -->
-          <rect x="35" y="22" width="470" height="118" rx="6" fill="none" stroke="#c9a96e" stroke-width="0.5" opacity="0.4"/>
-        </svg>
-        <div class="layer-label" id="ll1">
-          <div class="ll-line"></div>
-          <div class="ll-num">01</div>
-          <div class="ll-name">Headboard</div>
-          <div class="ll-desc">Bespoke upholstered</div>
-        </div>
-      </div>
-
-      <!-- BED FRAME BASE -->
-      <div class="layer l-base" id="l2">
-        <svg class="bed-svg" viewBox="0 0 560 50" xmlns="http://www.w3.org/2000/svg">
-          <rect x="0" y="8" width="560" height="38" rx="4" fill="#1a1410" stroke="#3d2e1e" stroke-width="1.5"/>
-          <!-- Frame detail lines -->
-          <line x1="0" y1="18" x2="560" y2="18" stroke="#2a1f14" stroke-width="1"/>
-          <line x1="0" y1="36" x2="560" y2="36" stroke="#2a1f14" stroke-width="1"/>
-          <!-- Gold inlay -->
-          <line x1="20" y1="26" x2="540" y2="26" stroke="#c9a96e" stroke-width="0.5" opacity="0.4"/>
-        </svg>
-        <div class="layer-label left" id="ll2">
-          <div class="ll-line"></div>
-          <div class="ll-num">02</div>
-          <div class="ll-name">Bed Frame</div>
-          <div class="ll-desc">Solid hardwood base</div>
-        </div>
-      </div>
-
-      <!-- LEGS -->
-      <div class="layer l-legs" id="l3">
-        <svg class="bed-svg" viewBox="0 0 560 80" xmlns="http://www.w3.org/2000/svg">
-          <rect x="30" y="0" width="28" height="75" rx="3" fill="#150f0a" stroke="#3d2e1e" stroke-width="1.5"/>
-          <rect x="502" y="0" width="28" height="75" rx="3" fill="#150f0a" stroke="#3d2e1e" stroke-width="1.5"/>
-          <!-- Leg detail -->
-          <rect x="34" y="8" width="20" height="4" rx="1" fill="#c9a96e" opacity="0.3"/>
-          <rect x="506" y="8" width="20" height="4" rx="1" fill="#c9a96e" opacity="0.3"/>
-        </svg>
-        <div class="layer-label" id="ll3">
-          <div class="ll-line"></div>
-          <div class="ll-num">03</div>
-          <div class="ll-name">Legs & Support</div>
-          <div class="ll-desc">Turned hardwood legs</div>
-        </div>
-      </div>
-
-      <!-- SLATS -->
-      <div class="layer l-slats" id="l4">
-        <svg class="bed-svg" viewBox="0 0 520 18" xmlns="http://www.w3.org/2000/svg">
-          <g fill="#1e1610" stroke="#3d2e1e" stroke-width="1">
-            <rect x="0" y="3" width="40" height="12" rx="2"/>
-            <rect x="50" y="3" width="40" height="12" rx="2"/>
-            <rect x="100" y="3" width="40" height="12" rx="2"/>
-            <rect x="150" y="3" width="40" height="12" rx="2"/>
-            <rect x="200" y="3" width="40" height="12" rx="2"/>
-            <rect x="250" y="3" width="40" height="12" rx="2"/>
-            <rect x="300" y="3" width="40" height="12" rx="2"/>
-            <rect x="350" y="3" width="40" height="12" rx="2"/>
-            <rect x="400" y="3" width="40" height="12" rx="2"/>
-            <rect x="450" y="3" width="40" height="12" rx="2"/>
-            <rect x="500" y="3" width="20" height="12" rx="2"/>
-          </g>
-        </svg>
-        <div class="layer-label left" id="ll4">
-          <div class="ll-line"></div>
-          <div class="ll-num">04</div>
-          <div class="ll-name">Slatted Base</div>
-          <div class="ll-desc">Sprung beech slats</div>
-        </div>
-      </div>
-
-      <!-- MATTRESS -->
-      <div class="layer l-mattress" id="l5">
-        <svg class="bed-svg" viewBox="0 0 540 60" xmlns="http://www.w3.org/2000/svg">
-          <!-- Mattress body -->
-          <rect x="0" y="0" width="540" height="56" rx="6" fill="#e8e0d5" stroke="#d4c8b8" stroke-width="1"/>
-          <!-- Quilted top -->
-          <rect x="0" y="0" width="540" height="20" rx="6" fill="#f0ebe3" stroke="#d4c8b8" stroke-width="0.5"/>
-          <!-- Quilt lines -->
-          <g stroke="#c9b89a" stroke-width="0.5" opacity="0.6">
-            <line x1="60" y1="0" x2="60" y2="20"/>
-            <line x1="120" y1="0" x2="120" y2="20"/>
-            <line x1="180" y1="0" x2="180" y2="20"/>
-            <line x1="240" y1="0" x2="240" y2="20"/>
-            <line x1="300" y1="0" x2="300" y2="20"/>
-            <line x1="360" y1="0" x2="360" y2="20"/>
-            <line x1="420" y1="0" x2="420" y2="20"/>
-            <line x1="480" y1="0" x2="480" y2="20"/>
-          </g>
-          <!-- Side piping -->
-          <rect x="0" y="18" width="540" height="3" fill="#c9b89a" opacity="0.5"/>
-        </svg>
-        <div class="layer-label" id="ll5">
-          <div class="ll-line"></div>
-          <div class="ll-num">05</div>
-          <div class="ll-name">Mattress</div>
-          <div class="ll-desc">Premium memory foam</div>
-        </div>
-      </div>
-
-      <!-- FITTED SHEET -->
-      <div class="layer l-sheet" id="l6">
-        <svg class="bed-svg" viewBox="0 0 536 200" xmlns="http://www.w3.org/2000/svg">
-          <!-- Sheet main -->
-          <rect x="0" y="0" width="536" height="170" rx="4" fill="#f5f0eb" stroke="#e0d8ce" stroke-width="0.5"/>
-          <!-- Sheet sides hanging down -->
-          <rect x="0" y="155" width="536" height="40" rx="2" fill="#ede5da" stroke="#d4c8b8" stroke-width="0.5"/>
-          <!-- Subtle texture lines -->
-          <g stroke="#e8e2d8" stroke-width="0.8" opacity="0.5">
-            <line x1="0" y1="40" x2="536" y2="40"/>
-            <line x1="0" y1="80" x2="536" y2="80"/>
-            <line x1="0" y1="120" x2="536" y2="120"/>
-          </g>
-        </svg>
-        <div class="layer-label left" id="ll6">
-          <div class="ll-line"></div>
-          <div class="ll-num">06</div>
-          <div class="ll-name">Fitted Sheet</div>
-          <div class="ll-desc">500 thread count linen</div>
-        </div>
-      </div>
-
-      <!-- DUVET -->
-      <div class="layer l-duvet" id="l7">
-        <svg class="bed-svg" viewBox="0 0 530 160" xmlns="http://www.w3.org/2000/svg">
-          <!-- Duvet body -->
-          <rect x="0" y="20" width="530" height="130" rx="8" fill="#fff8f0" stroke="#e8ddd0" stroke-width="0.5"/>
-          <!-- Duvet fold top -->
-          <rect x="0" y="20" width="530" height="40" rx="8" fill="#fffaf5" stroke="#e8ddd0" stroke-width="0.5"/>
-          <!-- Baffle box pattern -->
-          <g stroke="#e0d4c4" stroke-width="0.8" opacity="0.7">
-            <line x1="106" y1="20" x2="106" y2="150"/>
-            <line x1="212" y1="20" x2="212" y2="150"/>
-            <line x1="318" y1="20" x2="318" y2="150"/>
-            <line x1="424" y1="20" x2="424" y2="150"/>
-            <line x1="0" y1="85" x2="530" y2="85"/>
-          </g>
-          <!-- Gold trim edge -->
-          <rect x="0" y="20" width="530" height="130" rx="8" fill="none" stroke="#c9a96e" stroke-width="0.5" opacity="0.3"/>
-          <!-- Fold crease -->
-          <path d="M0 58 Q265 75 530 58" fill="none" stroke="#e0d4c4" stroke-width="1" opacity="0.6"/>
-        </svg>
-        <div class="layer-label" id="ll7">
-          <div class="ll-line"></div>
-          <div class="ll-num">07</div>
-          <div class="ll-name">Luxury Duvet</div>
-          <div class="ll-desc">Goose down, 1000gsm</div>
-        </div>
-      </div>
-
-      <!-- PILLOWS -->
-      <div class="layer l-pillows" id="l8">
-        <svg class="bed-svg" viewBox="0 0 480 80" xmlns="http://www.w3.org/2000/svg">
-          <!-- Left pillow -->
-          <rect x="10" y="5" width="215" height="68" rx="14" fill="#fffaf5" stroke="#e0d4c4" stroke-width="1"/>
-          <rect x="22" y="14" width="191" height="50" rx="10" fill="#fff8f0" stroke="#e8ddd0" stroke-width="0.5"/>
-          <!-- Pillow seam lines -->
-          <line x1="117" y1="14" x2="117" y2="64" stroke="#e0d4c4" stroke-width="0.5" stroke-dasharray="4,4"/>
-          <!-- Right pillow -->
-          <rect x="255" y="5" width="215" height="68" rx="14" fill="#fffaf5" stroke="#e0d4c4" stroke-width="1"/>
-          <rect x="267" y="14" width="191" height="50" rx="10" fill="#fff8f0" stroke="#e8ddd0" stroke-width="0.5"/>
-          <line x1="362" y1="14" x2="362" y2="64" stroke="#e0d4c4" stroke-width="0.5" stroke-dasharray="4,4"/>
-          <!-- Gold monogram hint -->
-          <text x="112" y="45" font-size="10" fill="#c9a96e" opacity="0.4" text-anchor="middle" font-family="serif">CN</text>
-          <text x="357" y="45" font-size="10" fill="#c9a96e" opacity="0.4" text-anchor="middle" font-family="serif">CN</text>
-        </svg>
-        <div class="layer-label left" id="ll8">
-          <div class="ll-line"></div>
-          <div class="ll-num">08</div>
-          <div class="ll-name">Pillows</div>
-          <div class="ll-desc">Hungarian goose down</div>
-        </div>
-      </div>
-
-    </div><!-- /bed-scene -->
+    <!-- Progress dots -->
+    <div class="prog-dots" id="progDots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
 
     <div class="scroll-hint" id="scrollHint">
       <span>Scroll to build</span>
-      <div class="s-line"></div>
+      <div class="sh-line"></div>
     </div>
 
   </div>
@@ -532,69 +339,68 @@ nav{padding:1.5rem}
 </footer>
 
 <script>
-const stage = document.getElementById('buildStage');
-const navEl = document.getElementById('nav');
-const progFill = document.getElementById('progFill');
-const stepNum = document.getElementById('stepNum');
-const scrollHint = document.getElementById('scrollHint');
-const heroEyebrow = document.getElementById('heroEyebrow');
-const heroTitle = document.getElementById('heroTitle');
-
-const layers = [
-  { id: 'l0', label: null },
-  { id: 'l1', label: 'll1' },
-  { id: 'l2', label: 'll2' },
-  { id: 'l3', label: 'll3' },
-  { id: 'l4', label: 'll4' },
-  { id: 'l5', label: 'll5' },
-  { id: 'l6', label: 'll6' },
-  { id: 'l7', label: 'll7' },
-  { id: 'l8', label: 'll8' }
+const steps = [
+  { step:'01', name:'The <em>Frame</em>',        sub:'Where it all begins' },
+  { step:'02', name:'The <em>Mattress</em>',     sub:'Premium memory foam base' },
+  { step:'03', name:'The <em>Base Sheet</em>',   sub:'500 thread count linen' },
+  { step:'04', name:'The <em>Duvet</em>',        sub:'Goose down, 1000gsm fill' },
+  { step:'05', name:'The <em>Pillows</em>',      sub:'Hungarian goose down' },
+  { step:'06', name:'The <em>Finishing</em>',    sub:'Every detail considered' },
+  { step:'07', name:'<em>Perfection.</em>',      sub:'Essy Casa Nova Interiors' },
 ];
 
-setTimeout(() => {
-  heroEyebrow.classList.add('in');
-  heroTitle.classList.add('in');
-}, 300);
+const photos = Array.from({length:7},(_,i)=>document.getElementById('p'+i));
+const laStep = document.getElementById('laStep');
+const laName = document.getElementById('laName');
+const laSub  = document.getElementById('laSub');
+const scNum  = document.getElementById('scNum');
+const dots   = document.querySelectorAll('.dot');
+const navEl  = document.getElementById('nav');
+const scrollHint = document.getElementById('scrollHint');
+const stage  = document.getElementById('buildStage');
 
-let lastStep = -1;
+let currentStep = 0;
+
+function animateLabel(data) {
+  [laStep, laName, laSub].forEach(el => el.classList.remove('in'));
+  setTimeout(() => {
+    laStep.textContent = 'Step ' + data.step;
+    laName.innerHTML  = data.name;
+    laSub.textContent  = data.sub;
+    laStep.classList.add('in');
+    laName.classList.add('in');
+    laSub.classList.add('in');
+  }, 80);
+}
+
+function goToStep(idx) {
+  if (idx === currentStep) return;
+  photos[currentStep].classList.remove('active');
+  currentStep = idx;
+  photos[currentStep].classList.add('active');
+  dots.forEach((d,i) => d.classList.toggle('active', i === idx));
+  scNum.textContent = steps[idx].step;
+  animateLabel(steps[idx]);
+}
+
+// Init
+laStep.classList.add('in');
+laName.classList.add('in');
+laSub.classList.add('in');
 
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
-  const stageH = stage.offsetHeight;
-  const winH = window.innerHeight;
+  const stageH  = stage.offsetHeight;
+  const winH    = window.innerHeight;
   const maxScroll = stageH - winH;
-  const progress = Math.min(Math.max(scrollY / maxScroll, 0), 1);
+  const progress  = Math.min(Math.max(scrollY / maxScroll, 0), 1);
 
   navEl.classList.toggle('solid', scrollY > 60);
-  scrollHint.style.opacity = scrollY > 100 ? '0' : '1';
+  scrollHint.style.opacity = scrollY > 120 ? '0' : '1';
 
-  // Progress bar
-  progFill.style.height = (progress * 100) + '%';
+  const idx = Math.min(Math.floor(progress * steps.length), steps.length - 1);
+  goToStep(idx);
 
-  // Which step to show (0–8)
-  const totalLayers = layers.length;
-  const step = Math.floor(progress * (totalLayers + 1));
-  const clampedStep = Math.min(step, totalLayers);
-
-  stepNum.textContent = String(Math.min(clampedStep, totalLayers)).padStart(2, '0');
-
-  if (clampedStep !== lastStep) {
-    lastStep = clampedStep;
-    layers.forEach((l, i) => {
-      const el = document.getElementById(l.id);
-      const ll = l.label ? document.getElementById(l.label) : null;
-      if (i < clampedStep) {
-        el.classList.add('show');
-        if (ll) ll.classList.add('show');
-      } else {
-        el.classList.remove('show');
-        if (ll) ll.classList.remove('show');
-      }
-    });
-  }
-
-  // Section panels
   document.querySelectorAll('.section-panel').forEach(p => {
     if (p.getBoundingClientRect().top < window.innerHeight * 0.85) {
       p.classList.add('entered');
