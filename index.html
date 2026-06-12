@@ -7,11 +7,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:auto}
 body{font-family:'Inter',sans-serif;background:#060606;color:#f5f0eb;overflow-x:hidden}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;mix-blend-mode:normal;transition:padding 0.5s,background 0.5s}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:padding 0.5s,background 0.5s}
 nav.solid{background:rgba(6,6,6,0.92);padding:1.2rem 3rem;backdrop-filter:blur(20px)}
 .nav-logo{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;letter-spacing:2px;text-transform:uppercase}
 .nav-links{display:flex;gap:2.5rem}
@@ -19,155 +17,174 @@ nav.solid{background:rgba(6,6,6,0.92);padding:1.2rem 3rem;backdrop-filter:blur(2
 .nav-links a:hover{color:#c9a96e}
 
 /* SCROLL STAGE */
-.scroll-stage{position:relative;height:700vh}
-.sticky-frame{position:sticky;top:0;height:100vh;overflow:hidden}
+.build-stage{position:relative;height:900vh;background:#060606}
+.build-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
 
-/* ROOM LAYERS - crossfade between angles */
-.room-layer{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s cubic-bezier(0.4,0,0.2,1);will-change:opacity}
-.room-layer.active{opacity:1}
+/* Background subtle texture */
+.build-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(201,169,110,0.04) 0%,transparent 70%)}
 
-/* Each room angle */
-.r0{background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=2400&q=90')}
-.r1{background-image:url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=2400&q=90')}
-.r2{background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=2400&q=90')}
-.r3{background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=2400&q=90')}
-.r4{background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2400&q=90')}
-.r5{background-image:url('https://images.unsplash.com/photo-1616137466211-f939a420be84?w=2400&q=90')}
+/* The bed scene — isometric perspective */
+.bed-scene{position:relative;width:700px;height:420px;transform-style:preserve-3d;margin-top:40px}
 
-/* Slow Ken Burns on active layer */
-.room-layer.active{animation:kenburns 8s ease-in-out forwards}
-@keyframes kenburns{0%{transform:scale(1.08)}100%{transform:scale(1.0)}}
+/* Each layer */
+.layer{position:absolute;left:50%;bottom:0;transform:translateX(-50%);opacity:0;transition:opacity 0.6s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1)}
 
-/* Cinematic overlays */
-.cinematic-bars{position:absolute;inset:0;z-index:5;pointer-events:none}
-.bar-top{position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,#060606,transparent)}
-.bar-bottom{position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,#060606,transparent)}
-.bar-left{position:absolute;top:0;bottom:0;left:0;width:60px;background:linear-gradient(to right,rgba(6,6,6,0.4),transparent)}
-.bar-right{position:absolute;top:0;bottom:0;right:0;width:60px;background:linear-gradient(to left,rgba(6,6,6,0.4),transparent)}
+/* LAYER 0 — Floor / shadow */
+.l-floor{width:600px;height:20px;bottom:0;left:50%;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(201,169,110,0.12) 0%,transparent 70%);opacity:0;transition:opacity 0.8s ease}
+.l-floor.show{opacity:1}
 
-/* Room label overlays */
-.room-labels{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;justify-content:flex-end;padding:5rem 4rem}
-.room-tag{position:absolute;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;opacity:0;transition:opacity 0.8s ease,transform 0.8s ease;transform:translateY(10px)}
-.room-tag.show{opacity:1;transform:translateY(0)}
-.rt-tl{top:30%;left:4rem}
-.rt-tr{top:30%;right:4rem;text-align:right}
-.rt-bl{bottom:20%;left:4rem}
-.rt-br{bottom:20%;right:4rem;text-align:right}
+/* LAYER 1 — Bed frame legs */
+.l-legs{width:560px;height:80px;bottom:16px}
+.l-legs.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.l-legs{transform:translateX(-50%) translateY(30px)}
 
-/* Main hero text */
-.hero-text{position:absolute;inset:0;z-index:15;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 2rem;pointer-events:none}
-.hero-eyebrow{font-size:9px;letter-spacing:6px;text-transform:uppercase;color:#c9a96e;margin-bottom:2rem;opacity:0;transform:translateY(20px);transition:opacity 1s ease 0.3s,transform 1s ease 0.3s}
-.hero-eyebrow.in{opacity:1;transform:translateY(0)}
-.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,6rem);font-weight:400;line-height:1.05;color:#fff;opacity:0;transform:translateY(30px);transition:opacity 1.2s ease 0.5s,transform 1.2s ease 0.5s}
-.hero-title.in{opacity:1;transform:translateY(0)}
+/* LAYER 2 — Bed frame base */
+.l-base{width:560px;height:50px;bottom:88px}
+.l-base{transform:translateX(-50%) translateY(40px)}
+.l-base.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* LAYER 3 — Slats */
+.l-slats{width:520px;height:18px;bottom:135px}
+.l-slats{transform:translateX(-50%) translateY(40px)}
+.l-slats.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* LAYER 4 — Mattress */
+.l-mattress{width:540px;height:60px;bottom:148px}
+.l-mattress{transform:translateX(-50%) translateY(50px)}
+.l-mattress.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* LAYER 5 — Sheet */
+.l-sheet{width:536px;height:200px;bottom:204px}
+.l-sheet{transform:translateX(-50%) translateY(50px)}
+.l-sheet.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* LAYER 6 — Duvet */
+.l-duvet{width:530px;height:160px;bottom:220px}
+.l-duvet{transform:translateX(-50%) translateY(50px)}
+.l-duvet.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* LAYER 7 — Pillows */
+.l-pillows{width:480px;height:80px;bottom:360px}
+.l-pillows{transform:translateX(-50%) translateY(40px)}
+.l-pillows.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* LAYER 8 — Headboard */
+.l-headboard{width:540px;height:170px;bottom:210px;left:50%;transform:translateX(-50%) translateY(40px)}
+.l-headboard.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* SVG bed elements */
+.bed-svg{width:100%;height:100%}
+
+/* Label system */
+.layer-label{position:absolute;right:-180px;top:50%;transform:translateY(-50%);opacity:0;transition:opacity 0.5s ease 0.3s;text-align:left;pointer-events:none;white-space:nowrap}
+.layer-label.show{opacity:1}
+.ll-num{font-size:9px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;margin-bottom:4px}
+.ll-name{font-family:'Playfair Display',serif;font-size:1rem;color:#fff}
+.ll-desc{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:1px;margin-top:3px}
+.ll-line{position:absolute;right:100%;top:50%;width:60px;height:1px;background:rgba(201,169,110,0.3);margin-right:8px;top:calc(50% - 0.5px)}
+
+/* Left side label */
+.layer-label.left{right:auto;left:-180px;text-align:right}
+.layer-label.left .ll-line{right:auto;left:100%;margin-left:8px;margin-right:0}
+
+/* Hero title overlay */
+.hero-overlay{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;flex-direction:column;align-items:center;padding-top:130px;pointer-events:none;text-align:center}
+.hero-eyebrow{font-size:9px;letter-spacing:6px;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem;opacity:0;transition:opacity 1s ease 0.4s}
+.hero-eyebrow.in{opacity:1}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);color:#fff;font-weight:400;line-height:1.1;opacity:0;transition:opacity 1s ease 0.6s}
+.hero-title.in{opacity:1}
 .hero-title em{font-style:italic;color:#c9a96e}
-.hero-cta{margin-top:2.5rem;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.5);opacity:0;transition:opacity 1s ease 1.2s}
-.hero-cta.in{opacity:1}
 
-/* Rotation indicator */
-.rot-indicator{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:1rem}
-.rot-circle{width:60px;height:60px;position:relative}
-.rot-circle svg{width:60px;height:60px;transform:rotate(-90deg)}
-.rot-circle circle{fill:none;stroke:rgba(201,169,110,0.2);stroke-width:1}
-.rot-progress{fill:none;stroke:#c9a96e;stroke-width:1;stroke-dasharray:157;stroke-dashoffset:157;transition:stroke-dashoffset 0.1s linear}
-.rot-deg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:9px;color:#c9a96e;letter-spacing:1px}
-.rot-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+/* Progress bar */
+.build-progress{position:absolute;left:3rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:0;z-index:20}
+.prog-track{width:1px;height:200px;background:rgba(201,169,110,0.15);position:relative}
+.prog-fill{position:absolute;top:0;left:0;width:1px;background:#c9a96e;transition:height 0.15s linear}
+.prog-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-top:1rem;writing-mode:vertical-lr}
 
-/* Angle context labels that change */
-.angle-context{position:absolute;bottom:7rem;left:50%;transform:translateX(-50%);z-index:20;text-align:center;min-width:200px}
-.angle-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;opacity:0;transition:opacity 0.6s ease}
-.angle-name.show{opacity:1}
+/* Step counter */
+.step-counter{position:absolute;right:3rem;bottom:3rem;z-index:20;text-align:right}
+.step-num{font-family:'Playfair Display',serif;font-size:3rem;color:rgba(201,169,110,0.15);line-height:1}
+.step-of{font-size:9px;letter-spacing:3px;color:rgba(255,255,255,0.2);text-transform:uppercase}
 
-/* Section panels */
-.section-panel{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
-.panel-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.05);transition:transform 1s ease}
-.section-panel.entered .panel-bg{transform:scale(1)}
-.panel-overlay{position:absolute;inset:0;background:rgba(6,6,6,0.75)}
-.panel-content{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:6rem 4rem;width:100%}
+/* Scroll hint */
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(255,255,255,0.25);font-size:9px;letter-spacing:3px;text-transform:uppercase;transition:opacity 0.5s}
+.s-line{width:1px;height:50px;background:linear-gradient(to bottom,#c9a96e,transparent);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:0.3}50%{opacity:1}}
 
-/* Cinematic section transitions */
-.section-panel{opacity:0;transform:translateY(60px);transition:opacity 1s ease,transform 1s ease}
+/* SECTIONS */
+.section-panel{opacity:0;transform:translateY(60px);transition:opacity 0.9s ease,transform 0.9s ease;min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
 .section-panel.entered{opacity:1;transform:translateY(0)}
-
+.panel-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.panel-overlay{position:absolute;inset:0}
+.panel-content{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:6rem 4rem;width:100%}
 .section-label{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:400;line-height:1.1;color:#fff;margin-bottom:2rem}
-.section-title em{font-style:italic;color:#c9a96e}
-.section-body{font-size:0.9rem;color:rgba(245,240,235,0.5);line-height:2;max-width:480px}
-
-/* Divider line */
 .gold-line{width:40px;height:1px;background:#c9a96e;margin-bottom:2rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:400;line-height:1.1;color:#fff;margin-bottom:2rem}
+.section-title em{font-style:italic;color:#c9a96e}
+.section-body{font-size:0.88rem;color:rgba(245,240,235,0.45);line-height:2.1;max-width:480px}
+.btn-outline{display:inline-block;padding:14px 44px;border:1px solid rgba(201,169,110,0.5);color:#c9a96e;font-size:9px;letter-spacing:4px;text-transform:uppercase;text-decoration:none;transition:all 0.4s;cursor:pointer;background:transparent;margin-top:2rem}
+.btn-outline:hover{background:#c9a96e;color:#060606}
 
-/* Services grid */
 .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:4rem;border:1px solid rgba(201,169,110,0.1)}
-.svc{padding:2.5rem 2rem;background:rgba(6,6,6,0.6);border-right:1px solid rgba(201,169,110,0.1);transition:background 0.4s}
-.svc:hover{background:rgba(201,169,110,0.05)}
+.svc{padding:2.5rem 2rem;background:rgba(6,6,6,0.7);border-right:1px solid rgba(201,169,110,0.1);transition:background 0.4s}
+.svc:hover{background:rgba(201,169,110,0.04)}
 .svc:last-child{border-right:none}
 .svc-num{font-size:9px;letter-spacing:3px;color:#c9a96e;margin-bottom:2rem}
-.svc-name{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:1rem}
-.svc-desc{font-size:0.78rem;color:rgba(245,240,235,0.35);line-height:1.9}
+.svc-name{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:0.75rem}
+.svc-desc{font-size:0.78rem;color:rgba(245,240,235,0.3);line-height:1.9}
 
-/* Gallery */
-.gallery-wrap{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto;gap:3px;margin-top:3rem}
-.gw-item{overflow:hidden;position:relative}
-.gw-item .gi{width:100%;height:100%;background-size:cover;background-position:center;transition:transform 0.8s cubic-bezier(0.4,0,0.2,1)}
-.gw-item:hover .gi{transform:scale(1.06)}
-.gi1{grid-column:1/8;grid-row:1/2;height:420px;background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80')}
-.gi2{grid-column:8/13;grid-row:1/2;height:420px;background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80')}
-.gi3{grid-column:1/5;grid-row:2/3;height:300px;background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80')}
-.gi4{grid-column:5/9;grid-row:2/3;height:300px;background-image:url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80')}
-.gi5{grid-column:9/13;grid-row:2/3;height:300px;background-image:url('https://images.unsplash.com/photo-1616137466211-f939a420be84?w=800&q=80')}
+.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;margin-top:3rem}
+.gi{overflow:hidden}
+.gi-img{width:100%;height:100%;background-size:cover;background-position:center;transition:transform 0.8s cubic-bezier(0.4,0,0.2,1)}
+.gi:hover .gi-img{transform:scale(1.05)}
+.gi1{grid-column:1/8;height:400px;background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80')}
+.gi2{grid-column:8/13;height:400px;background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80')}
+.gi3{grid-column:1/5;height:280px;background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80')}
+.gi4{grid-column:5/9;height:280px;background-image:url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80')}
+.gi5{grid-column:9/13;height:280px;background-image:url('https://images.unsplash.com/photo-1616137466211-f939a420be84?w=800&q=80')}
 
-/* Catalog */
-.catalog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;margin-top:3rem;border:1px solid rgba(201,169,110,0.1)}
-.cat-card{background:rgba(6,6,6,0.5);overflow:hidden;transition:background 0.4s}
-.cat-card:hover{background:rgba(201,169,110,0.04)}
-.cat-thumb{height:220px;background-size:cover;background-position:center;transition:transform 0.7s cubic-bezier(0.4,0,0.2,1);overflow:hidden}
-.cat-card:hover .cat-thumb{transform:scale(1.04)}
-.ct1{background-image:url('https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80')}
-.ct2{background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80')}
-.ct3{background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80')}
-.ct4{background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80')}
-.cat-info{padding:1.5rem}
-.cat-info h4{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:0.5rem}
-.cat-info p{font-size:0.75rem;color:rgba(245,240,235,0.35);letter-spacing:1px}
-.cat-tag{display:inline-block;margin-top:0.75rem;font-size:9px;letter-spacing:2px;color:#c9a96e;text-transform:uppercase;border:1px solid rgba(201,169,110,0.3);padding:4px 10px}
+.catalog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border:1px solid rgba(201,169,110,0.1);margin-top:3rem}
+.cat{overflow:hidden;background:rgba(6,6,6,0.5);transition:background 0.4s}
+.cat:hover{background:rgba(201,169,110,0.03)}
+.cat-img{height:200px;background-size:cover;background-position:center;transition:transform 0.7s cubic-bezier(0.4,0,0.2,1);overflow:hidden}
+.cat:hover .cat-img{transform:scale(1.04)}
+.c1{background-image:url('https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80')}
+.c2{background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80')}
+.c3{background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80')}
+.c4{background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80')}
+.cat-info{padding:1.25rem}
+.cat-info h4{font-family:'Playfair Display',serif;font-size:0.95rem;color:#fff;margin-bottom:0.4rem}
+.cat-info p{font-size:0.72rem;color:rgba(245,240,235,0.3);letter-spacing:1px}
+.cat-tag{display:inline-block;margin-top:0.75rem;font-size:8px;letter-spacing:2px;color:#c9a96e;text-transform:uppercase;border:1px solid rgba(201,169,110,0.25);padding:3px 8px}
 
-/* Contact */
-.contact-split{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
-.contact-info-block{margin-top:1rem}
-.ci-row{margin-bottom:2rem}
-.ci-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;margin-bottom:0.5rem}
-.ci-val{font-size:0.85rem;color:rgba(245,240,235,0.5);line-height:1.8}
-.contact-form input,.contact-form textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,169,110,0.2);padding:14px 0;font-family:'Inter',sans-serif;font-size:0.8rem;color:#fff;margin-bottom:2rem;outline:none;letter-spacing:1px;transition:border-color 0.4s}
-.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,0.2);font-size:0.75rem;letter-spacing:2px;text-transform:uppercase}
+.contact-split{display:grid;grid-template-columns:1fr 1fr;gap:6rem;margin-top:3rem}
+.ci-row{margin-bottom:1.75rem}
+.ci-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;margin-bottom:0.5rem}
+.ci-val{font-size:0.82rem;color:rgba(245,240,235,0.45);line-height:1.9}
+.contact-form input,.contact-form textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,169,110,0.15);padding:12px 0;font-family:'Inter',sans-serif;font-size:0.78rem;color:#fff;margin-bottom:1.75rem;outline:none;letter-spacing:1px;transition:border-color 0.4s}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,0.18);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase}
 .contact-form input:focus,.contact-form textarea:focus{border-bottom-color:#c9a96e}
-.contact-form textarea{resize:none;height:100px}
+.contact-form textarea{resize:none;height:90px}
 
-/* CTA Button */
-.btn-outline{display:inline-block;padding:14px 44px;border:1px solid rgba(201,169,110,0.5);color:#c9a96e;font-size:9px;letter-spacing:4px;text-transform:uppercase;text-decoration:none;transition:all 0.5s ease;cursor:pointer;background:transparent;margin-top:1rem}
-.btn-outline:hover{background:#c9a96e;color:#060606;border-color:#c9a96e}
-
-/* Footer */
 footer{background:#030303;padding:4rem 2rem;text-align:center;border-top:1px solid rgba(201,169,110,0.08)}
-.footer-logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:400;color:#fff;letter-spacing:3px;margin-bottom:0.5rem}
-.footer-sub{font-size:8px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:3rem}
-.footer-links{display:flex;justify-content:center;gap:3rem;margin-bottom:3rem}
-.footer-links a{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.3s}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;letter-spacing:3px;margin-bottom:0.5rem}
+.footer-sub{font-size:8px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:2.5rem}
+.footer-links{display:flex;justify-content:center;gap:3rem;margin-bottom:2.5rem}
+.footer-links a{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);text-decoration:none;transition:color 0.3s}
 .footer-links a:hover{color:#c9a96e}
-.footer-copy{font-size:9px;color:rgba(255,255,255,0.12);letter-spacing:2px}
+.footer-copy{font-size:8px;color:rgba(255,255,255,0.1);letter-spacing:2px}
 
-/* Scroll CTA arrow */
-.scroll-cta{position:absolute;bottom:2.5rem;right:4rem;z-index:20;display:flex;align-items:center;gap:1rem;color:rgba(255,255,255,0.3);font-size:9px;letter-spacing:3px;text-transform:uppercase}
-.arrow-line{width:60px;height:1px;background:rgba(201,169,110,0.4)}
-
-@media(max-width:768px){
+@media(max-width:900px){
+.bed-scene{width:360px;height:240px;transform:scale(0.7)}
+.layer-label{display:none}
 .services-grid{grid-template-columns:1fr 1fr}
+.catalog-grid{grid-template-columns:1fr 1fr}
 .contact-split{grid-template-columns:1fr}
-.gallery-wrap{grid-template-columns:1fr 1fr}
-.gi1,.gi2,.gi3,.gi4,.gi5{grid-column:auto;grid-row:auto;height:240px}
+.gallery-grid{grid-template-columns:1fr 1fr}
+.gi1,.gi2,.gi3,.gi4,.gi5{grid-column:auto;height:220px}
 nav{padding:1.5rem}
 .nav-links{display:none}
-.panel-content{padding:4rem 2rem}
+.build-progress{display:none}
 }
 </style>
 </head>
@@ -184,108 +201,258 @@ nav{padding:1.5rem}
   </div>
 </nav>
 
-<!-- 360 SCROLL STAGE -->
-<div class="scroll-stage" id="scrollStage">
-  <div class="sticky-frame" id="stickyFrame">
+<!-- BED BUILD STAGE -->
+<div class="build-stage" id="buildStage">
+  <div class="build-sticky">
+    <div class="build-bg"></div>
 
-    <!-- Room layers -->
-    <div class="room-layer r0 active" id="r0"></div>
-    <div class="room-layer r1" id="r1"></div>
-    <div class="room-layer r2" id="r2"></div>
-    <div class="room-layer r3" id="r3"></div>
-    <div class="room-layer r4" id="r4"></div>
-    <div class="room-layer r5" id="r5"></div>
-
-    <!-- Cinematic framing -->
-    <div class="cinematic-bars">
-      <div class="bar-top"></div>
-      <div class="bar-bottom"></div>
-      <div class="bar-left"></div>
-      <div class="bar-right"></div>
-    </div>
-
-    <!-- Context labels -->
-    <div class="room-labels">
-      <div class="room-tag rt-tl" id="tagTL"></div>
-      <div class="room-tag rt-tr" id="tagTR"></div>
-      <div class="room-tag rt-br" id="tagBR"></div>
-    </div>
-
-    <!-- Hero text -->
-    <div class="hero-text" id="heroText">
+    <!-- Hero titles -->
+    <div class="hero-overlay">
       <div class="hero-eyebrow" id="heroEyebrow">Nairobi, Kenya &nbsp;·&nbsp; Premium Interiors</div>
-      <h1 class="hero-title" id="heroTitle">Essy Casa Nova<br><em>Interiors</em></h1>
-      <div class="hero-cta" id="heroCta">Scroll to explore</div>
+      <h1 class="hero-title" id="heroTitle">Built Layer<br>by <em>Layer.</em></h1>
     </div>
 
-    <!-- Angle context -->
-    <div class="angle-context">
-      <div class="angle-name" id="angleName"></div>
+    <!-- Progress bar left -->
+    <div class="build-progress">
+      <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+      <div class="prog-label">Building</div>
     </div>
 
-    <!-- Rotation indicator -->
-    <div class="rot-indicator">
-      <div class="rot-circle">
-        <svg viewBox="0 0 60 60">
-          <circle cx="30" cy="30" r="25"/>
-          <circle class="rot-progress" cx="30" cy="30" r="25" id="rotProgress"/>
+    <!-- Step counter right -->
+    <div class="step-counter">
+      <div class="step-num" id="stepNum">00</div>
+      <div class="step-of" id="stepOf">/ 08 Layers</div>
+    </div>
+
+    <!-- THE BED SCENE -->
+    <div class="bed-scene" id="bedScene">
+
+      <!-- Floor shadow -->
+      <div class="l-floor layer" id="l0"></div>
+
+      <!-- HEADBOARD -->
+      <div class="layer l-headboard" id="l1">
+        <svg class="bed-svg" viewBox="0 0 540 170" xmlns="http://www.w3.org/2000/svg">
+          <!-- Main headboard panel -->
+          <rect x="20" y="10" width="500" height="145" rx="8" fill="#1a1410" stroke="#3d2e1e" stroke-width="1.5"/>
+          <!-- Upholstered panel -->
+          <rect x="35" y="22" width="470" height="118" rx="6" fill="#2a1f14" stroke="#4a3520" stroke-width="1"/>
+          <!-- Button tufting grid -->
+          <g fill="#c9a96e" opacity="0.5">
+            <circle cx="100" cy="55" r="3"/><circle cx="180" cy="55" r="3"/><circle cx="260" cy="55" r="3"/><circle cx="340" cy="55" r="3"/><circle cx="420" cy="55" r="3"/>
+            <circle cx="140" cy="90" r="3"/><circle cx="220" cy="90" r="3"/><circle cx="300" cy="90" r="3"/><circle cx="380" cy="90" r="3"/>
+            <circle cx="100" cy="125" r="3"/><circle cx="180" cy="125" r="3"/><circle cx="260" cy="125" r="3"/><circle cx="340" cy="125" r="3"/><circle cx="420" cy="125" r="3"/>
+          </g>
+          <!-- Gold trim -->
+          <rect x="35" y="22" width="470" height="118" rx="6" fill="none" stroke="#c9a96e" stroke-width="0.5" opacity="0.4"/>
         </svg>
-        <div class="rot-deg" id="rotDeg">0°</div>
+        <div class="layer-label" id="ll1">
+          <div class="ll-line"></div>
+          <div class="ll-num">01</div>
+          <div class="ll-name">Headboard</div>
+          <div class="ll-desc">Bespoke upholstered</div>
+        </div>
       </div>
-      <div class="rot-label">360° Tour</div>
-    </div>
 
-    <div class="scroll-cta">
-      <div class="arrow-line"></div>
-      <span>Scroll</span>
+      <!-- BED FRAME BASE -->
+      <div class="layer l-base" id="l2">
+        <svg class="bed-svg" viewBox="0 0 560 50" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="8" width="560" height="38" rx="4" fill="#1a1410" stroke="#3d2e1e" stroke-width="1.5"/>
+          <!-- Frame detail lines -->
+          <line x1="0" y1="18" x2="560" y2="18" stroke="#2a1f14" stroke-width="1"/>
+          <line x1="0" y1="36" x2="560" y2="36" stroke="#2a1f14" stroke-width="1"/>
+          <!-- Gold inlay -->
+          <line x1="20" y1="26" x2="540" y2="26" stroke="#c9a96e" stroke-width="0.5" opacity="0.4"/>
+        </svg>
+        <div class="layer-label left" id="ll2">
+          <div class="ll-line"></div>
+          <div class="ll-num">02</div>
+          <div class="ll-name">Bed Frame</div>
+          <div class="ll-desc">Solid hardwood base</div>
+        </div>
+      </div>
+
+      <!-- LEGS -->
+      <div class="layer l-legs" id="l3">
+        <svg class="bed-svg" viewBox="0 0 560 80" xmlns="http://www.w3.org/2000/svg">
+          <rect x="30" y="0" width="28" height="75" rx="3" fill="#150f0a" stroke="#3d2e1e" stroke-width="1.5"/>
+          <rect x="502" y="0" width="28" height="75" rx="3" fill="#150f0a" stroke="#3d2e1e" stroke-width="1.5"/>
+          <!-- Leg detail -->
+          <rect x="34" y="8" width="20" height="4" rx="1" fill="#c9a96e" opacity="0.3"/>
+          <rect x="506" y="8" width="20" height="4" rx="1" fill="#c9a96e" opacity="0.3"/>
+        </svg>
+        <div class="layer-label" id="ll3">
+          <div class="ll-line"></div>
+          <div class="ll-num">03</div>
+          <div class="ll-name">Legs & Support</div>
+          <div class="ll-desc">Turned hardwood legs</div>
+        </div>
+      </div>
+
+      <!-- SLATS -->
+      <div class="layer l-slats" id="l4">
+        <svg class="bed-svg" viewBox="0 0 520 18" xmlns="http://www.w3.org/2000/svg">
+          <g fill="#1e1610" stroke="#3d2e1e" stroke-width="1">
+            <rect x="0" y="3" width="40" height="12" rx="2"/>
+            <rect x="50" y="3" width="40" height="12" rx="2"/>
+            <rect x="100" y="3" width="40" height="12" rx="2"/>
+            <rect x="150" y="3" width="40" height="12" rx="2"/>
+            <rect x="200" y="3" width="40" height="12" rx="2"/>
+            <rect x="250" y="3" width="40" height="12" rx="2"/>
+            <rect x="300" y="3" width="40" height="12" rx="2"/>
+            <rect x="350" y="3" width="40" height="12" rx="2"/>
+            <rect x="400" y="3" width="40" height="12" rx="2"/>
+            <rect x="450" y="3" width="40" height="12" rx="2"/>
+            <rect x="500" y="3" width="20" height="12" rx="2"/>
+          </g>
+        </svg>
+        <div class="layer-label left" id="ll4">
+          <div class="ll-line"></div>
+          <div class="ll-num">04</div>
+          <div class="ll-name">Slatted Base</div>
+          <div class="ll-desc">Sprung beech slats</div>
+        </div>
+      </div>
+
+      <!-- MATTRESS -->
+      <div class="layer l-mattress" id="l5">
+        <svg class="bed-svg" viewBox="0 0 540 60" xmlns="http://www.w3.org/2000/svg">
+          <!-- Mattress body -->
+          <rect x="0" y="0" width="540" height="56" rx="6" fill="#e8e0d5" stroke="#d4c8b8" stroke-width="1"/>
+          <!-- Quilted top -->
+          <rect x="0" y="0" width="540" height="20" rx="6" fill="#f0ebe3" stroke="#d4c8b8" stroke-width="0.5"/>
+          <!-- Quilt lines -->
+          <g stroke="#c9b89a" stroke-width="0.5" opacity="0.6">
+            <line x1="60" y1="0" x2="60" y2="20"/>
+            <line x1="120" y1="0" x2="120" y2="20"/>
+            <line x1="180" y1="0" x2="180" y2="20"/>
+            <line x1="240" y1="0" x2="240" y2="20"/>
+            <line x1="300" y1="0" x2="300" y2="20"/>
+            <line x1="360" y1="0" x2="360" y2="20"/>
+            <line x1="420" y1="0" x2="420" y2="20"/>
+            <line x1="480" y1="0" x2="480" y2="20"/>
+          </g>
+          <!-- Side piping -->
+          <rect x="0" y="18" width="540" height="3" fill="#c9b89a" opacity="0.5"/>
+        </svg>
+        <div class="layer-label" id="ll5">
+          <div class="ll-line"></div>
+          <div class="ll-num">05</div>
+          <div class="ll-name">Mattress</div>
+          <div class="ll-desc">Premium memory foam</div>
+        </div>
+      </div>
+
+      <!-- FITTED SHEET -->
+      <div class="layer l-sheet" id="l6">
+        <svg class="bed-svg" viewBox="0 0 536 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- Sheet main -->
+          <rect x="0" y="0" width="536" height="170" rx="4" fill="#f5f0eb" stroke="#e0d8ce" stroke-width="0.5"/>
+          <!-- Sheet sides hanging down -->
+          <rect x="0" y="155" width="536" height="40" rx="2" fill="#ede5da" stroke="#d4c8b8" stroke-width="0.5"/>
+          <!-- Subtle texture lines -->
+          <g stroke="#e8e2d8" stroke-width="0.8" opacity="0.5">
+            <line x1="0" y1="40" x2="536" y2="40"/>
+            <line x1="0" y1="80" x2="536" y2="80"/>
+            <line x1="0" y1="120" x2="536" y2="120"/>
+          </g>
+        </svg>
+        <div class="layer-label left" id="ll6">
+          <div class="ll-line"></div>
+          <div class="ll-num">06</div>
+          <div class="ll-name">Fitted Sheet</div>
+          <div class="ll-desc">500 thread count linen</div>
+        </div>
+      </div>
+
+      <!-- DUVET -->
+      <div class="layer l-duvet" id="l7">
+        <svg class="bed-svg" viewBox="0 0 530 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Duvet body -->
+          <rect x="0" y="20" width="530" height="130" rx="8" fill="#fff8f0" stroke="#e8ddd0" stroke-width="0.5"/>
+          <!-- Duvet fold top -->
+          <rect x="0" y="20" width="530" height="40" rx="8" fill="#fffaf5" stroke="#e8ddd0" stroke-width="0.5"/>
+          <!-- Baffle box pattern -->
+          <g stroke="#e0d4c4" stroke-width="0.8" opacity="0.7">
+            <line x1="106" y1="20" x2="106" y2="150"/>
+            <line x1="212" y1="20" x2="212" y2="150"/>
+            <line x1="318" y1="20" x2="318" y2="150"/>
+            <line x1="424" y1="20" x2="424" y2="150"/>
+            <line x1="0" y1="85" x2="530" y2="85"/>
+          </g>
+          <!-- Gold trim edge -->
+          <rect x="0" y="20" width="530" height="130" rx="8" fill="none" stroke="#c9a96e" stroke-width="0.5" opacity="0.3"/>
+          <!-- Fold crease -->
+          <path d="M0 58 Q265 75 530 58" fill="none" stroke="#e0d4c4" stroke-width="1" opacity="0.6"/>
+        </svg>
+        <div class="layer-label" id="ll7">
+          <div class="ll-line"></div>
+          <div class="ll-num">07</div>
+          <div class="ll-name">Luxury Duvet</div>
+          <div class="ll-desc">Goose down, 1000gsm</div>
+        </div>
+      </div>
+
+      <!-- PILLOWS -->
+      <div class="layer l-pillows" id="l8">
+        <svg class="bed-svg" viewBox="0 0 480 80" xmlns="http://www.w3.org/2000/svg">
+          <!-- Left pillow -->
+          <rect x="10" y="5" width="215" height="68" rx="14" fill="#fffaf5" stroke="#e0d4c4" stroke-width="1"/>
+          <rect x="22" y="14" width="191" height="50" rx="10" fill="#fff8f0" stroke="#e8ddd0" stroke-width="0.5"/>
+          <!-- Pillow seam lines -->
+          <line x1="117" y1="14" x2="117" y2="64" stroke="#e0d4c4" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <!-- Right pillow -->
+          <rect x="255" y="5" width="215" height="68" rx="14" fill="#fffaf5" stroke="#e0d4c4" stroke-width="1"/>
+          <rect x="267" y="14" width="191" height="50" rx="10" fill="#fff8f0" stroke="#e8ddd0" stroke-width="0.5"/>
+          <line x1="362" y1="14" x2="362" y2="64" stroke="#e0d4c4" stroke-width="0.5" stroke-dasharray="4,4"/>
+          <!-- Gold monogram hint -->
+          <text x="112" y="45" font-size="10" fill="#c9a96e" opacity="0.4" text-anchor="middle" font-family="serif">CN</text>
+          <text x="357" y="45" font-size="10" fill="#c9a96e" opacity="0.4" text-anchor="middle" font-family="serif">CN</text>
+        </svg>
+        <div class="layer-label left" id="ll8">
+          <div class="ll-line"></div>
+          <div class="ll-num">08</div>
+          <div class="ll-name">Pillows</div>
+          <div class="ll-desc">Hungarian goose down</div>
+        </div>
+      </div>
+
+    </div><!-- /bed-scene -->
+
+    <div class="scroll-hint" id="scrollHint">
+      <span>Scroll to build</span>
+      <div class="s-line"></div>
     </div>
 
   </div>
 </div>
 
 <!-- ABOUT -->
-<div class="section-panel" id="about" style="background:#060606">
+<div class="section-panel" id="about">
   <div class="panel-bg" style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=2000&q=80')"></div>
-  <div class="panel-overlay"></div>
+  <div class="panel-overlay" style="background:rgba(6,6,6,0.78)"></div>
   <div class="panel-content">
     <div class="section-label">Our Story</div>
     <div class="gold-line"></div>
     <h2 class="section-title">One Vision.<br><em>Every Detail.</em></h2>
     <p class="section-body">Essy Casa Nova Interiors is Nairobi's premier destination for luxury interior design and complete turnkey installations. From concept to completion, we handle every detail — sourcing the finest materials globally, supplying premium fixtures, and installing everything to perfection.<br><br>Based in Kuwinda Langata, we serve clients across Kenya who demand nothing less than exceptional.</p>
-    <br><br>
     <a href="#contact" class="btn-outline">Begin Your Project</a>
   </div>
 </div>
 
 <!-- SERVICES -->
 <div class="section-panel" id="services" style="background:#040404">
-  <div class="panel-overlay" style="background:rgba(4,4,4,0.98)"></div>
-  <div class="panel-content" style="width:100%;max-width:100%;padding:6rem 4rem">
+  <div class="panel-overlay" style="background:rgba(4,4,4,0.99)"></div>
+  <div class="panel-content" style="max-width:100%;padding:6rem 4rem">
     <div style="max-width:1100px;margin:0 auto">
       <div class="section-label">What We Do</div>
       <div class="gold-line"></div>
       <h2 class="section-title">Full-Service<br><em>Interior Excellence</em></h2>
-    </div>
-    <div class="services-grid" style="max-width:1100px;margin:3rem auto 0">
-      <div class="svc">
-        <div class="svc-num">01</div>
-        <div class="svc-name">Architectural Design</div>
-        <div class="svc-desc">Space planning, structural consultation, and design blueprints tailored to your vision.</div>
-      </div>
-      <div class="svc">
-        <div class="svc-num">02</div>
-        <div class="svc-name">Interior Design</div>
-        <div class="svc-desc">Full interior styling — from mood boards to final install, every element curated.</div>
-      </div>
-      <div class="svc">
-        <div class="svc-num">03</div>
-        <div class="svc-name">Global Sourcing</div>
-        <div class="svc-desc">We source premium products worldwide and deliver them to your door in Nairobi.</div>
-      </div>
-      <div class="svc">
-        <div class="svc-num">04</div>
-        <div class="svc-name">Turnkey Installation</div>
-        <div class="svc-desc">Complete end-to-end — bathrooms, kitchens, bedrooms, living spaces. Zero compromise.</div>
+      <div class="services-grid">
+        <div class="svc"><div class="svc-num">01</div><div class="svc-name">Architectural Design</div><div class="svc-desc">Space planning, structural consultation, and blueprints tailored to your vision.</div></div>
+        <div class="svc"><div class="svc-num">02</div><div class="svc-name">Interior Design</div><div class="svc-desc">Full styling — from mood boards to final install, every element curated.</div></div>
+        <div class="svc"><div class="svc-num">03</div><div class="svc-name">Global Sourcing</div><div class="svc-desc">We source premium products worldwide and deliver to your door in Nairobi.</div></div>
+        <div class="svc"><div class="svc-num">04</div><div class="svc-name">Turnkey Installation</div><div class="svc-desc">End-to-end — bathrooms, kitchens, bedrooms, living spaces. Zero compromise.</div></div>
       </div>
     </div>
   </div>
@@ -293,64 +460,36 @@ nav{padding:1.5rem}
 
 <!-- GALLERY -->
 <div class="section-panel" id="gallery" style="background:#040404">
-  <div class="panel-overlay" style="background:rgba(4,4,4,0.97)"></div>
-  <div class="panel-content" style="width:100%;max-width:100%;padding:6rem 4rem">
+  <div class="panel-overlay" style="background:rgba(4,4,4,0.99)"></div>
+  <div class="panel-content" style="max-width:100%;padding:6rem 4rem">
     <div style="max-width:1100px;margin:0 auto">
       <div class="section-label">Our Work</div>
       <div class="gold-line"></div>
       <h2 class="section-title">Before & After.<br><em>Final Results.</em></h2>
-    </div>
-    <div class="gallery-wrap" style="max-width:1100px;margin:3rem auto 0;padding:0">
-      <div class="gw-item"><div class="gi gi1"></div></div>
-      <div class="gw-item"><div class="gi gi2"></div></div>
-      <div class="gw-item"><div class="gi gi3"></div></div>
-      <div class="gw-item"><div class="gi gi4"></div></div>
-      <div class="gw-item"><div class="gi gi5"></div></div>
+      <div class="gallery-grid">
+        <div class="gi gi1"><div class="gi-img gi1"></div></div>
+        <div class="gi gi2"><div class="gi-img gi2"></div></div>
+        <div class="gi gi3"><div class="gi-img gi3"></div></div>
+        <div class="gi gi4"><div class="gi-img gi4"></div></div>
+        <div class="gi gi5"><div class="gi-img gi5"></div></div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- CATALOG -->
 <div class="section-panel" id="catalog" style="background:#040404">
-  <div class="panel-overlay" style="background:rgba(4,4,4,0.97)"></div>
-  <div class="panel-content" style="width:100%;max-width:100%;padding:6rem 4rem">
+  <div class="panel-overlay" style="background:rgba(4,4,4,0.99)"></div>
+  <div class="panel-content" style="max-width:100%;padding:6rem 4rem">
     <div style="max-width:1100px;margin:0 auto">
       <div class="section-label">Products</div>
       <div class="gold-line"></div>
       <h2 class="section-title">Our <em>Catalog</em></h2>
       <div class="catalog-grid">
-        <div class="cat-card">
-          <div class="cat-thumb ct1"></div>
-          <div class="cat-info">
-            <h4>Wellness Shower Pod</h4>
-            <p>Jacuzzi Base · Premium Enclosures</p>
-            <span class="cat-tag">Bathrooms</span>
-          </div>
-        </div>
-        <div class="cat-card">
-          <div class="cat-thumb ct2"></div>
-          <div class="cat-info">
-            <h4>Modern Sinks</h4>
-            <p>Designer Basins · Ongoing Collection</p>
-            <span class="cat-tag">Sanitary</span>
-          </div>
-        </div>
-        <div class="cat-card">
-          <div class="cat-thumb ct3"></div>
-          <div class="cat-info">
-            <h4>Toilet Seats & Sanitary Ware</h4>
-            <p>Contemporary Sanitary Solutions</p>
-            <span class="cat-tag">Sanitary</span>
-          </div>
-        </div>
-        <div class="cat-card">
-          <div class="cat-thumb ct4"></div>
-          <div class="cat-info">
-            <h4>Sofa & Bed Sets</h4>
-            <p>7-Seat · Kids Beds · Living Sets</p>
-            <span class="cat-tag">Living</span>
-          </div>
-        </div>
+        <div class="cat"><div class="cat-img c1"></div><div class="cat-info"><h4>Wellness Shower Pod</h4><p>Jacuzzi Base · Premium Enclosures</p><span class="cat-tag">Bathrooms</span></div></div>
+        <div class="cat"><div class="cat-img c2"></div><div class="cat-info"><h4>Modern Sinks</h4><p>Designer Basins · Ongoing Collection</p><span class="cat-tag">Sanitary</span></div></div>
+        <div class="cat"><div class="cat-img c3"></div><div class="cat-info"><h4>Toilet Seats & Sanitary Ware</h4><p>Contemporary Solutions</p><span class="cat-tag">Sanitary</span></div></div>
+        <div class="cat"><div class="cat-img c4"></div><div class="cat-info"><h4>Sofa & Bed Sets</h4><p>7-Seat · Kids Beds · Living Sets</p><span class="cat-tag">Living</span></div></div>
       </div>
     </div>
   </div>
@@ -358,29 +497,17 @@ nav{padding:1.5rem}
 
 <!-- CONTACT -->
 <div class="section-panel" id="contact" style="background:#040404">
-  <div class="panel-overlay" style="background:rgba(4,4,4,0.97)"></div>
+  <div class="panel-overlay" style="background:rgba(4,4,4,0.99)"></div>
   <div class="panel-content">
     <div class="section-label">Get in Touch</div>
     <div class="gold-line"></div>
     <h2 class="section-title">Let's Build<br><em>Something Beautiful.</em></h2>
-    <div class="contact-split" style="margin-top:3rem">
-      <div class="contact-info-block">
-        <div class="ci-row">
-          <div class="ci-label">Location</div>
-          <div class="ci-val">Kuwinda Langata<br>Nairobi, Kenya</div>
-        </div>
-        <div class="ci-row">
-          <div class="ci-label">Email</div>
-          <div class="ci-val">casanovaglobalsourcingltd@gmail.com</div>
-        </div>
-        <div class="ci-row">
-          <div class="ci-label">Hours</div>
-          <div class="ci-val">Monday – Saturday<br>09:00 – 18:00</div>
-        </div>
-        <div class="ci-row">
-          <div class="ci-label">Follow</div>
-          <div class="ci-val">@casa_nova_global_interior<br>Casa Nova Global Sourcing Interiors</div>
-        </div>
+    <div class="contact-split">
+      <div>
+        <div class="ci-row"><div class="ci-label">Location</div><div class="ci-val">Kuwinda Langata, Nairobi, Kenya</div></div>
+        <div class="ci-row"><div class="ci-label">Email</div><div class="ci-val">casanovaglobalsourcingltd@gmail.com</div></div>
+        <div class="ci-row"><div class="ci-label">Hours</div><div class="ci-val">Monday – Saturday · 09:00 – 18:00</div></div>
+        <div class="ci-row"><div class="ci-label">Follow</div><div class="ci-val">@casa_nova_global_interior<br>Casa Nova Global Sourcing Interiors</div></div>
       </div>
       <div class="contact-form">
         <input type="text" placeholder="Full Name">
@@ -405,57 +532,32 @@ nav{padding:1.5rem}
 </footer>
 
 <script>
-const layers = [
-  { el: document.getElementById('r0'), tag: 'The Wardrobe', tl: 'Custom Fitted', tr: 'Walk-in Design', br: '' },
-  { el: document.getElementById('r1'), tag: 'Master Bedroom', tl: 'Luxury Bedding', tr: 'Bespoke Headboard', br: '' },
-  { el: document.getElementById('r2'), tag: 'Bedroom Suite', tl: 'Premium Finish', tr: 'Curated Lighting', br: '' },
-  { el: document.getElementById('r3'), tag: 'Living Space', tl: 'Open Plan', tr: 'Natural Light', br: '' },
-  { el: document.getElementById('r4'), tag: 'Interior Detail', tl: 'Turnkey Install', tr: 'Global Sourcing', br: '' },
-  { el: document.getElementById('r5'), tag: 'Final Result', tl: 'Before & After', tr: 'Fully Transformed', br: '' }
-];
-
-const stage = document.getElementById('scrollStage');
-const heroText = document.getElementById('heroText');
+const stage = document.getElementById('buildStage');
+const navEl = document.getElementById('nav');
+const progFill = document.getElementById('progFill');
+const stepNum = document.getElementById('stepNum');
+const scrollHint = document.getElementById('scrollHint');
 const heroEyebrow = document.getElementById('heroEyebrow');
 const heroTitle = document.getElementById('heroTitle');
-const heroCta = document.getElementById('heroCta');
-const rotProgress = document.getElementById('rotProgress');
-const rotDeg = document.getElementById('rotDeg');
-const angleName = document.getElementById('angleName');
-const tagTL = document.getElementById('tagTL');
-const tagTR = document.getElementById('tagTR');
-const tagBR = document.getElementById('tagBR');
-const navEl = document.getElementById('nav');
 
-let currentLayer = 0;
+const layers = [
+  { id: 'l0', label: null },
+  { id: 'l1', label: 'll1' },
+  { id: 'l2', label: 'll2' },
+  { id: 'l3', label: 'll3' },
+  { id: 'l4', label: 'll4' },
+  { id: 'l5', label: 'll5' },
+  { id: 'l6', label: 'll6' },
+  { id: 'l7', label: 'll7' },
+  { id: 'l8', label: 'll8' }
+];
 
 setTimeout(() => {
   heroEyebrow.classList.add('in');
   heroTitle.classList.add('in');
-  heroCta.classList.add('in');
-}, 200);
+}, 300);
 
-function setLayer(idx) {
-  if (idx === currentLayer) return;
-  layers[currentLayer].el.classList.remove('active');
-  currentLayer = idx;
-  layers[currentLayer].el.classList.add('active');
-
-  const data = layers[idx];
-  angleName.classList.remove('show');
-  tagTL.classList.remove('show');
-  tagTR.classList.remove('show');
-  tagBR.classList.remove('show');
-
-  setTimeout(() => {
-    angleName.textContent = data.tag;
-    angleName.classList.add('show');
-    tagTL.textContent = data.tl;
-    tagTR.textContent = data.tr;
-    if (data.tl) tagTL.classList.add('show');
-    if (data.tr) tagTR.classList.add('show');
-  }, 100);
-}
+let lastStep = -1;
 
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
@@ -464,41 +566,41 @@ window.addEventListener('scroll', () => {
   const maxScroll = stageH - winH;
   const progress = Math.min(Math.max(scrollY / maxScroll, 0), 1);
 
-  // Degree
-  const deg = Math.round(progress * 360);
-  rotDeg.textContent = deg + '°';
+  navEl.classList.toggle('solid', scrollY > 60);
+  scrollHint.style.opacity = scrollY > 100 ? '0' : '1';
 
-  // SVG circle progress (circumference = 157)
-  const offset = 157 - (progress * 157);
-  rotProgress.style.strokeDashoffset = offset;
+  // Progress bar
+  progFill.style.height = (progress * 100) + '%';
 
-  // Which layer
-  const layerIdx = Math.min(Math.floor(progress * layers.length), layers.length - 1);
-  setLayer(layerIdx);
+  // Which step to show (0–8)
+  const totalLayers = layers.length;
+  const step = Math.floor(progress * (totalLayers + 1));
+  const clampedStep = Math.min(step, totalLayers);
 
-  // Fade hero text out as we scroll
-  const heroOpacity = Math.max(0, 1 - scrollY / (winH * 0.4));
-  heroText.style.opacity = heroOpacity;
+  stepNum.textContent = String(Math.min(clampedStep, totalLayers)).padStart(2, '0');
 
-  // Nav solid
-  navEl.classList.toggle('solid', scrollY > 50);
+  if (clampedStep !== lastStep) {
+    lastStep = clampedStep;
+    layers.forEach((l, i) => {
+      const el = document.getElementById(l.id);
+      const ll = l.label ? document.getElementById(l.label) : null;
+      if (i < clampedStep) {
+        el.classList.add('show');
+        if (ll) ll.classList.add('show');
+      } else {
+        el.classList.remove('show');
+        if (ll) ll.classList.remove('show');
+      }
+    });
+  }
 
   // Section panels
-  document.querySelectorAll('.section-panel').forEach(panel => {
-    const rect = panel.getBoundingClientRect();
-    if (rect.top < winH * 0.85) {
-      panel.classList.add('entered');
+  document.querySelectorAll('.section-panel').forEach(p => {
+    if (p.getBoundingClientRect().top < window.innerHeight * 0.85) {
+      p.classList.add('entered');
     }
   });
 }, { passive: true });
-
-// Init angle name
-angleName.textContent = layers[0].tag;
-angleName.classList.add('show');
-tagTL.textContent = layers[0].tl;
-tagTR.textContent = layers[0].tr;
-tagTL.classList.add('show');
-tagTR.classList.add('show');
 </script>
 </body>
 </html>
