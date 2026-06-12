@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essy Casa Nova Interiors</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#0d0d0d;color:#f5f0eb;overflow-x:hidden}
+
+.hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-img{position:absolute;top:0;left:0;width:160%;height:100%;background-image:url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=2400&q=90');background-size:cover;background-position:center;will-change:transform;transform:translateX(0%)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.55) 60%,rgba(0,0,0,0.85) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 2rem;opacity:0;transform:translateY(30px);transition:opacity 1.2s ease,transform 1.2s ease}
+.hero-content.visible{opacity:1;transform:translateY(0)}
+.hero-eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem;font-weight:500}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:500;line-height:1.1;margin-bottom:1.5rem;color:#fff}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.65);letter-spacing:1px;margin-bottom:2.5rem;font-weight:300}
+.btn-gold{display:inline-block;padding:14px 40px;border:1px solid #c9a96e;color:#c9a96e;font-size:12px;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:all 0.4s ease;cursor:pointer;background:transparent}
+.btn-gold:hover{background:#c9a96e;color:#0d0d0d}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.4);font-size:11px;letter-spacing:2px;text-transform:uppercase}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,#c9a96e,transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.1)}}
+
+section{padding:6rem 2rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-bottom:1rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:500;line-height:1.2;margin-bottom:1.5rem;color:#f5f0eb}
+.section-body{font-size:0.95rem;color:rgba(245,240,235,0.55);line-height:1.9;max-width:520px}
+
+.about{background:#111}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem}
+.about-img{width:100%;height:420px;background:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=80') center/cover;position:relative;overflow:hidden}
+.about-img::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.15)}
+
+.services{background:#0d0d0d;border-top:1px solid rgba(201,169,110,0.15)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;margin-top:3rem;border:1px solid rgba(201,169,110,0.15)}
+.service-card{padding:2.5rem 2rem;border-right:1px solid rgba(201,169,110,0.1);background:#0d0d0d;transition:background 0.3s ease}
+.service-card:hover{background:#161616}
+.service-card:last-child{border-right:none}
+.service-num{font-size:10px;letter-spacing:3px;color:#c9a96e;margin-bottom:1.5rem}
+.service-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:#f5f0eb;margin-bottom:0.75rem}
+.service-desc{font-size:0.8rem;color:rgba(245,240,235,0.4);line-height:1.8}
+
+.gallery{background:#111}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:2rem;max-width:1100px;margin-left:auto;margin-right:auto;padding:0 2rem}
+.gallery-item{overflow:hidden;position:relative}
+.gallery-item .gimg{width:100%;display:block;transition:transform 0.8s ease;background-size:cover;background-position:center}
+.gallery-item:hover .gimg{transform:scale(1.05)}
+.g1{background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80');height:320px}
+.g2{background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80');height:320px}
+.g3{background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80');height:320px}
+.g4{background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80');height:260px}
+.g5{background-image:url('https://images.unsplash.com/photo-1616137466211-f939a420be84?w=800&q=80');height:260px;grid-column:span 2}
+
+.gallery-item.float{animation:float 5s ease-in-out infinite}
+.gallery-item.float2{animation:float 6s ease-in-out infinite 1s}
+.gallery-item.float3{animation:float 4.5s ease-in-out infinite 0.5s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+.catalog{background:#0d0d0d;border-top:1px solid rgba(201,169,110,0.15)}
+.catalog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:3rem}
+.catalog-card{border:1px solid rgba(201,169,110,0.15);overflow:hidden;transition:border-color 0.3s ease}
+.catalog-card:hover{border-color:rgba(201,169,110,0.4)}
+.catalog-thumb{height:200px;background-size:cover;background-position:center;transition:transform 0.6s ease}
+.catalog-card:hover .catalog-thumb{transform:scale(1.05)}
+.ct1{background-image:url('https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80')}
+.ct2{background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80')}
+.ct3{background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80')}
+.ct4{background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80')}
+.catalog-info{padding:1.25rem}
+.catalog-info h4{font-family:'Playfair Display',serif;font-size:1rem;color:#f5f0eb;margin-bottom:0.5rem}
+.catalog-info p{font-size:0.78rem;color:rgba(245,240,235,0.4)}
+
+.contact{background:#111;border-top:1px solid rgba(201,169,110,0.15)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem}
+.contact-detail{font-size:0.85rem;color:rgba(245,240,235,0.5);line-height:2.2}
+.contact-detail strong{color:#c9a96e;font-weight:400;display:block;font-size:10px;letter-spacing:3px;text-transform:uppercase;margin-top:1.5rem;margin-bottom:0.25rem}
+.contact-form input,.contact-form textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,169,110,0.25);padding:12px 0;font-family:'Inter',sans-serif;font-size:0.85rem;color:#f5f0eb;margin-bottom:1.5rem;outline:none;transition:border-color 0.3s}
+.contact-form input:focus,.contact-form textarea:focus{border-bottom-color:#c9a96e}
+.contact-form textarea{resize:none;height:80px}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(245,240,235,0.3);font-size:0.8rem;letter-spacing:1px}
+
+footer{background:#0a0a0a;padding:3rem 2rem;text-align:center;border-top:1px solid rgba(201,169,110,0.15)}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.4rem;color:#f5f0eb;margin-bottom:0.5rem}
+.footer-sub{font-size:0.75rem;color:rgba(245,240,235,0.3);letter-spacing:2px;text-transform:uppercase;margin-bottom:2rem}
+.footer-links{display:flex;justify-content:center;gap:2rem}
+.footer-links a{font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,235,0.4);text-decoration:none;transition:color 0.3s}
+.footer-links a:hover{color:#c9a96e}
+.footer-copy{margin-top:2rem;font-size:0.7rem;color:rgba(245,240,235,0.2)}
+
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity 0.9s ease,transform 0.9s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-up.d1{transition-delay:0.1s}
+.fade-up.d2{transition-delay:0.25s}
+.fade-up.d3{transition-delay:0.4s}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(0,0,0,0.7),transparent);transition:background 0.4s,padding 0.4s}
+nav.solid{background:rgba(10,10,10,0.95);padding:1rem 3rem;backdrop-filter:blur(10px)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:#f5f0eb;letter-spacing:1px}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.3s}
+.nav-links a:hover{color:#c9a96e}
+
+@media(max-width:768px){
+.about-grid,.contact-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:1fr 1fr}
+.g5{grid-column:span 1}
+.services-grid{grid-template-columns:1fr 1fr}
+.nav-links{display:none}
+nav{padding:1.2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">Essy Casa Nova</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#catalog">Catalog</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-img" id="heroPan"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content" id="heroContent">
+    <div class="hero-eyebrow">Nairobi, Kenya &nbsp;·&nbsp; Est. 2020</div>
+    <h1 class="hero-title">Premium Interiors.<br>Turnkey Installations.</h1>
+    <p class="hero-sub">We source, supply & install everything</p>
+    <a href="#contact" class="btn-gold">Request a Consultation</a>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label fade-up">Our Story</div>
+    <div class="about-grid">
+      <div>
+        <h2 class="section-title fade-up d1">One Vision.<br>Every Detail.</h2>
+        <p class="section-body fade-up d2">Essy Casa Nova Interiors is Nairobi's premier destination for luxury interior design and complete turnkey installations. From concept to completion, we handle every detail — sourcing the finest materials globally, supplying premium fixtures, and installing everything to perfection.<br><br>Based in Kuwinda Langata, we serve clients across Kenya who demand nothing less than exceptional.</p>
+        <br><br>
+        <a href="#contact" class="btn-gold fade-up d3">Get in Touch</a>
+      </div>
+      <div class="about-img fade-up d2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label fade-up">What We Do</div>
+    <h2 class="section-title fade-up d1">Full-Service<br>Interior Excellence</h2>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-num">01</div>
+        <div class="service-name">Architectural Design</div>
+        <div class="service-desc">Space planning, structural consultation, and design blueprints tailored to your vision.</div>
+      </div>
+      <div class="service-card fade-up d1">
+        <div class="service-num">02</div>
+        <div class="service-name">Interior Design</div>
+        <div class="service-desc">Full interior styling — from mood boards to final install, every element curated.</div>
+      </div>
+      <div class="service-card fade-up d2">
+        <div class="service-num">03</div>
+        <div class="service-name">Global Sourcing</div>
+        <div class="service-desc">We source premium products worldwide and deliver them to your door in Nairobi.</div>
+      </div>
+      <div class="service-card fade-up d3">
+        <div class="service-num">04</div>
+        <div class="service-name">Turnkey Installation</div>
+        <div class="service-desc">Complete end-to-end installations — bathrooms, kitchens, bedrooms, living spaces.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="section-inner">
+    <div class="section-label fade-up">Our Work</div>
+    <h2 class="section-title fade-up d1">Before & After.<br>Final Results.</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item float"><div class="gimg g1"></div></div>
+    <div class="gallery-item float2"><div class="gimg g2"></div></div>
+    <div class="gallery-item float3"><div class="gimg g3"></div></div>
+    <div class="gallery-item float"><div class="gimg g4"></div></div>
+    <div class="gallery-item float2"><div class="gimg g5"></div></div>
+  </div>
+</section>
+
+<section class="catalog" id="catalog">
+  <div class="section-inner">
+    <div class="section-label fade-up">Products</div>
+    <h2 class="section-title fade-up d1">Our Catalog</h2>
+    <div class="catalog-grid">
+      <div class="catalog-card fade-up">
+        <div class="catalog-thumb ct1"></div>
+        <div class="catalog-info"><h4>Wellness Shower Pod</h4><p>Jacuzzi Base · Premium enclosure systems</p></div>
+      </div>
+      <div class="catalog-card fade-up d1">
+        <div class="catalog-thumb ct2"></div>
+        <div class="catalog-info"><h4>Modern Sinks</h4><p>Designer basins · Ongoing collection</p></div>
+      </div>
+      <div class="catalog-card fade-up d2">
+        <div class="catalog-thumb ct3"></div>
+        <div class="catalog-info"><h4>Toilet Seats & Sanitary Ware</h4><p>Contemporary sanitary solutions</p></div>
+      </div>
+      <div class="catalog-card fade-up d3">
+        <div class="catalog-thumb ct4"></div>
+        <div class="catalog-info"><h4>Sofa & Bed Sets</h4><p>7-seat configurations · Kids beds · Living sets</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label fade-up">Get in Touch</div>
+    <h2 class="section-title fade-up d1">Let's Build<br>Something Beautiful.</h2>
+    <div class="contact-grid">
+      <div class="contact-detail fade-up d1">
+        <strong>Location</strong>Kuwinda Langata, Nairobi, Kenya
+        <strong>Email</strong>casanovaglobalsourcingltd@gmail.com
+        <strong>Hours</strong>Monday – Saturday · 09:00 – 18:00
+        <strong>Social</strong>
+        @casa_nova_global_interior<br>
+        Casa Nova Global Sourcing Interiors
+      </div>
+      <div class="contact-form fade-up d2">
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email Address">
+        <input type="text" placeholder="Project Type">
+        <textarea placeholder="Tell us about your project..."></textarea>
+        <a href="#" class="btn-gold">Send Message</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Essy Casa Nova Interiors</div>
+  <div class="footer-sub">Premium Interiors · Nairobi, Kenya</div>
+  <div class="footer-links">
+    <a href="https://instagram.com/casa_nova_global_interior" target="_blank">Instagram</a>
+    <a href="https://facebook.com" target="_blank">Facebook</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2025 Essy Casa Nova Interiors. All rights reserved.</div>
+</footer>
+
+<script>
+const heroPan = document.getElementById('heroPan');
+const heroSection = document.getElementById('hero');
+const heroContent = document.getElementById('heroContent');
+const navEl = document.getElementById('nav');
+
+setTimeout(() => { heroContent.classList.add('visible'); }, 300);
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const heroH = heroSection.offsetHeight;
+  const progress = Math.min(scrollY / heroH, 1);
+  heroPan.style.transform = `translateX(${-progress * 20}%)`;
+
+  navEl.classList.toggle('solid', scrollY > 80);
+
+  document.querySelectorAll('.fade-up').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.88) {
+      el.classList.add('visible');
+    }
+  });
+});
+
+document.querySelectorAll('.fade-up').forEach(el => {
+  if (el.getBoundingClientRect().top < window.innerHeight * 0.88) {
+    el.classList.add('visible');
+  }
+});
+</script>
+</body>
+</html>
