@@ -30,8 +30,7 @@ nav.solid{background:rgba(8,8,8,0.97);padding:1rem 4rem;backdrop-filter:blur(24p
 
 /* ─── HERO ─── */
 .hero{position:relative;height:100vh;min-height:700px;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.hero-video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover;z-index:0}
-.hero-img-fallback{position:absolute;inset:0;background:url('p4.jpeg') center/cover;z-index:0}
+.hero-img{position:absolute;top:0;left:0;width:165%;height:100%;background:url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=2400&q=90') center/cover;will-change:transform;z-index:0}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.35) 50%,rgba(0,0,0,0.65) 100%);z-index:1}
 .hero-overlay2{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(8,8,8,0.98) 100%);z-index:1}
 .hero-content{position:relative;z-index:2;text-align:center;padding:0 2rem;max-width:900px}
@@ -120,19 +119,14 @@ section{padding:9rem 2rem}
 .step-title{font-family:'Playfair Display',serif;font-size:0.9rem;color:#f5f0eb;margin-bottom:0.8rem}
 .step-desc{font-size:0.72rem;color:rgba(245,240,235,0.28);line-height:1.9}
 
-/* ─── CINEMATIC REEL ─── */
-.reel-section{position:relative;height:88vh;min-height:560px;overflow:hidden;display:flex;align-items:center;justify-content:flex-start}
-.reel-video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover;z-index:0}
-.reel-img-fallback{position:absolute;inset:0;background:url('p8.jpeg') center/cover;z-index:0}
+/* ─── REEL BREAK ─── */
+.reel-section{position:relative;height:70vh;min-height:480px;overflow:hidden;display:flex;align-items:center;justify-content:flex-start}
+.reel-img-fallback{position:absolute;inset:0;background:url('p8.jpeg') center/cover;background-attachment:fixed;z-index:0}
 .reel-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(8,8,8,0.88) 0%,rgba(8,8,8,0.3) 50%,rgba(8,8,8,0.1) 100%);z-index:1}
 .reel-content{position:relative;z-index:2;padding:0 5rem;max-width:580px}
 .reel-content .section-label{color:#c9a96e}
 .reel-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,6vw,5rem);font-weight:400;line-height:1;color:#fff;margin:1.5rem 0 2.5rem}
 .reel-title em{font-style:italic;color:#c9a96e}
-.reel-play{display:inline-flex;align-items:center;gap:14px;color:rgba(255,255,255,0.5);font-size:8.5px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:color 0.3s;text-decoration:none;margin-bottom:2rem;display:block}
-.reel-play:hover{color:#c9a96e}
-.play-circle{width:56px;height:56px;border:1px solid rgba(255,255,255,0.2);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;transition:border-color 0.3s;vertical-align:middle;margin-right:10px}
-.play-circle svg{width:16px;height:16px;fill:currentColor;margin-left:3px}
 
 /* ─── GALLERY ─── */
 .gallery{background:#0a0a0a;border-top:1px solid rgba(201,169,110,0.06)}
@@ -339,7 +333,7 @@ nav.solid{padding:1rem 1.5rem}
 
 <!-- ═══ HERO ═══ -->
 <section class="hero" id="hero">
-  <div class="hero-img-fallback"></div>
+  <div class="hero-img" id="heroPan"></div>
   <div class="hero-overlay"></div>
   <div class="hero-overlay2"></div>
   <div class="hero-content" id="heroContent">
@@ -448,12 +442,9 @@ nav.solid{padding:1rem 1.5rem}
   </div>
 </section>
 
-<!-- ═══ CINEMATIC REEL ═══ -->
+<!-- ═══ REEL BREAK ═══ -->
 <div class="reel-section">
   <div class="reel-img-fallback"></div>
-  <video class="reel-video" autoplay muted loop playsinline>
-    <source src="reel.mp4" type="video/mp4">
-  </video>
   <div class="reel-overlay"></div>
   <div class="reel-content reveal-left">
     <div class="section-label">Our Work in Motion</div>
@@ -769,6 +760,7 @@ setTimeout(() => {
 }, 100);
 
 /* ── SCROLL HANDLER ── */
+const heroPan = document.getElementById('heroPan');
 const navEl = document.getElementById('nav');
 const progressBar = document.getElementById('progress-bar');
 let countersDone = false;
@@ -790,6 +782,7 @@ function onScroll() {
   const y = window.scrollY;
   const docH = document.documentElement.scrollHeight - window.innerHeight;
   progressBar.style.width = (y / docH * 100) + '%';
+  if(heroPan) heroPan.style.transform = `translateX(${-Math.min(y/window.innerHeight,1)*18}%)`;
   navEl.classList.toggle('solid', y > 60);
 
   /* reveal elements */
