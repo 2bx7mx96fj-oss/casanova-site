@@ -3,587 +3,639 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Casa Nova Interiors — Elevating Spaces. Enriching Lives.</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Casa Nova Interiors — Elevating Spaces. Enriching Lives. | Nairobi, Kenya</title>
+<meta name="description" content="Casa Nova Interiors is Nairobi's premier interior design, construction and global sourcing company. Luxury homes, offices, hospitality. Based in Karen, Nairobi.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#f5f0eb;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;background:#080808;color:#f5f0eb;overflow-x:hidden}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.8rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:all 0.5s ease}
-nav.solid{background:rgba(10,10,10,0.95);padding:1.2rem 3rem;backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,110,0.1)}
-.nav-logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none}
-.nav-logo-img{width:36px;height:36px;object-fit:contain;opacity:0.9}
-.nav-logo{font-family:'Playfair Display',serif;font-size:0.95rem;color:#fff;letter-spacing:2px;text-transform:uppercase}
-.nav-links{display:flex;gap:2.5rem}
-.nav-links a{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.3s}
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:1.6rem 4rem;display:flex;justify-content:space-between;align-items:center;transition:all 0.5s cubic-bezier(0.4,0,0.2,1)}
+nav.solid{background:rgba(8,8,8,0.96);padding:1rem 4rem;backdrop-filter:blur(24px);border-bottom:1px solid rgba(201,169,110,0.12)}
+.nav-logo-wrap{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-logo-img{width:42px;height:42px;object-fit:contain;mix-blend-mode:screen;filter:brightness(1.1)}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1}
+.nav-logo-main{font-family:'Playfair Display',serif;font-size:0.95rem;color:#fff;letter-spacing:3px;text-transform:uppercase}
+.nav-logo-sub{font-size:7px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:2.8rem}
+.nav-links a{font-size:9.5px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.3s}
 .nav-links a:hover{color:#c9a96e}
+.nav-cta{padding:10px 28px;background:#c9a96e;color:#080808!important;font-size:9px!important;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;font-weight:600!important}
+.nav-cta:hover{background:#b8935a!important}
 
-/* HERO */
-.hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.hero-img{position:absolute;top:0;left:0;width:160%;height:100%;background-image:url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=2400&q=90');background-size:cover;background-position:center;will-change:transform}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.5) 50%,rgba(0,0,0,0.9) 100%)}
-.hero-content{position:relative;z-index:2;text-align:center;padding:0 2rem;opacity:0;transform:translateY(30px);transition:opacity 1.2s ease,transform 1.2s ease}
-.hero-content.visible{opacity:1;transform:translateY(0)}
-.hero-eyebrow{font-size:10px;letter-spacing:6px;text-transform:uppercase;color:#c9a96e;margin-bottom:2rem}
-.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:400;line-height:1.05;margin-bottom:1.5rem;color:#fff}
+/* ─── HERO ─── */
+.hero{position:relative;height:100vh;min-height:680px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-img{position:absolute;top:0;left:0;width:165%;height:100%;background:url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=2400&q=90') center/cover;will-change:transform}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.6) 100%)}
+.hero-overlay2{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(8,8,8,0.95) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 2rem;max-width:860px}
+.hero-badge{display:inline-flex;align-items:center;gap:12px;background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.2);padding:8px 20px;margin-bottom:2.5rem;backdrop-filter:blur(10px)}
+.hero-badge span{font-size:8.5px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e}
+.hero-badge-dot{width:4px;height:4px;border-radius:50%;background:#c9a96e;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,7.5vw,6rem);font-weight:400;line-height:1.02;margin-bottom:1.8rem;color:#fff}
 .hero-title em{font-style:italic;color:#c9a96e}
-.hero-sub{font-size:0.95rem;color:rgba(255,255,255,0.55);letter-spacing:2px;text-transform:uppercase;margin-bottom:3rem;font-weight:300}
-.btn-gold{display:inline-block;padding:14px 44px;border:1px solid rgba(201,169,110,0.6);color:#c9a96e;font-size:10px;letter-spacing:4px;text-transform:uppercase;text-decoration:none;transition:all 0.4s ease;cursor:pointer;background:transparent}
-.btn-gold:hover{background:#c9a96e;color:#0a0a0a;border-color:#c9a96e}
-.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(255,255,255,0.3);font-size:9px;letter-spacing:3px;text-transform:uppercase}
-.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,#c9a96e,transparent);animation:scrollPulse 2s ease-in-out infinite}
-@keyframes scrollPulse{0%,100%{opacity:0.3}50%{opacity:1}}
+.hero-sub{font-size:0.82rem;color:rgba(255,255,255,0.4);letter-spacing:3.5px;text-transform:uppercase;margin-bottom:3.5rem;font-weight:300}
+.hero-btns{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{padding:16px 48px;background:#c9a96e;color:#080808;font-size:9.5px;letter-spacing:3.5px;text-transform:uppercase;text-decoration:none;font-weight:600;transition:all 0.3s}
+.btn-primary:hover{background:#b8935a;transform:translateY(-1px)}
+.btn-secondary{padding:15px 40px;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);font-size:9.5px;letter-spacing:3.5px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;backdrop-filter:blur(8px)}
+.btn-secondary:hover{border-color:#c9a96e;color:#c9a96e}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px}
+.hero-scroll span{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.25)}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,#c9a96e,transparent);animation:scrollPulse 2.5s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:0.2;transform:scaleY(0.6)}60%{opacity:1;transform:scaleY(1)}}
 
-/* SECTIONS */
+/* ─── STATS BAR ─── */
+.stats-bar{background:#0f0f0f;border-top:1px solid rgba(201,169,110,0.08);border-bottom:1px solid rgba(201,169,110,0.08)}
+.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);padding:0}
+.stat-item{padding:2.5rem 2rem;text-align:center;border-right:1px solid rgba(201,169,110,0.08);position:relative}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.4rem;color:#c9a96e;font-weight:400;line-height:1;margin-bottom:0.5rem}
+.stat-label{font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,240,235,0.3)}
+
+/* ─── SECTIONS ─── */
 section{padding:7rem 2rem}
 .section-inner{max-width:1100px;margin:0 auto}
-.section-label{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;margin-bottom:1.2rem}
-.gold-line{width:40px;height:1px;background:#c9a96e;margin-bottom:2rem}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.15;margin-bottom:1.5rem;color:#f5f0eb}
+.section-label{font-size:8.5px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;margin-bottom:1rem}
+.gold-line{width:36px;height:1px;background:#c9a96e;margin-bottom:2rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.12;margin-bottom:1.5rem;color:#f5f0eb}
 .section-title em{font-style:italic;color:#c9a96e}
-.section-body{font-size:0.9rem;color:rgba(245,240,235,0.5);line-height:2;max-width:560px}
+.section-body{font-size:0.88rem;color:rgba(245,240,235,0.45);line-height:2.1;max-width:520px}
 
-/* ABOUT */
-.about{background:#0f0f0f}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3rem}
-.about-img{width:100%;height:460px;background:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=80') center/cover;position:relative}
-.about-img::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.1)}
-.vision-mission{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem}
-.vm-card{padding:2rem;border:1px solid rgba(201,169,110,0.12);background:rgba(201,169,110,0.02)}
-.vm-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-bottom:1rem}
-.vm-text{font-size:0.82rem;color:rgba(245,240,235,0.45);line-height:1.9}
+/* ─── ABOUT ─── */
+.about{background:#0a0a0a}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-photos{position:relative;height:520px}
+.about-photo-main{position:absolute;top:0;left:0;width:72%;height:82%;background:url('project1.jpeg') center/cover;z-index:2}
+.about-photo-accent{position:absolute;bottom:0;right:0;width:52%;height:55%;background:url('project2.jpeg') center/cover;z-index:3;border:4px solid #0a0a0a}
+.about-photo-decor{position:absolute;top:30px;right:30px;width:180px;height:180px;border:1px solid rgba(201,169,110,0.2);z-index:1}
+.about-content .section-body{margin-bottom:2rem}
+.about-feature-list{margin:2rem 0;display:flex;flex-direction:column;gap:0.9rem}
+.afl-item{display:flex;align-items:center;gap:1rem;font-size:0.82rem;color:rgba(245,240,235,0.5)}
+.afl-dot{width:5px;height:5px;border-radius:50%;background:#c9a96e;flex-shrink:0}
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:3.5rem}
+.vm-card{padding:1.8rem;border:1px solid rgba(201,169,110,0.1);background:rgba(201,169,110,0.02)}
+.vm-label{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-bottom:0.7rem}
+.vm-text{font-size:0.78rem;color:rgba(245,240,235,0.38);line-height:1.9}
 
-/* SERVICES */
-.services{background:#0a0a0a;border-top:1px solid rgba(201,169,110,0.08)}
-.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:3rem;border:1px solid rgba(201,169,110,0.1)}
-.service-card{padding:2.5rem 2rem;background:#0a0a0a;border-right:1px solid rgba(201,169,110,0.08);transition:background 0.4s}
-.service-card:hover{background:#111}
-.service-card:last-child{border-right:none}
-.service-num{font-size:9px;letter-spacing:3px;color:#c9a96e;margin-bottom:1.5rem}
-.service-name{font-family:'Playfair Display',serif;font-size:1rem;color:#f5f0eb;margin-bottom:0.75rem}
-.service-desc{font-size:0.75rem;color:rgba(245,240,235,0.35);line-height:1.9}
-.service-list{margin-top:0.75rem;padding-left:0;list-style:none}
-.service-list li{font-size:0.72rem;color:rgba(245,240,235,0.3);padding:2px 0;padding-left:12px;position:relative}
-.service-list li::before{content:'—';position:absolute;left:0;color:#c9a96e;font-size:9px}
+/* ─── SERVICES ─── */
+.services{background:#0d0d0d;border-top:1px solid rgba(201,169,110,0.06)}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(201,169,110,0.08)}
+.svc{padding:2.8rem 2rem;background:#0d0d0d;transition:background 0.4s}
+.svc:hover{background:#111}
+.svc-num{font-size:8px;letter-spacing:3px;color:#c9a96e;margin-bottom:1.6rem;display:block}
+.svc-icon{font-size:1.4rem;margin-bottom:1.2rem;display:block;opacity:0.7}
+.svc-name{font-family:'Playfair Display',serif;font-size:1rem;color:#f5f0eb;margin-bottom:0.8rem;line-height:1.3}
+.svc-list{list-style:none;padding:0}
+.svc-list li{font-size:0.71rem;color:rgba(245,240,235,0.28);padding:2.5px 0;padding-left:14px;position:relative;line-height:1.7}
+.svc-list li::before{content:'—';position:absolute;left:0;color:rgba(201,169,110,0.5);font-size:8px;top:4px}
+.svc-cta{display:inline-block;margin-top:1.5rem;font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.3);padding-bottom:2px;transition:border-color 0.3s}
+.svc:hover .svc-cta{border-color:#c9a96e}
 
-/* SOURCING */
-.sourcing{background:#0f0f0f;border-top:1px solid rgba(201,169,110,0.08)}
-.regions-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;margin-top:3rem;border:1px solid rgba(201,169,110,0.1)}
-.region{padding:2rem 1.5rem;background:#0f0f0f;text-align:center;border-right:1px solid rgba(201,169,110,0.08);transition:background 0.3s}
-.region:hover{background:#131313}
-.region:last-child{border-right:none}
-.region-name{font-family:'Playfair Display',serif;font-size:0.9rem;color:#f5f0eb;margin-bottom:0.5rem}
-.region-flag{font-size:1.5rem;margin-bottom:0.75rem;display:block}
+/* ─── PROCESS ─── */
+.process{background:#080808;border-top:1px solid rgba(201,169,110,0.06)}
+.process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:4rem;position:relative}
+.process-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.2),transparent)}
+.step{text-align:center;padding:0 1rem}
+.step-num{width:56px;height:56px;border:1px solid rgba(201,169,110,0.25);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-family:'Playfair Display',serif;font-size:1.1rem;color:#c9a96e;position:relative;background:#080808}
+.step-title{font-family:'Playfair Display',serif;font-size:0.9rem;color:#f5f0eb;margin-bottom:0.6rem}
+.step-desc{font-size:0.72rem;color:rgba(245,240,235,0.3);line-height:1.8}
 
-/* WHY US */
-.why{background:#0a0a0a;border-top:1px solid rgba(201,169,110,0.08)}
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
-.why-card{padding:2.5rem;border:1px solid rgba(201,169,110,0.1);background:rgba(201,169,110,0.01);transition:border-color 0.4s,background 0.4s}
-.why-card:hover{border-color:rgba(201,169,110,0.3);background:rgba(201,169,110,0.03)}
-.why-icon{font-size:1.2rem;color:#c9a96e;margin-bottom:1.2rem}
-.why-title{font-family:'Playfair Display',serif;font-size:1rem;color:#f5f0eb;margin-bottom:0.75rem}
-.why-desc{font-size:0.78rem;color:rgba(245,240,235,0.35);line-height:1.9}
+/* ─── GALLERY ─── */
+.gallery{background:#0a0a0a;border-top:1px solid rgba(201,169,110,0.06)}
+.gallery-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto;gap:3px}
+.gi{overflow:hidden;position:relative}
+.gi-img{width:100%;height:100%;background-size:cover;background-position:center;transition:transform 0.9s cubic-bezier(0.4,0,0.2,1)}
+.gi:hover .gi-img{transform:scale(1.06)}
+.gi-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.6),transparent);opacity:0;transition:opacity 0.4s}
+.gi:hover .gi-overlay{opacity:1}
+.gi1{grid-column:span 5;height:400px}
+.gi2{grid-column:span 7;height:400px}
+.gi3{grid-column:span 4;height:300px}
+.gi4{grid-column:span 4;height:300px}
+.gi5{grid-column:span 4;height:300px}
 
-/* SECTORS */
-.sectors{background:#0f0f0f;border-top:1px solid rgba(201,169,110,0.08)}
+/* ─── GLOBAL SOURCING ─── */
+.sourcing{background:#0d0d0d;border-top:1px solid rgba(201,169,110,0.06)}
+.sourcing-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.regions{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,169,110,0.08);margin-top:2rem}
+.region{padding:1.8rem 1.5rem;background:#0d0d0d;text-align:center;transition:background 0.3s}
+.region:hover{background:#111}
+.region-flag{font-size:1.8rem;display:block;margin-bottom:0.6rem}
+.region-name{font-family:'Playfair Display',serif;font-size:0.85rem;color:#f5f0eb;margin-bottom:0.2rem}
+.region-note{font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,235,0.25)}
+
+/* ─── WHY ─── */
+.why{background:#080808;border-top:1px solid rgba(201,169,110,0.06)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,169,110,0.06);margin-top:3.5rem}
+.why-card{padding:3rem 2.5rem;background:#080808;transition:background 0.4s,transform 0.3s}
+.why-card:hover{background:#0d0d0d}
+.why-num{font-family:'Playfair Display',serif;font-size:2rem;color:rgba(201,169,110,0.12);margin-bottom:1.2rem;font-style:italic}
+.why-title{font-family:'Playfair Display',serif;font-size:1rem;color:#f5f0eb;margin-bottom:0.8rem}
+.why-desc{font-size:0.78rem;color:rgba(245,240,235,0.33);line-height:1.95}
+
+/* ─── SECTORS ─── */
+.sectors{background:#0a0a0a;border-top:1px solid rgba(201,169,110,0.06)}
 .sectors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-top:3rem}
-.sector{position:relative;overflow:hidden;height:260px}
-.sector-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 0.7s ease}
-.sector:hover .sector-bg{transform:scale(1.06)}
-.sector-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.85),rgba(0,0,0,0.2))}
-.sector-label{position:absolute;bottom:1.5rem;left:1.5rem;font-family:'Playfair Display',serif;font-size:1rem;color:#fff}
-.sector-num{position:absolute;top:1.2rem;left:1.5rem;font-size:9px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase}
+.sector{position:relative;overflow:hidden;height:280px;cursor:pointer}
+.sector-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 0.8s cubic-bezier(0.4,0,0.2,1)}
+.sector:hover .sector-bg{transform:scale(1.08)}
+.sector-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.1) 60%,transparent 100%);transition:opacity 0.4s}
+.sector-content{position:absolute;bottom:0;left:0;right:0;padding:2rem;transition:transform 0.4s}
+.sector-tag{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;margin-bottom:0.5rem}
+.sector-name{font-family:'Playfair Display',serif;font-size:1.15rem;color:#fff}
 
-/* GALLERY */
-.gallery{background:#0a0a0a;border-top:1px solid rgba(201,169,110,0.08)}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:3rem}
-.gallery-item{overflow:hidden;position:relative}
-.gallery-item .gimg{background-size:cover;background-position:center;transition:transform 0.8s ease}
-.gallery-item:hover .gimg{transform:scale(1.05)}
-.g1{background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80');height:340px}
-.g2{background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80');height:340px}
-.g3{background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80');height:340px}
-.g4{background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80');height:280px}
-.g5{background-image:url('https://images.unsplash.com/photo-1616137466211-f939a420be84?w=800&q=80');height:280px;grid-column:span 2}
-.gallery-item.float{animation:float 5s ease-in-out infinite}
-.gallery-item.float2{animation:float 6s ease-in-out infinite 1s}
-.gallery-item.float3{animation:float 4.5s ease-in-out infinite 0.5s}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+/* ─── FOUNDER STRIP ─── */
+.founder-strip{background:#0f0f0f;border-top:1px solid rgba(201,169,110,0.08)}
+.founder-strip-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:360px 1fr;gap:5rem;align-items:center;padding:6rem 2rem}
+.founder-img-wrap{position:relative}
+.founder-img{width:100%;height:480px;object-fit:cover;object-position:top;display:block}
+.founder-img-border{position:absolute;bottom:-12px;right:-12px;left:12px;top:12px;border:1px solid rgba(201,169,110,0.2);pointer-events:none;z-index:0}
+.founder-quote{font-family:'Playfair Display',serif;font-size:1.35rem;font-style:italic;color:rgba(245,240,235,0.75);line-height:1.8;margin-bottom:2rem}
+.founder-quote em{color:#c9a96e;font-style:normal}
+.founder-byline{font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,240,235,0.3)}
+.founder-byline strong{color:#c9a96e;font-weight:400}
 
-/* PARTNERSHIPS */
-.partnerships{background:#0f0f0f;border-top:1px solid rgba(201,169,110,0.08)}
-.partners-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:3rem;border:1px solid rgba(201,169,110,0.1)}
-.partner-type{padding:2rem;background:#0f0f0f;border-right:1px solid rgba(201,169,110,0.08);transition:background 0.3s}
-.partner-type:hover{background:#131313}
-.partner-type:last-child{border-right:none}
-.pt-name{font-family:'Playfair Display',serif;font-size:0.9rem;color:#f5f0eb;margin-bottom:0.5rem}
-.pt-desc{font-size:0.72rem;color:rgba(245,240,235,0.3);line-height:1.8}
+/* ─── TESTIMONIAL / PROMISE ─── */
+.promise{background:#080808;border-top:1px solid rgba(201,169,110,0.06);text-align:center}
+.promise-inner{max-width:760px;margin:0 auto}
+.promise-mark{font-family:'Playfair Display',serif;font-size:5rem;color:rgba(201,169,110,0.1);line-height:0.5;display:block;margin-bottom:2rem}
+.promise-text{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.5vw,2rem);color:#f5f0eb;line-height:1.65;font-weight:400;font-style:italic}
+.promise-text em{color:#c9a96e;font-style:normal}
+.promise-sig{font-size:8.5px;letter-spacing:4px;text-transform:uppercase;color:rgba(245,240,235,0.25);margin-top:2.5rem}
 
-/* PROMISE */
-.promise{background:#0a0a0a;border-top:1px solid rgba(201,169,110,0.08);text-align:center}
-.promise-quote{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,2.2rem);font-style:italic;color:#f5f0eb;max-width:800px;margin:0 auto;line-height:1.6;font-weight:400}
-.promise-quote em{color:#c9a96e}
-.promise-sub{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(245,240,235,0.3);margin-top:2rem}
+/* ─── CONTACT ─── */
+.contact{background:#0d0d0d;border-top:1px solid rgba(201,169,110,0.08)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem}
+.contact-info-block{margin-bottom:2.5rem}
+.ci-label{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-bottom:0.5rem}
+.ci-val{font-size:0.9rem;color:rgba(245,240,235,0.55);line-height:1.8}
+.ci-val a{color:rgba(245,240,235,0.55);text-decoration:none}
+.ci-val a:hover{color:#c9a96e}
+.contact-form{background:rgba(201,169,110,0.02);border:1px solid rgba(201,169,110,0.08);padding:3rem}
+.cf-title{font-family:'Playfair Display',serif;font-size:1.4rem;color:#f5f0eb;margin-bottom:0.5rem;font-style:italic}
+.cf-sub{font-size:0.78rem;color:rgba(245,240,235,0.3);margin-bottom:2.5rem}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.cf-field{margin-bottom:1.6rem}
+.cf-field label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,240,235,0.3);display:block;margin-bottom:0.5rem}
+.cf-field input,.cf-field textarea,.cf-field select{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,169,110,0.15);padding:10px 0;font-family:'Inter',sans-serif;font-size:0.82rem;color:#f5f0eb;outline:none;transition:border-color 0.3s;appearance:none}
+.cf-field input:focus,.cf-field textarea:focus,.cf-field select:focus{border-bottom-color:#c9a96e}
+.cf-field textarea{resize:none;height:80px}
+.cf-field select option{background:#0d0d0d}
+.btn-submit{width:100%;padding:16px;background:#c9a96e;color:#080808;font-size:9.5px;letter-spacing:4px;text-transform:uppercase;border:none;cursor:pointer;font-weight:600;transition:background 0.3s;margin-top:0.5rem}
+.btn-submit:hover{background:#b8935a}
+.wa-btn{display:flex;align-items:center;gap:10px;margin-top:1.5rem;padding:14px 20px;border:1px solid rgba(37,211,102,0.3);color:rgba(37,211,102,0.7);font-size:8.5px;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:all 0.3s}
+.wa-btn:hover{background:rgba(37,211,102,0.05);border-color:rgba(37,211,102,0.6);color:#25d366}
+.wa-icon{width:16px;height:16px;fill:currentColor}
 
-/* CONTACT */
-.contact{background:#0f0f0f;border-top:1px solid rgba(201,169,110,0.08)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:3rem}
-.contact-detail{font-size:0.85rem;color:rgba(245,240,235,0.45);line-height:2.2}
-.contact-detail strong{color:#c9a96e;font-weight:400;display:block;font-size:9px;letter-spacing:3px;text-transform:uppercase;margin-top:1.75rem;margin-bottom:0.25rem}
-.contact-detail strong:first-child{margin-top:0}
-.contact-form input,.contact-form textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,169,110,0.2);padding:13px 0;font-family:'Inter',sans-serif;font-size:0.82rem;color:#f5f0eb;margin-bottom:1.75rem;outline:none;transition:border-color 0.3s;letter-spacing:1px}
-.contact-form input:focus,.contact-form textarea:focus{border-bottom-color:#c9a96e}
-.contact-form textarea{resize:none;height:90px}
-.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(245,240,235,0.2);font-size:0.75rem;letter-spacing:2px;text-transform:uppercase}
+/* ─── FLOATING WA ─── */
+.float-wa{position:fixed;bottom:2rem;right:2rem;z-index:400;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.3s,box-shadow 0.3s;text-decoration:none}
+.float-wa:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,0.5)}
+.float-wa svg{width:28px;height:28px;fill:#fff}
+.float-wa-tooltip{position:absolute;right:68px;white-space:nowrap;background:rgba(8,8,8,0.9);color:#f5f0eb;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;padding:8px 14px;border:1px solid rgba(201,169,110,0.2);opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(10px)}
+.float-wa:hover .float-wa-tooltip{opacity:1}
 
-footer{background:#060606;padding:4rem 2rem;text-align:center;border-top:1px solid rgba(201,169,110,0.08)}
-.footer-logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;letter-spacing:3px;margin-bottom:0.4rem}
-.footer-tagline{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-bottom:2.5rem}
-.footer-links{display:flex;justify-content:center;gap:3rem;margin-bottom:2.5rem;flex-wrap:wrap}
-.footer-links a{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);text-decoration:none;transition:color 0.3s}
-.footer-links a:hover{color:#c9a96e}
-.footer-copy{font-size:8px;color:rgba(255,255,255,0.1);letter-spacing:2px}
+/* ─── FOOTER ─── */
+footer{background:#040404;padding:5rem 2rem 3rem;border-top:1px solid rgba(201,169,110,0.08)}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem}
+.footer-brand .fbl-logo{display:flex;align-items:center;gap:10px;margin-bottom:1.2rem}
+.footer-brand img{width:44px;height:44px;object-fit:contain;mix-blend-mode:screen}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;letter-spacing:2px}
+.footer-brand p{font-size:0.78rem;color:rgba(245,240,235,0.28);line-height:1.9;margin-bottom:1.5rem}
+.footer-social{display:flex;gap:1rem}
+.fs-link{width:36px;height:36px;border:1px solid rgba(201,169,110,0.15);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:rgba(245,240,235,0.3);text-decoration:none;transition:all 0.3s}
+.fs-link:hover{border-color:#c9a96e;color:#c9a96e}
+.footer-col h4{font-size:8.5px;letter-spacing:3.5px;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:0.8rem}
+.footer-col ul li a{font-size:0.8rem;color:rgba(245,240,235,0.3);text-decoration:none;transition:color 0.3s;letter-spacing:0.5px}
+.footer-col ul li a:hover{color:#c9a96e}
+.footer-bottom{border-top:1px solid rgba(201,169,110,0.06);padding-top:2.5rem;display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:8px;color:rgba(255,255,255,0.12);letter-spacing:2px}
+.footer-tagline-text{font-family:'Playfair Display',serif;font-size:0.78rem;font-style:italic;color:rgba(201,169,110,0.3)}
 
-/* FADE UP */
-.fade-up{opacity:0;transform:translateY(40px);transition:opacity 0.9s ease,transform 0.9s ease}
+/* ─── ANIMATIONS ─── */
+.fade-up{opacity:0;transform:translateY(36px);transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1),transform 0.9s cubic-bezier(0.4,0,0.2,1)}
 .fade-up.visible{opacity:1;transform:translateY(0)}
-.fade-up.d1{transition-delay:0.1s}
-.fade-up.d2{transition-delay:0.2s}
-.fade-up.d3{transition-delay:0.3s}
-.fade-up.d4{transition-delay:0.4s}
+.fade-up.d1{transition-delay:0.1s}.fade-up.d2{transition-delay:0.2s}.fade-up.d3{transition-delay:0.3s}.fade-up.d4{transition-delay:0.4s}
+.hero-content{opacity:0;transform:translateY(28px);transition:opacity 1.3s cubic-bezier(0.4,0,0.2,1),transform 1.3s cubic-bezier(0.4,0,0.2,1)}
+.hero-content.visible{opacity:1;transform:translateY(0)}
 
+/* ─── MOBILE ─── */
+@media(max-width:1024px){
+.services-grid{grid-template-columns:repeat(2,1fr)}
+.footer-top{grid-template-columns:1fr 1fr;gap:3rem}
+}
 @media(max-width:900px){
-.about-grid,.contact-grid{grid-template-columns:1fr}
-.services-grid,.sectors-grid,.why-grid,.partners-grid{grid-template-columns:1fr 1fr}
-.regions-grid{grid-template-columns:repeat(3,1fr)}
-.vision-mission{grid-template-columns:1fr}
-.gallery-grid{grid-template-columns:1fr 1fr}
-.g5{grid-column:span 1}
-nav{padding:1.5rem}
+nav{padding:1.2rem 1.5rem}
+nav.solid{padding:1rem 1.5rem}
 .nav-links{display:none}
+.about-grid,.sourcing-grid,.contact-grid,.founder-strip-inner{grid-template-columns:1fr;gap:3rem}
+.about-photos{height:340px}
+.why-grid,.sectors-grid{grid-template-columns:1fr 1fr}
+.stats-inner{grid-template-columns:repeat(2,1fr)}
+.process-steps{grid-template-columns:1fr 1fr;gap:2rem}
+.process-steps::before{display:none}
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr}
+.gi1,.gi2,.gi3,.gi4,.gi5{grid-column:span 1;height:220px}
+.regions{grid-template-columns:repeat(3,1fr)}
+.footer-top{grid-template-columns:1fr}
+.cf-row{grid-template-columns:1fr}
+.founder-strip-inner{padding:4rem 1.5rem}
 }
 </style>
 </head>
 <body>
 
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/254716183011?text=Hi%20Casa%20Nova%20Interiors%2C%20I'd%20like%20to%20enquire%20about%20your%20design%20services." target="_blank" class="float-wa" aria-label="Chat on WhatsApp">
+  <span class="float-wa-tooltip">Chat with us</span>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- NAV -->
 <nav id="nav">
   <a href="index.html" class="nav-logo-wrap">
-    <img src="logo.jpeg" alt="Casa Nova Interiors" class="nav-logo-img">
-    <span class="nav-logo">Casa Nova Interiors</span>
+    <img src="logo.jpeg" alt="CN" class="nav-logo-img">
+    <div class="nav-logo-text">
+      <span class="nav-logo-main">Casa Nova</span>
+      <span class="nav-logo-sub">Interiors</span>
+    </div>
   </a>
   <div class="nav-links">
     <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#sourcing">Sourcing</a>
-    <a href="#partnerships">Partnerships</a>
+    <a href="services.html">Services</a>
+    <a href="#gallery">Portfolio</a>
+    <a href="#sourcing">Global Sourcing</a>
     <a href="founder.html">Our Founder</a>
-    <a href="#contact">Contact</a>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ═══ HERO ═══ -->
 <section class="hero" id="hero">
   <div class="hero-img" id="heroPan"></div>
   <div class="hero-overlay"></div>
+  <div class="hero-overlay2"></div>
   <div class="hero-content" id="heroContent">
-    <div class="hero-eyebrow">Nairobi, Kenya &nbsp;·&nbsp; Africa & Beyond</div>
+    <div class="hero-badge"><span class="hero-badge-dot"></span><span>Karen, Nairobi · Africa & Beyond</span></div>
     <h1 class="hero-title">Elevating Spaces.<br><em>Enriching Lives.</em></h1>
     <p class="hero-sub">Interior Design · Construction · Global Sourcing</p>
-    <a href="#contact" class="btn-gold">Request a Consultation</a>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Request a Consultation</a>
+      <a href="services.html" class="btn-secondary">View Our Services</a>
+    </div>
   </div>
-  <div class="scroll-hint">
-    <span>Scroll</span>
+  <div class="hero-scroll">
+    <span>Discover</span>
     <div class="scroll-line"></div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ═══ STATS ═══ -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item fade-up"><div class="stat-num">8+</div><div class="stat-label">Service Categories</div></div>
+    <div class="stat-item fade-up d1"><div class="stat-num">6</div><div class="stat-label">Global Sourcing Regions</div></div>
+    <div class="stat-item fade-up d2"><div class="stat-num">100%</div><div class="stat-label">End-to-End Delivery</div></div>
+    <div class="stat-item fade-up d3"><div class="stat-num">∞</div><div class="stat-label">Vision for Impact</div></div>
+  </div>
+</div>
+
+<!-- ═══ ABOUT ═══ -->
 <section class="about" id="about">
   <div class="section-inner">
-    <div class="section-label fade-up">Who We Are</div>
-    <div class="gold-line fade-up"></div>
-    <div class="about-grid">
-      <div>
-        <h2 class="section-title fade-up d1">Every Space<br>Tells a <em>Story.</em></h2>
-        <p class="section-body fade-up d2">Casa Nova Interiors is a premier interior design, construction, and project delivery company dedicated to transforming ordinary spaces into extraordinary environments.<br><br>Through innovation, craftsmanship, and strategic partnerships, we provide end-to-end solutions that bridge design excellence with practical execution — across luxury residences, corporate offices, hospitality, retail, healthcare, and commercial developments.</p>
-        <br><br>
-        <a href="#contact" class="btn-gold fade-up d3">Begin Your Project</a>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center">
+      <div class="about-photos fade-up">
+        <div class="about-photo-main"></div>
+        <div class="about-photo-accent"></div>
+        <div class="about-photo-decor"></div>
       </div>
-      <div class="about-img fade-up d2"></div>
-    </div>
-    <div class="vision-mission" style="margin-top:4rem">
-      <div class="vm-card fade-up">
-        <div class="vm-label">Our Vision</div>
-        <p class="vm-text">To become Africa's most trusted global interior design, construction, and lifestyle solutions partner, delivering world-class spaces while creating opportunities and empowering communities.</p>
-      </div>
-      <div class="vm-card fade-up d1">
-        <div class="vm-label">Our Mission</div>
-        <p class="vm-text">To design, build, furnish, and transform spaces through creativity, innovation, quality craftsmanship, and exceptional client service.</p>
+      <div class="about-content fade-up d2">
+        <div class="section-label">Who We Are</div>
+        <div class="gold-line"></div>
+        <h2 class="section-title">Africa's Premier<br><em>Design Partner</em></h2>
+        <p class="section-body">Casa Nova Interiors is a premier interior design, construction, and project delivery company dedicated to transforming ordinary spaces into extraordinary environments.</p>
+        <div class="about-feature-list">
+          <div class="afl-item"><span class="afl-dot"></span>End-to-end design, build & furnishing solutions</div>
+          <div class="afl-item"><span class="afl-dot"></span>Luxury residential, corporate & hospitality</div>
+          <div class="afl-item"><span class="afl-dot"></span>Premium global sourcing across 6 regions</div>
+          <div class="afl-item"><span class="afl-dot"></span>Full project management from concept to completion</div>
+        </div>
+        <a href="about.html" class="btn-secondary" style="display:inline-block;margin-top:2.5rem">Learn Our Story</a>
+        <div class="vm-grid">
+          <div class="vm-card">
+            <div class="vm-label">Our Vision</div>
+            <div class="vm-text">Africa's most trusted global interior design and lifestyle solutions partner.</div>
+          </div>
+          <div class="vm-card">
+            <div class="vm-label">Our Mission</div>
+            <div class="vm-text">Design, build and transform spaces through creativity, quality and exceptional service.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- ═══ SERVICES ═══ -->
 <section class="services" id="services">
   <div class="section-inner">
-    <div class="section-label fade-up">What We Do</div>
-    <div class="gold-line fade-up"></div>
-    <h2 class="section-title fade-up d1">End-to-End<br><em>Interior Excellence</em></h2>
-    <div class="services-grid" style="margin-top:3rem">
-      <div class="service-card fade-up">
-        <div class="service-num">01</div>
-        <div class="service-name">Interior Design & Space Planning</div>
-        <ul class="service-list">
-          <li>Residential & Luxury Homes</li>
-          <li>Corporate Office Design</li>
-          <li>Hospitality & Retail</li>
-          <li>Healthcare & Education</li>
-          <li>3D Visualizations</li>
-          <li>Mood Boards & Concepts</li>
-        </ul>
+    <div class="services-header">
+      <div>
+        <div class="section-label fade-up">What We Do</div>
+        <div class="gold-line fade-up"></div>
+        <h2 class="section-title fade-up d1">Eight Categories.<br><em>One Partner.</em></h2>
       </div>
-      <div class="service-card fade-up d1">
-        <div class="service-num">02</div>
-        <div class="service-name">Construction & Fit-Out</div>
-        <ul class="service-list">
-          <li>Building Renovations</li>
-          <li>Office & Commercial Fit-Outs</li>
-          <li>Ceilings & Flooring</li>
-          <li>Painting & Finishing</li>
-          <li>Plumbing & Electrical</li>
-          <li>Turnkey Project Delivery</li>
-        </ul>
-      </div>
-      <div class="service-card fade-up d2">
-        <div class="service-num">03</div>
-        <div class="service-name">Custom Furniture & Joinery</div>
-        <ul class="service-list">
-          <li>Kitchen Cabinets</li>
-          <li>Wardrobes & Walk-In Closets</li>
-          <li>Office & Reception Furniture</li>
-          <li>Bedroom & Hospitality Sets</li>
-          <li>Shelving & TV Units</li>
-          <li>Executive Desks</li>
-        </ul>
-      </div>
-      <div class="service-card fade-up d3">
-        <div class="service-num">04</div>
-        <div class="service-name">Soft Furnishings & Décor</div>
-        <ul class="service-list">
-          <li>Curtains, Blinds & Sheers</li>
-          <li>Upholstery & Carpets</li>
-          <li>Cushions & Bedding</li>
-          <li>Wall Art & Mirrors</li>
-          <li>Decorative Accessories</li>
-          <li>Rugs & Feature Pieces</li>
-        </ul>
-      </div>
-      <div class="service-card fade-up">
-        <div class="service-num">05</div>
-        <div class="service-name">Lighting Design</div>
-        <ul class="service-list">
-          <li>Decorative & Feature Lighting</li>
-          <li>Architectural Lighting</li>
-          <li>Smart Lighting Systems</li>
-          <li>Ambient & Commercial</li>
-          <li>Outdoor Lighting</li>
-          <li>Luxury Statement Pieces</li>
-        </ul>
-      </div>
-      <div class="service-card fade-up d1">
-        <div class="service-num">06</div>
-        <div class="service-name">Global Sourcing & Procurement</div>
-        <ul class="service-list">
-          <li>Furniture & Lighting</li>
-          <li>Tiles & Sanitary Ware</li>
-          <li>Construction Materials</li>
-          <li>Kitchen Solutions</li>
-          <li>Home Accessories</li>
-          <li>Decorative Elements</li>
-        </ul>
-      </div>
-      <div class="service-card fade-up d2">
-        <div class="service-num">07</div>
-        <div class="service-name">Project Management</div>
-        <ul class="service-list">
-          <li>Budget Management</li>
-          <li>Procurement Coordination</li>
-          <li>Contractor Supervision</li>
-          <li>Quality Assurance</li>
-          <li>Risk Management</li>
-          <li>Stakeholder Communication</li>
-        </ul>
-      </div>
-      <div class="service-card fade-up d3">
-        <div class="service-num">08</div>
-        <div class="service-name">Property Staging & Real Estate</div>
-        <ul class="service-list">
-          <li>Home Staging</li>
-          <li>Show House Styling</li>
-          <li>Airbnb Furnishing</li>
-          <li>Rental Property Upgrades</li>
-          <li>Property Presentation</li>
-          <li>Market Value Enhancement</li>
-        </ul>
-      </div>
+      <a href="services.html" class="btn-secondary fade-up d2" style="align-self:flex-end">All Services →</a>
+    </div>
+    <div class="services-grid">
+      <div class="svc fade-up"><span class="svc-num">01</span><span class="svc-icon">🏠</span><div class="svc-name">Interior Design & Space Planning</div><ul class="svc-list"><li>Residential & Luxury Homes</li><li>Corporate Office Design</li><li>Hospitality & Retail</li><li>3D Visualizations</li></ul><a href="services.html#design" class="svc-cta">Learn More</a></div>
+      <div class="svc fade-up d1"><span class="svc-num">02</span><span class="svc-icon">🔨</span><div class="svc-name">Construction & Fit-Out</div><ul class="svc-list"><li>Renovations & Refurbishments</li><li>Commercial Fit-Outs</li><li>Ceilings, Flooring & Finishes</li><li>Turnkey Delivery</li></ul><a href="services.html#construction" class="svc-cta">Learn More</a></div>
+      <div class="svc fade-up d2"><span class="svc-num">03</span><span class="svc-icon">🪑</span><div class="svc-name">Custom Furniture & Joinery</div><ul class="svc-list"><li>Kitchen Cabinets & Wardrobes</li><li>Office & Reception Furniture</li><li>Bedroom Sets</li><li>Built-In Shelving</li></ul><a href="services.html#furniture" class="svc-cta">Learn More</a></div>
+      <div class="svc fade-up d3"><span class="svc-num">04</span><span class="svc-icon">🪞</span><div class="svc-name">Soft Furnishings & Décor</div><ul class="svc-list"><li>Curtains, Blinds & Sheers</li><li>Upholstery & Carpets</li><li>Wall Art & Accessories</li><li>Feature Décor Pieces</li></ul><a href="services.html#furnishings" class="svc-cta">Learn More</a></div>
+      <div class="svc fade-up"><span class="svc-num">05</span><span class="svc-icon">💡</span><div class="svc-name">Lighting Design</div><ul class="svc-list"><li>Architectural Lighting</li><li>Smart Lighting Systems</li><li>Feature & Statement Pieces</li><li>Outdoor & Ambient</li></ul><a href="services.html#lighting" class="svc-cta">Learn More</a></div>
+      <div class="svc fade-up d1"><span class="svc-num">06</span><span class="svc-icon">🌍</span><div class="svc-name">Global Sourcing & Procurement</div><ul class="svc-list"><li>Furniture & Lighting</li><li>Tiles & Sanitary Ware</li><li>Construction Materials</li><li>Home Accessories</li></ul><a href="services.html#sourcing" class="svc-cta">Learn More</a></div>
+      <div class="svc fade-up d2"><span class="svc-num">07</span><span class="svc-icon">📋</span><div class="svc-name">Project Management</div><ul class="svc-list"><li>Budget Management</li><li>Contractor Supervision</li><li>Quality Assurance</li><li>Stakeholder Communication</li></ul><a href="services.html#pm" class="svc-cta">Learn More</a></div>
+      <div class="svc fade-up d3"><span class="svc-num">08</span><span class="svc-icon">🏡</span><div class="svc-name">Property Staging & Real Estate</div><ul class="svc-list"><li>Home & Show House Staging</li><li>Airbnb Furnishing</li><li>Rental Property Upgrades</li><li>Property Value Enhancement</li></ul><a href="services.html#staging" class="svc-cta">Learn More</a></div>
     </div>
   </div>
 </section>
 
-<!-- SECTORS -->
+<!-- ═══ PROCESS ═══ -->
+<section class="process" id="process">
+  <div class="section-inner">
+    <div class="section-label fade-up" style="text-align:center">How We Work</div>
+    <div class="gold-line fade-up" style="margin:0 auto 1rem"></div>
+    <h2 class="section-title fade-up d1" style="text-align:center;max-width:500px;margin:0 auto 1rem">From <em>Concept</em><br>to Completion</h2>
+    <div class="process-steps">
+      <div class="step fade-up"><div class="step-num">01</div><div class="step-title">Consultation</div><div class="step-desc">We listen to your vision, understand your needs and assess your space.</div></div>
+      <div class="step fade-up d1"><div class="step-num">02</div><div class="step-title">Design Concept</div><div class="step-desc">Our team creates mood boards, 3D layouts and a detailed proposal.</div></div>
+      <div class="step fade-up d2"><div class="step-num">03</div><div class="step-title">Sourcing</div><div class="step-desc">We procure premium materials and products globally at the best value.</div></div>
+      <div class="step fade-up d3"><div class="step-num">04</div><div class="step-title">Execution</div><div class="step-desc">Our skilled team transforms the space with precision and care.</div></div>
+      <div class="step fade-up d4"><div class="step-num">05</div><div class="step-title">Handover</div><div class="step-desc">We deliver a finished, styled space — exactly as you imagined it.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═══ -->
+<section class="gallery" id="gallery">
+  <div class="section-inner">
+    <div class="gallery-header">
+      <div>
+        <div class="section-label fade-up">Our Work</div>
+        <div class="gold-line fade-up"></div>
+        <h2 class="section-title fade-up d1">Projects That<br><em>Speak for Themselves</em></h2>
+      </div>
+      <a href="gallery.html" class="btn-secondary fade-up d2" style="align-self:flex-end">View All Projects →</a>
+    </div>
+  </div>
+  <div class="gallery-grid" style="max-width:1100px;margin:0 auto;padding:0 2rem">
+    <div class="gi gi1 fade-up"><div class="gi-img" style="background-image:url('project1.jpeg')"></div><div class="gi-overlay"></div></div>
+    <div class="gi gi2 fade-up d1"><div class="gi-img" style="background-image:url('project2.jpeg')"></div><div class="gi-overlay"></div></div>
+    <div class="gi gi3 fade-up"><div class="gi-img" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80')"></div><div class="gi-overlay"></div></div>
+    <div class="gi gi4 fade-up d1"><div class="gi-img" style="background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80')"></div><div class="gi-overlay"></div></div>
+    <div class="gi gi5 fade-up d2"><div class="gi-img" style="background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80')"></div><div class="gi-overlay"></div></div>
+  </div>
+</section>
+
+<!-- ═══ SECTORS ═══ -->
 <section class="sectors" id="sectors">
   <div class="section-inner">
     <div class="section-label fade-up">Where We Work</div>
     <div class="gold-line fade-up"></div>
     <h2 class="section-title fade-up d1">Sectors We <em>Serve</em></h2>
   </div>
-  <div class="sectors-grid" style="max-width:1100px;margin:2rem auto 0;padding:0 2rem">
+  <div class="sectors-grid" style="max-width:1100px;margin:0 auto;padding:0 2rem">
     <div class="sector fade-up">
       <div class="sector-bg" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80')"></div>
       <div class="sector-overlay"></div>
-      <div class="sector-num">Residential</div>
-      <div class="sector-label">Luxury Homes</div>
+      <div class="sector-content"><div class="sector-tag">01</div><div class="sector-name">Luxury Residences</div></div>
     </div>
     <div class="sector fade-up d1">
       <div class="sector-bg" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80')"></div>
       <div class="sector-overlay"></div>
-      <div class="sector-num">Corporate</div>
-      <div class="sector-label">Office Spaces</div>
+      <div class="sector-content"><div class="sector-tag">02</div><div class="sector-name">Corporate Offices</div></div>
     </div>
     <div class="sector fade-up d2">
       <div class="sector-bg" style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80')"></div>
       <div class="sector-overlay"></div>
-      <div class="sector-num">Hospitality</div>
-      <div class="sector-label">Hotels & Resorts</div>
+      <div class="sector-content"><div class="sector-tag">03</div><div class="sector-name">Hotels & Hospitality</div></div>
     </div>
     <div class="sector fade-up d3">
       <div class="sector-bg" style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80')"></div>
       <div class="sector-overlay"></div>
-      <div class="sector-num">Retail</div>
-      <div class="sector-label">Commercial Spaces</div>
+      <div class="sector-content"><div class="sector-tag">04</div><div class="sector-name">Retail & Commercial</div></div>
     </div>
   </div>
 </section>
 
-<!-- GLOBAL SOURCING -->
+<!-- ═══ GLOBAL SOURCING ═══ -->
 <section class="sourcing" id="sourcing">
   <div class="section-inner">
-    <div class="section-label fade-up">Global Reach</div>
-    <div class="gold-line fade-up"></div>
-    <h2 class="section-title fade-up d1">Sourcing the World's<br><em>Finest Materials</em></h2>
-    <p class="section-body fade-up d2" style="margin-bottom:3rem">We source premium products and materials from trusted international suppliers across six global regions, delivering world-class quality to every project in Africa and beyond.</p>
-    <div class="regions-grid">
-      <div class="region fade-up">
-        <span class="region-flag">🇨🇳</span>
-        <div class="region-name">China</div>
+    <div class="sourcing-grid">
+      <div class="fade-up">
+        <div class="section-label">Global Reach</div>
+        <div class="gold-line"></div>
+        <h2 class="section-title">Sourcing the World's<br><em>Finest Materials</em></h2>
+        <p class="section-body">We source premium products and materials from trusted international suppliers, delivering world-class quality to every project. Our global network means no compromise — ever.</p>
+        <a href="services.html#sourcing" class="btn-secondary" style="display:inline-block;margin-top:2.5rem">Learn About Sourcing</a>
       </div>
-      <div class="region fade-up d1">
-        <span class="region-flag">🇮🇳</span>
-        <div class="region-name">India</div>
-      </div>
-      <div class="region fade-up d2">
-        <span class="region-flag">🇹🇷</span>
-        <div class="region-name">Turkey</div>
-      </div>
-      <div class="region fade-up d3">
-        <span class="region-flag">🇦🇪</span>
-        <div class="region-name">UAE</div>
-      </div>
-      <div class="region fade-up">
-        <span class="region-flag">🇪🇺</span>
-        <div class="region-name">Europe</div>
-      </div>
-      <div class="region fade-up d1">
-        <span class="region-flag">🇿🇦</span>
-        <div class="region-name">South Africa</div>
+      <div class="fade-up d2">
+        <div class="regions">
+          <div class="region"><span class="region-flag">🇨🇳</span><div class="region-name">China</div><div class="region-note">Furniture & Materials</div></div>
+          <div class="region"><span class="region-flag">🇮🇳</span><div class="region-name">India</div><div class="region-note">Textiles & Craft</div></div>
+          <div class="region"><span class="region-flag">🇹🇷</span><div class="region-name">Turkey</div><div class="region-note">Tiles & Stone</div></div>
+          <div class="region"><span class="region-flag">🇦🇪</span><div class="region-name">UAE</div><div class="region-note">Luxury Fittings</div></div>
+          <div class="region"><span class="region-flag">🇪🇺</span><div class="region-name">Europe</div><div class="region-note">Design & Lighting</div></div>
+          <div class="region"><span class="region-flag">🇿🇦</span><div class="region-name">South Africa</div><div class="region-note">Local Premium</div></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHY US -->
+<!-- ═══ WHY US ═══ -->
 <section class="why" id="why">
   <div class="section-inner">
-    <div class="section-label fade-up">Why Casa Nova</div>
-    <div class="gold-line fade-up"></div>
-    <h2 class="section-title fade-up d1">The Casa Nova<br><em>Difference</em></h2>
+    <div class="section-label fade-up" style="text-align:center">The Casa Nova Difference</div>
+    <div class="gold-line fade-up" style="margin:0 auto 2rem"></div>
+    <h2 class="section-title fade-up d1" style="text-align:center;max-width:480px;margin:0 auto 0">Why Clients<br><em>Choose Us</em></h2>
     <div class="why-grid">
-      <div class="why-card fade-up">
-        <div class="why-icon">✦</div>
-        <div class="why-title">End-to-End Delivery</div>
-        <div class="why-desc">From initial concept through to final installation — one partner, zero gaps. We manage every stage of your project.</div>
-      </div>
-      <div class="why-card fade-up d1">
-        <div class="why-icon">✦</div>
-        <div class="why-title">Global Procurement Network</div>
-        <div class="why-desc">Access to premium suppliers across China, India, Turkey, UAE, Europe and South Africa — quality without compromise.</div>
-      </div>
-      <div class="why-card fade-up d2">
-        <div class="why-icon">✦</div>
-        <div class="why-title">Strong Design Expertise</div>
-        <div class="why-desc">Our team combines creative vision with technical precision to deliver spaces that are as functional as they are beautiful.</div>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-icon">✦</div>
-        <div class="why-title">Quality Assurance</div>
-        <div class="why-desc">Rigorous standards applied at every stage. Every material, every finish, every detail is held to the highest benchmark.</div>
-      </div>
-      <div class="why-card fade-up d1">
-        <div class="why-icon">✦</div>
-        <div class="why-title">Client-Centered Approach</div>
-        <div class="why-desc">Your vision drives everything. We listen, collaborate and deliver exactly what you need — on time and within budget.</div>
-      </div>
-      <div class="why-card fade-up d2">
-        <div class="why-icon">✦</div>
-        <div class="why-title">Regional & International Vision</div>
-        <div class="why-desc">Based in Nairobi with an Africa-wide and global outlook — we bring international standards to every local project.</div>
-      </div>
+      <div class="why-card fade-up"><div class="why-num">01</div><div class="why-title">End-to-End Delivery</div><div class="why-desc">From concept to completion — one partner, zero gaps. We manage every stage so you don't have to.</div></div>
+      <div class="why-card fade-up d1"><div class="why-num">02</div><div class="why-title">Global Procurement</div><div class="why-desc">Direct access to premium suppliers across 6 global regions. World-class quality, without the middleman markup.</div></div>
+      <div class="why-card fade-up d2"><div class="why-num">03</div><div class="why-title">Design Excellence</div><div class="why-desc">Creative vision meets technical precision. Every space we deliver is as functional as it is beautiful.</div></div>
+      <div class="why-card fade-up"><div class="why-num">04</div><div class="why-title">Quality Assurance</div><div class="why-desc">Rigorous standards at every stage. Every material, every finish, every detail — held to the highest benchmark.</div></div>
+      <div class="why-card fade-up d1"><div class="why-num">05</div><div class="why-title">Client-First Approach</div><div class="why-desc">Your vision drives everything. We listen, collaborate, and deliver exactly what you need — on time, in budget.</div></div>
+      <div class="why-card fade-up d2"><div class="why-num">06</div><div class="why-title">Africa-Wide Vision</div><div class="why-desc">Based in Nairobi, thinking globally. We bring international standards to every project across the continent.</div></div>
     </div>
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="gallery" id="gallery">
-  <div class="section-inner">
-    <div class="section-label fade-up">Our Work</div>
-    <div class="gold-line fade-up"></div>
-    <h2 class="section-title fade-up d1">Before & After.<br><em>Final Results.</em></h2>
+<!-- ═══ FOUNDER STRIP ═══ -->
+<div class="founder-strip">
+  <div class="founder-strip-inner">
+    <div style="position:relative" class="fade-up">
+      <div class="founder-img-border"></div>
+      <img src="esther.jpeg" alt="Esther Nyambura Ngumi — Founder & Lead Designer" class="founder-img" style="position:relative;z-index:1">
+    </div>
+    <div class="fade-up d2">
+      <div class="section-label">A Message From Our Founder</div>
+      <div class="gold-line"></div>
+      <p class="founder-quote">"Casa Nova was born from a vision much bigger than design. Every project we complete, every partnership we build, and every life we touch brings us one step closer to <em>that vision.</em>"</p>
+      <div class="founder-byline">— Esther Nyambura Ngumi &nbsp;·&nbsp; <strong>Founder & Lead Designer, Casa Nova Interiors</strong></div>
+      <a href="founder.html" class="btn-secondary" style="display:inline-block;margin-top:2.5rem">Read Her Full Message</a>
+    </div>
   </div>
-  <div class="gallery-grid" style="max-width:1100px;margin:2rem auto 0;padding:0 2rem">
-    <div class="gallery-item float"><div class="gimg g1"></div></div>
-    <div class="gallery-item float2"><div class="gimg g2"></div></div>
-    <div class="gallery-item float3"><div class="gimg g3"></div></div>
-    <div class="gallery-item float"><div class="gimg g4"></div></div>
-    <div class="gallery-item float2"><div class="gimg g5"></div></div>
-  </div>
-</section>
+</div>
 
-<!-- PARTNERSHIPS -->
-<section class="partnerships" id="partnerships">
+<!-- ═══ PROMISE ═══ -->
+<section class="promise">
   <div class="section-inner">
-    <div class="section-label fade-up">Collaborate</div>
-    <div class="gold-line fade-up"></div>
-    <h2 class="section-title fade-up d1">International<br><em>Partnership Opportunities</em></h2>
-    <p class="section-body fade-up d2" style="margin-bottom:3rem">Casa Nova Interiors actively seeks strategic partnerships that create value, expand market access, and deliver innovative solutions across Africa and beyond.</p>
-    <div class="partners-grid">
-      <div class="partner-type fade-up">
-        <div class="pt-name">Property Developers</div>
-        <div class="pt-desc">Residential & commercial development partnerships across Africa.</div>
-      </div>
-      <div class="partner-type fade-up d1">
-        <div class="pt-name">Real Estate Companies</div>
-        <div class="pt-desc">Staging, styling and fit-out for property portfolios.</div>
-      </div>
-      <div class="partner-type fade-up d2">
-        <div class="pt-name">Architects & Designers</div>
-        <div class="pt-desc">Collaborative design and execution on large-scale projects.</div>
-      </div>
-      <div class="partner-type fade-up d3">
-        <div class="pt-name">Global Suppliers</div>
-        <div class="pt-desc">Furniture manufacturers, luxury brands & procurement companies.</div>
-      </div>
-      <div class="partner-type fade-up">
-        <div class="pt-name">Hospitality Groups</div>
-        <div class="pt-desc">Hotels, resorts and serviced apartments across the continent.</div>
-      </div>
-      <div class="partner-type fade-up d1">
-        <div class="pt-name">Construction Firms</div>
-        <div class="pt-desc">Joint delivery of turnkey construction and interior projects.</div>
-      </div>
-      <div class="partner-type fade-up d2">
-        <div class="pt-name">Investors</div>
-        <div class="pt-desc">Strategic investment in Africa's fastest-growing design market.</div>
-      </div>
-      <div class="partner-type fade-up d3">
-        <div class="pt-name">Luxury Brands</div>
-        <div class="pt-desc">Premium brand representation and distribution partnerships.</div>
-      </div>
+    <div class="promise-inner">
+      <span class="promise-mark fade-up">"</span>
+      <p class="promise-text fade-up d1">We do not simply design spaces. We create environments where families <em>thrive</em>, businesses <em>grow</em>, communities <em>flourish</em>, and dreams become reality.</p>
+      <div class="promise-sig fade-up d2">Casa Nova Interiors · Elevating Spaces. Enriching Lives.</div>
     </div>
   </div>
 </section>
 
-<!-- PROMISE -->
-<section class="promise" id="promise">
-  <div class="section-inner">
-    <div class="section-label fade-up" style="text-align:center">Our Promise</div>
-    <div class="gold-line fade-up" style="margin:0 auto 3rem"></div>
-    <p class="promise-quote fade-up">"We do not simply design spaces. We create environments where families <em>thrive</em>, businesses <em>grow</em>, communities <em>flourish</em>, and dreams become reality."</p>
-    <div class="promise-sub fade-up d1">Casa Nova Interiors · Elevating Spaces. Enriching Lives.</div>
-  </div>
-</section>
-
-<!-- CONTACT -->
+<!-- ═══ CONTACT ═══ -->
 <section class="contact" id="contact">
   <div class="section-inner">
     <div class="section-label fade-up">Get in Touch</div>
     <div class="gold-line fade-up"></div>
     <h2 class="section-title fade-up d1">Let's Build<br><em>Something Beautiful.</em></h2>
-    <div class="contact-grid">
-      <div class="contact-detail fade-up d1">
-        <strong>Location</strong>Karen, Nairobi, Kenya 00100
-        <strong>Phone</strong>+254 716 183011
-        <strong>Email</strong>casanovaglobalsourcingltd@gmail.com
-        <strong>Hours</strong>Monday – Saturday · 09:00 – 18:00
-        <strong>Instagram</strong>@casa_nova_global_interior
-        <strong>Facebook</strong>Casa Nova Global Sourcing Interiors
+    <div class="contact-grid" style="margin-top:3rem">
+      <div class="fade-up d1">
+        <div class="contact-info-block">
+          <div class="ci-label">Location</div>
+          <div class="ci-val">Karen, Nairobi, Kenya 00100</div>
+        </div>
+        <div class="contact-info-block">
+          <div class="ci-label">Phone</div>
+          <div class="ci-val"><a href="tel:+254716183011">+254 716 183011</a></div>
+        </div>
+        <div class="contact-info-block">
+          <div class="ci-label">Email</div>
+          <div class="ci-val"><a href="mailto:casanovaglobalsourcingltd@gmail.com">casanovaglobalsourcingltd@gmail.com</a></div>
+        </div>
+        <div class="contact-info-block">
+          <div class="ci-label">Hours</div>
+          <div class="ci-val">Monday – Saturday · 09:00 – 18:00</div>
+        </div>
+        <div class="contact-info-block">
+          <div class="ci-label">Social</div>
+          <div class="ci-val">
+            <a href="https://instagram.com/casa_nova_global_interior" target="_blank">@casa_nova_global_interior</a><br>
+            Casa Nova Global Sourcing Interiors
+          </div>
+        </div>
+        <a href="https://wa.me/254716183011?text=Hi%20Casa%20Nova%20Interiors%2C%20I'd%20like%20to%20enquire%20about%20your%20services." target="_blank" class="wa-btn">
+          <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us Directly
+        </a>
       </div>
-      <div class="contact-form fade-up d2">
-        <input type="text" placeholder="Full Name">
-        <input type="email" placeholder="Email Address">
-        <input type="text" placeholder="Project Type">
-        <input type="text" placeholder="Budget Range">
-        <textarea placeholder="Tell us about your project..."></textarea>
-        <a href="#" class="btn-gold">Send Message</a>
+      <div class="fade-up d2">
+        <div class="contact-form">
+          <div class="cf-title">Request a Free Consultation</div>
+          <div class="cf-sub">Tell us about your project and we'll be in touch within 24 hours.</div>
+          <div class="cf-row">
+            <div class="cf-field"><label>Full Name</label><input type="text" placeholder="Your name"></div>
+            <div class="cf-field"><label>Phone / WhatsApp</label><input type="tel" placeholder="+254..."></div>
+          </div>
+          <div class="cf-row">
+            <div class="cf-field"><label>Email Address</label><input type="email" placeholder="you@email.com"></div>
+            <div class="cf-field"><label>Service Required</label>
+              <select><option value="">Select a service...</option><option>Interior Design & Space Planning</option><option>Construction & Fit-Out</option><option>Custom Furniture & Joinery</option><option>Soft Furnishings & Décor</option><option>Lighting Design</option><option>Global Sourcing & Procurement</option><option>Project Management</option><option>Property Staging</option><option>Multiple Services</option></select>
+            </div>
+          </div>
+          <div class="cf-field"><label>Project Budget (KES)</label><select><option value="">Select budget range...</option><option>Under 500,000</option><option>500,000 – 1,000,000</option><option>1,000,000 – 3,000,000</option><option>3,000,000 – 5,000,000</option><option>5,000,000+</option><option>Discuss on consultation</option></select></div>
+          <div class="cf-field"><label>Project Description</label><textarea placeholder="Tell us about your space, timeline and what you're hoping to achieve..."></textarea></div>
+          <button class="btn-submit">Send Enquiry — It's Free</button>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ═══ FOOTER ═══ -->
 <footer>
-  <div class="footer-logo">Casa Nova Interiors</div>
-  <div class="footer-tagline">Elevating Spaces. Enriching Lives.</div>
-  <div class="footer-links">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#sectors">Sectors</a>
-    <a href="#sourcing">Global Sourcing</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#partnerships">Partnerships</a>
-    <a href="#contact">Contact</a>
-    <a href="https://instagram.com/casa_nova_global_interior" target="_blank">Instagram</a>
-    <a href="#" target="_blank">Facebook</a>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fbl-logo">
+          <img src="logo.jpeg" alt="CN">
+          <span class="footer-brand-name">Casa Nova Interiors</span>
+        </div>
+        <p>Nairobi's premier interior design, construction and global sourcing company. Transforming spaces, enriching lives, empowering communities across Africa and beyond.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/casa_nova_global_interior" target="_blank" class="fs-link">IG</a>
+          <a href="#" target="_blank" class="fs-link">FB</a>
+          <a href="https://wa.me/254716183011" target="_blank" class="fs-link">WA</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#design">Interior Design</a></li>
+          <li><a href="services.html#construction">Construction</a></li>
+          <li><a href="services.html#furniture">Custom Furniture</a></li>
+          <li><a href="services.html#furnishings">Soft Furnishings</a></li>
+          <li><a href="services.html#lighting">Lighting Design</a></li>
+          <li><a href="services.html#sourcing">Global Sourcing</a></li>
+          <li><a href="services.html#staging">Property Staging</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="founder.html">Our Founder</a></li>
+          <li><a href="gallery.html">Portfolio</a></li>
+          <li><a href="#partnerships">Partnerships</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+254716183011">+254 716 183011</a></li>
+          <li><a href="mailto:casanovaglobalsourcingltd@gmail.com">Email Us</a></li>
+          <li><a href="#">Karen, Nairobi 00100</a></li>
+          <li><a href="https://wa.me/254716183011" target="_blank">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Casa Nova Global Sourcing Interiors · All Rights Reserved</div>
+      <div class="footer-tagline-text">Elevating Spaces. Enriching Lives.</div>
+    </div>
   </div>
-  <div class="footer-copy">© 2025 Casa Nova Global Sourcing Interiors · Karen, Nairobi, Kenya · All Rights Reserved</div>
 </footer>
 
 <script>
 const heroPan = document.getElementById('heroPan');
 const heroContent = document.getElementById('heroContent');
 const navEl = document.getElementById('nav');
+setTimeout(() => heroContent.classList.add('visible'), 200);
 
-setTimeout(() => { heroContent.classList.add('visible'); }, 300);
-
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  const progress = Math.min(scrollY / window.innerHeight, 1);
-  heroPan.style.transform = `translateX(${-progress * 20}%)`;
-  navEl.classList.toggle('solid', scrollY > 60);
-
+function onScroll() {
+  const y = window.scrollY;
+  heroPan.style.transform = `translateX(${-Math.min(y/window.innerHeight,1)*18}%)`;
+  navEl.classList.toggle('solid', y > 60);
   document.querySelectorAll('.fade-up').forEach(el => {
-    if (el.getBoundingClientRect().top < window.innerHeight * 0.88) {
-      el.classList.add('visible');
-    }
+    if(el.getBoundingClientRect().top < window.innerHeight * 0.9) el.classList.add('visible');
   });
-}, { passive: true });
-
-document.querySelectorAll('.fade-up').forEach(el => {
-  if (el.getBoundingClientRect().top < window.innerHeight * 0.88) {
-    el.classList.add('visible');
-  }
-});
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
 </script>
 </body>
 </html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Casa Nova Interiors | Interior Design, Construction & Global Sourcing</title>
+<meta name="description" content="Casa Nova Interiors offers 8 complete service categories: Interior Design, Construction, Custom Furniture, Soft Furnishings, Lighting, Global Sourcing, Project Management and Property Staging.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#080808;color:#f5f0eb;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:1rem 4rem;background:rgba(8,8,8,0.96);backdrop-filter:blur(24px);border-bottom:1px solid rgba(201,169,110,0.12);display:flex;justify-content:space-between;align-items:center}
+.nav-logo-wrap{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-logo-img{width:40px;height:40px;object-fit:contain;mix-blend-mode:screen;filter:brightness(1.1)}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1}
+.nav-logo-main{font-family:'Playfair Display',serif;font-size:0.92rem;color:#fff;letter-spacing:3px;text-transform:uppercase}
+.nav-logo-sub{font-size:7px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:2.8rem}
+.nav-links a{font-size:9.5px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.3s}
+.nav-links a:hover{color:#c9a96e}
+.nav-links a.active{color:#c9a96e}
+.nav-cta{padding:10px 28px;background:#c9a96e;color:#080808!important;font-size:9px!important;letter-spacing:3px;font-weight:600!important;transition:background 0.3s}
+.nav-cta:hover{background:#b8935a!important}
+
+/* PAGE HERO */
+.page-hero{padding:10rem 2rem 6rem;background:#080808;border-bottom:1px solid rgba(201,169,110,0.08);position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,0.04) 0%,transparent 70%);pointer-events:none}
+.page-hero-inner{max-width:1100px;margin:0 auto}
+.page-hero-label{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;margin-bottom:1rem}
+.gold-line{width:36px;height:1px;background:#c9a96e;margin-bottom:2rem}
+.page-hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,6vw,5rem);font-weight:400;line-height:1.05;color:#fff;max-width:700px}
+.page-hero-title em{font-style:italic;color:#c9a96e}
+.page-hero-sub{font-size:0.9rem;color:rgba(245,240,235,0.4);line-height:2;max-width:520px;margin-top:1.5rem}
+.page-hero-cta{display:inline-flex;align-items:center;gap:1rem;margin-top:3rem}
+
+/* BUTTONS */
+.btn-primary{padding:16px 48px;background:#c9a96e;color:#080808;font-size:9.5px;letter-spacing:3.5px;text-transform:uppercase;text-decoration:none;font-weight:600;transition:all 0.3s;display:inline-block}
+.btn-primary:hover{background:#b8935a}
+.btn-secondary{padding:15px 40px;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.55);font-size:9.5px;letter-spacing:3.5px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;display:inline-block}
+.btn-secondary:hover{border-color:#c9a96e;color:#c9a96e}
+
+/* SERVICE NAV */
+.svc-nav{background:#0d0d0d;border-bottom:1px solid rgba(201,169,110,0.08);position:sticky;top:62px;z-index:200}
+.svc-nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;gap:0;scrollbar-width:none}
+.svc-nav-inner::-webkit-scrollbar{display:none}
+.svc-nav-link{padding:1.1rem 1.8rem;font-size:8.5px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(245,240,235,0.3);text-decoration:none;white-space:nowrap;border-right:1px solid rgba(201,169,110,0.06);transition:all 0.3s;border-bottom:2px solid transparent}
+.svc-nav-link:hover{color:#c9a96e;background:rgba(201,169,110,0.03)}
+.svc-nav-link.active{color:#c9a96e;border-bottom-color:#c9a96e}
+
+/* SERVICE SECTIONS */
+.svc-section{padding:7rem 2rem;border-bottom:1px solid rgba(201,169,110,0.06)}
+.svc-section:nth-child(odd){background:#080808}
+.svc-section:nth-child(even){background:#0d0d0d}
+.svc-section-inner{max-width:1100px;margin:0 auto}
+.svc-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.svc-layout.reverse{direction:rtl}
+.svc-layout.reverse > *{direction:ltr}
+.svc-img{height:480px;background-size:cover;background-position:center;position:relative}
+.svc-img::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.08)}
+.svc-label{font-size:8px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;margin-bottom:1rem}
+.svc-section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:400;line-height:1.12;margin-bottom:1.5rem;color:#f5f0eb}
+.svc-section-title em{font-style:italic;color:#c9a96e}
+.svc-body{font-size:0.86rem;color:rgba(245,240,235,0.42);line-height:2.1;margin-bottom:2rem}
+.svc-features{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1.5rem;margin-bottom:2.5rem}
+.svc-feat{display:flex;align-items:flex-start;gap:0.8rem;font-size:0.78rem;color:rgba(245,240,235,0.4);padding:0.4rem 0;border-bottom:1px solid rgba(201,169,110,0.05)}
+.svc-feat-dot{width:4px;height:4px;border-radius:50%;background:#c9a96e;flex-shrink:0;margin-top:5px}
+
+/* CTA BANNER */
+.cta-banner{background:#0f0f0f;border-top:1px solid rgba(201,169,110,0.1);border-bottom:1px solid rgba(201,169,110,0.1);padding:5rem 2rem;text-align:center}
+.cta-banner-inner{max-width:680px;margin:0 auto}
+.cta-banner-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:#fff;font-weight:400;margin-bottom:1rem;line-height:1.2}
+.cta-banner-title em{font-style:italic;color:#c9a96e}
+.cta-banner-sub{font-size:0.85rem;color:rgba(245,240,235,0.35);margin-bottom:2.5rem;line-height:1.9}
+.cta-btn-row{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+
+/* FLOAT WA */
+.float-wa{position:fixed;bottom:2rem;right:2rem;z-index:400;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.3s;text-decoration:none}
+.float-wa:hover{transform:scale(1.1)}
+.float-wa svg{width:28px;height:28px;fill:#fff}
+
+footer{background:#040404;padding:3rem 2rem;border-top:1px solid rgba(201,169,110,0.08);text-align:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;letter-spacing:2px;margin-bottom:0.3rem}
+.footer-tagline{font-size:8.5px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem}
+.footer-copy{font-size:8px;color:rgba(255,255,255,0.1);letter-spacing:2px}
+
+.fade-up{opacity:0;transform:translateY(32px);transition:opacity 0.9s cubic-bezier(0.4,0,0.2,1),transform 0.9s cubic-bezier(0.4,0,0.2,1)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-up.d1{transition-delay:0.15s}.fade-up.d2{transition-delay:0.3s}
+
+@media(max-width:900px){
+nav{padding:1rem 1.5rem}
+.nav-links{display:none}
+.svc-layout,.svc-layout.reverse{grid-template-columns:1fr;direction:ltr}
+.svc-img{height:280px}
+.page-hero{padding:8rem 1.5rem 4rem}
+.svc-section{padding:4rem 1.5rem}
+.svc-features{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<a href="https://wa.me/254716183011?text=Hi%20Casa%20Nova%20Interiors%2C%20I'd%20like%20to%20enquire%20about%20your%20design%20services." target="_blank" class="float-wa">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<nav>
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="logo.jpeg" alt="CN" class="nav-logo-img">
+    <div class="nav-logo-text">
+      <span class="nav-logo-main">Casa Nova</span>
+      <span class="nav-logo-sub">Interiors</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#about">About</a>
+    <a href="services.html" class="active">Services</a>
+    <a href="index.html#gallery">Portfolio</a>
+    <a href="index.html#sourcing">Global Sourcing</a>
+    <a href="founder.html">Our Founder</a>
+    <a href="index.html#contact" class="nav-cta">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-label">Our Services</div>
+    <div class="gold-line"></div>
+    <h1 class="page-hero-title">Eight Categories.<br><em>One Partner.</em><br>Zero Compromise.</h1>
+    <p class="page-hero-sub">From the first sketch to the final fitting — we deliver complete interior, construction and furnishing solutions. One team, end to end.</p>
+    <div class="page-hero-cta">
+      <a href="index.html#contact" class="btn-primary">Request a Free Consultation</a>
+      <a href="https://wa.me/254716183011" target="_blank" class="btn-secondary">WhatsApp Us</a>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE STICKY NAV -->
+<div class="svc-nav">
+  <div class="svc-nav-inner">
+    <a href="#design" class="svc-nav-link active">01 · Interior Design</a>
+    <a href="#construction" class="svc-nav-link">02 · Construction</a>
+    <a href="#furniture" class="svc-nav-link">03 · Furniture</a>
+    <a href="#furnishings" class="svc-nav-link">04 · Furnishings</a>
+    <a href="#lighting" class="svc-nav-link">05 · Lighting</a>
+    <a href="#sourcing" class="svc-nav-link">06 · Global Sourcing</a>
+    <a href="#pm" class="svc-nav-link">07 · Project Management</a>
+    <a href="#staging" class="svc-nav-link">08 · Property Staging</a>
+  </div>
+</div>
+
+<!-- 01 INTERIOR DESIGN -->
+<div class="svc-section" id="design">
+  <div class="svc-section-inner">
+    <div class="svc-layout">
+      <div class="svc-img fade-up" style="background-image:url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=85')"></div>
+      <div class="fade-up d1">
+        <div class="svc-label">Service 01</div>
+        <div class="gold-line"></div>
+        <h2 class="svc-section-title">Interior Design &<br><em>Space Planning</em></h2>
+        <p class="svc-body">We create thoughtful, beautiful interiors that are uniquely yours. Our design process starts with listening — understanding how you live, work, and what inspires you — before translating that into a cohesive, stunning space.</p>
+        <div class="svc-features">
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Luxury Residential Design</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Corporate Office Design</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Hospitality & Restaurant</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Retail Space Design</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Healthcare & Education</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>3D Visualizations</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Mood Boards & Concepts</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Space Planning & Layout</div>
+        </div>
+        <a href="index.html#contact" class="btn-primary">Enquire About Design</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 CONSTRUCTION -->
+<div class="svc-section" id="construction">
+  <div class="svc-section-inner">
+    <div class="svc-layout reverse">
+      <div class="svc-img fade-up" style="background-image:url('project1.jpeg')"></div>
+      <div class="fade-up d1">
+        <div class="svc-label">Service 02</div>
+        <div class="gold-line"></div>
+        <h2 class="svc-section-title">Construction<br><em>& Fit-Out</em></h2>
+        <p class="svc-body">From full renovations to commercial fit-outs, our skilled construction team delivers quality builds on time and on budget. We handle everything — no need for multiple contractors.</p>
+        <div class="svc-features">
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Building Renovations</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Commercial Fit-Outs</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Ceilings & Partitioning</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Flooring Installation</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Painting & Wall Finishes</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Plumbing & Electrical</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Tiling & Stonework</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Turnkey Delivery</div>
+        </div>
+        <a href="index.html#contact" class="btn-primary">Enquire About Construction</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 FURNITURE -->
+<div class="svc-section" id="furniture">
+  <div class="svc-section-inner">
+    <div class="svc-layout">
+      <div class="svc-img fade-up" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1200&q=85')"></div>
+      <div class="fade-up d1">
+        <div class="svc-label">Service 03</div>
+        <div class="gold-line"></div>
+        <h2 class="svc-section-title">Custom Furniture<br><em>& Joinery</em></h2>
+        <p class="svc-body">Bespoke furniture crafted to fit your exact space and specifications. Every piece is designed with both beauty and function in mind — built to last, built to impress.</p>
+        <div class="svc-features">
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Kitchen Cabinets</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Wardrobes & Walk-In Closets</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Office & Reception Furniture</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Bedroom & Hospitality Sets</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>TV Units & Media Walls</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Executive Desks</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Built-In Shelving</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Outdoor Furniture</div>
+        </div>
+        <a href="index.html#contact" class="btn-primary">Enquire About Furniture</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 FURNISHINGS -->
+<div class="svc-section" id="furnishings">
+  <div class="svc-section-inner">
+    <div class="svc-layout reverse">
+      <div class="svc-img fade-up" style="background-image:url('https://images.unsplash.com/photo-1616137466211-f939a420be84?w=1200&q=85')"></div>
+      <div class="fade-up d1">
+        <div class="svc-label">Service 04</div>
+        <div class="gold-line"></div>
+        <h2 class="svc-section-title">Soft Furnishings<br><em>& Décor</em></h2>
+        <p class="svc-body">The finishing touches that transform a house into a home. We curate and source premium soft furnishings and accessories that tie the whole design together with warmth, texture and character.</p>
+        <div class="svc-features">
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Curtains, Blinds & Sheers</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Upholstery & Cushions</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Carpets & Area Rugs</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Bedding & Linen</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Wall Art & Mirrors</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Vases & Decorative Accessories</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Indoor Plants & Styling</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Feature Décor Pieces</div>
+        </div>
+        <a href="index.html#contact" class="btn-primary">Enquire About Furnishings</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 LIGHTING -->
+<div class="svc-section" id="lighting">
+  <div class="svc-section-inner">
+    <div class="svc-layout">
+      <div class="svc-img fade-up" style="background-image:url('https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=1200&q=85')"></div>
+      <div class="fade-up d1">
+        <div class="svc-label">Service 05</div>
+        <div class="gold-line"></div>
+        <h2 class="svc-section-title">Lighting<br><em>Design</em></h2>
+        <p class="svc-body">Lighting is the single biggest factor in how a space feels. Our lighting design service transforms ambience — from dramatic statement pieces to subtle layered schemes that elevate every room.</p>
+        <div class="svc-features">
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Architectural Lighting</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Decorative & Feature Lighting</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Smart Lighting Systems</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Ambient & Task Lighting</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Commercial Lighting</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Outdoor Lighting</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Statement Chandeliers</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Lighting Plans & Specs</div>
+        </div>
+        <a href="index.html#contact" class="btn-primary">Enquire About Lighting</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 06 SOURCING -->
+<div class="svc-section" id="sourcing">
+  <div class="svc-section-inner">
+    <div class="svc-layout reverse">
+      <div class="svc-img fade-up" style="background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&q=85')"></div>
+      <div class="fade-up d1">
+        <div class="svc-label">Service 06</div>
+        <div class="gold-line"></div>
+        <h2 class="svc-section-title">Global Sourcing<br><em>& Procurement</em></h2>
+        <p class="svc-body">Our international procurement network gives you direct access to premium materials and products from China, India, Turkey, UAE, Europe and South Africa — at trade prices, delivered to your door.</p>
+        <div class="svc-features">
+          <div class="svc-feat"><span class="svc-feat-dot"></span>International Furniture</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Premium Tiles & Stone</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Sanitary Ware & Fixtures</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Lighting & Electrical</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Kitchen Solutions</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Construction Materials</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Decorative Elements</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Home Accessories</div>
+        </div>
+        <a href="index.html#contact" class="btn-primary">Enquire About Sourcing</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 07 PROJECT MANAGEMENT -->
+<div class="svc-section" id="pm">
+  <div class="svc-section-inner">
+    <div class="svc-layout">
+      <div class="svc-img fade-up" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=85')"></div>
+      <div class="fade-up d1">
+        <div class="svc-label">Service 07</div>
+        <div class="gold-line"></div>
+        <h2 class="svc-section-title">Project<br><em>Management</em></h2>
+        <p class="svc-body">Large projects require precision co-ordination. Our project management service takes full responsibility for timelines, budgets, suppliers and quality — so your project runs smoothly from day one to handover.</p>
+        <div class="svc-features">
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Budget Planning & Control</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Procurement Co-ordination</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Contractor Management</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Timeline & Scheduling</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Quality Assurance</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Risk Management</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Progress Reporting</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Stakeholder Communication</div>
+        </div>
+        <a href="index.html#contact" class="btn-primary">Enquire About Project Management</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 08 STAGING -->
+<div class="svc-section" id="staging">
+  <div class="svc-section-inner">
+    <div class="svc-layout reverse">
+      <div class="svc-img fade-up" style="background-image:url('project2.jpeg')"></div>
+      <div class="fade-up d1">
+        <div class="svc-label">Service 08</div>
+        <div class="gold-line"></div>
+        <h2 class="svc-section-title">Property Staging<br><em>& Real Estate</em></h2>
+        <p class="svc-body">First impressions sell properties. Our staging service transforms empty or tired spaces into aspirational, sale-ready homes — helping developers, agents and landlords achieve maximum value and faster sales.</p>
+        <div class="svc-features">
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Home Staging for Sale</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Show House Styling</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Airbnb Furnishing & Styling</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Rental Property Upgrades</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Developer Handover Packages</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Property Photography Prep</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Market Value Enhancement</div>
+          <div class="svc-feat"><span class="svc-feat-dot"></span>Vacant Property Management</div>
+        </div>
+        <a href="index.html#contact" class="btn-primary">Enquire About Staging</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-banner-inner">
+    <h2 class="cta-banner-title fade-up">Ready to Transform<br>Your <em>Space?</em></h2>
+    <p class="cta-banner-sub fade-up">Tell us about your project and we'll arrange a free consultation with our design team. No obligation, just a conversation about what's possible.</p>
+    <div class="cta-btn-row fade-up">
+      <a href="index.html#contact" class="btn-primary">Request a Free Consultation</a>
+      <a href="https://wa.me/254716183011?text=Hi%20Casa%20Nova%20Interiors%2C%20I'd%20like%20to%20discuss%20a%20project." target="_blank" class="btn-secondary">WhatsApp Esther Directly</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Casa Nova Interiors</div>
+  <div class="footer-tagline">Elevating Spaces. Enriching Lives.</div>
+  <div class="footer-copy">© 2025 Casa Nova Global Sourcing Interiors · Karen, Nairobi, Kenya · All Rights Reserved</div>
+</footer>
+
+<script>
+function reveal(){
+  document.querySelectorAll('.fade-up').forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight*0.92) el.classList.add('visible');
+  });
+  const sections=['design','construction','furniture','furnishings','lighting','sourcing','pm','staging'];
+  const links=document.querySelectorAll('.svc-nav-link');
+  sections.forEach((id,i)=>{
+    const el=document.getElementById(id);
+    if(el){
+      const rect=el.getBoundingClientRect();
+      if(rect.top<=120&&rect.bottom>120){
+        links.forEach(l=>l.classList.remove('active'));
+        if(links[i]) links[i].classList.add('active');
+      }
+    }
+  });
+}
+window.addEventListener('scroll',reveal,{passive:true});
+reveal();
+</script>
+</body>
+</html>
