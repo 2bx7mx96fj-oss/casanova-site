@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Mission — Casa Nova Interiors</title>
+<meta name="description" content="The mission, vision and values that drive Casa Nova Interiors — Nairobi's premier interior design, construction and global sourcing company.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#080808;color:#f5f0eb;overflow-x:hidden}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.8rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(8,8,8,0.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,110,0.1)}
+.nav-logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-img{width:40px;height:40px;object-fit:contain;mix-blend-mode:screen;filter:brightness(1.1)}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1}
+.nav-logo-main{font-family:'Playfair Display',serif;font-size:0.9rem;color:#fff;letter-spacing:3px;text-transform:uppercase}
+.nav-logo-sub{font-size:7px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:2.5rem}
+.nav-links a{font-size:9.5px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.3s}
+.nav-links a:hover,.nav-links a.active{color:#c9a96e}
+.nav-cta{padding:10px 26px;background:#c9a96e;color:#080808!important;font-size:9px!important;letter-spacing:3px;text-transform:uppercase;text-decoration:none;font-weight:600!important;transition:background 0.3s}
+.nav-cta:hover{background:#b8935a!important}
+
+/* ─── HERO ─── */
+.mission-hero{height:80vh;min-height:560px;position:relative;overflow:hidden;display:flex;align-items:flex-end}
+.hero-bg{position:absolute;inset:0;background:url('p9.jpeg') center/cover;filter:brightness(0.32)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,#080808 0%,rgba(8,8,8,0.5) 55%,transparent 100%)}
+.hero-content{position:relative;z-index:2;padding:0 4rem 6rem;max-width:1000px}
+.hero-eyebrow{font-size:8.5px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;margin-bottom:1.4rem}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:400;line-height:1.05;color:#fff}
+.hero-title em{font-style:italic;color:#c9a96e}
+.hero-sub{font-size:0.88rem;color:rgba(255,255,255,0.38);line-height:2;max-width:560px;margin-top:1.6rem;letter-spacing:0.5px}
+.gold-line{width:40px;height:1px;background:#c9a96e;margin-bottom:2.2rem}
+
+/* ─── SECTIONS ─── */
+.section-inner{max-width:1100px;margin:0 auto;padding:8rem 2rem}
+.section-label{font-size:8.5px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;margin-bottom:1rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:400;line-height:1.1;color:#f5f0eb}
+.section-title em{font-style:italic;color:#c9a96e}
+.body-text{font-size:0.88rem;color:rgba(245,240,235,0.44);line-height:2.2}
+
+/* ─── MISSION / VISION CARDS ─── */
+.mv-section{background:#0a0a0a;border-top:1px solid rgba(201,169,110,0.06)}
+.mv-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(201,169,110,0.08);margin-top:4rem}
+.mv-card{padding:4rem 3.5rem;background:#0a0a0a;transition:background 0.4s}
+.mv-card:hover{background:#0d0d0d}
+.mv-num{font-family:'Playfair Display',serif;font-size:3rem;color:rgba(201,169,110,0.08);font-style:italic;margin-bottom:1.5rem;line-height:1}
+.mv-label{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-bottom:0.9rem}
+.mv-card-title{font-family:'Playfair Display',serif;font-size:1.4rem;color:#f5f0eb;margin-bottom:1.2rem;line-height:1.2}
+.mv-text{font-size:0.85rem;color:rgba(245,240,235,0.4);line-height:2.1}
+
+/* ─── PROMISE BREAK ─── */
+.promise-break{background:#0f0f0f;border-top:1px solid rgba(201,169,110,0.06);border-bottom:1px solid rgba(201,169,110,0.06);text-align:center;padding:8rem 2rem}
+.promise-inner{max-width:820px;margin:0 auto}
+.promise-mark{font-family:'Playfair Display',serif;font-size:6rem;color:rgba(201,169,110,0.07);line-height:0.5;display:block;margin-bottom:2.5rem}
+.promise-text{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.5vw,2.1rem);color:#f5f0eb;line-height:1.75;font-weight:400;font-style:italic}
+.promise-text em{color:#c9a96e;font-style:normal}
+.promise-sig{font-size:8.5px;letter-spacing:4px;text-transform:uppercase;color:rgba(245,240,235,0.2);margin-top:3rem}
+
+/* ─── VALUES ─── */
+.values-section{background:#080808;border-top:1px solid rgba(201,169,110,0.06)}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,169,110,0.06);margin-top:4rem}
+.value-card{padding:3.5rem 2.8rem;background:#080808;transition:background 0.4s}
+.value-card:hover{background:#0d0d0d}
+.v-icon{font-family:'Playfair Display',serif;font-size:1.2rem;color:rgba(201,169,110,0.5);margin-bottom:1.4rem;display:block}
+.v-num{font-size:8px;letter-spacing:3px;color:#c9a96e;margin-bottom:0.9rem}
+.v-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:#f5f0eb;margin-bottom:0.9rem}
+.v-text{font-size:0.78rem;color:rgba(245,240,235,0.3);line-height:2}
+
+/* ─── DIFFERENCE ─── */
+.difference-section{background:#0a0a0a;border-top:1px solid rgba(201,169,110,0.06)}
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,169,110,0.06);margin-top:4rem}
+.diff-card{padding:3rem 2.5rem;background:#0a0a0a;transition:background 0.4s}
+.diff-card:hover{background:#0d0d0d}
+.diff-num{font-family:'Playfair Display',serif;font-size:2rem;color:rgba(201,169,110,0.1);margin-bottom:1.2rem;font-style:italic}
+.diff-title{font-family:'Playfair Display',serif;font-size:1rem;color:#f5f0eb;margin-bottom:0.8rem}
+.diff-text{font-size:0.78rem;color:rgba(245,240,235,0.3);line-height:2}
+
+/* ─── IMPACT ─── */
+.impact-section{background:#0d0d0d;border-top:1px solid rgba(201,169,110,0.06)}
+.impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.impact-img{width:100%;height:520px;object-fit:cover;object-position:top;display:block;border:1px solid rgba(201,169,110,0.06)}
+.impact-text .body-text{margin-bottom:1.4rem}
+.scripture-block{margin:3rem 0;padding:2rem 2.5rem;border-left:2px solid #c9a96e;background:rgba(201,169,110,0.03)}
+.scripture-text{font-family:'Playfair Display',serif;font-size:0.95rem;font-style:italic;color:rgba(245,240,235,0.55);line-height:1.9}
+.scripture-ref{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;margin-top:0.75rem}
+
+/* ─── FOUNDER QUOTE ─── */
+.founder-strip{background:#0f0f0f;border-top:1px solid rgba(201,169,110,0.08);border-bottom:1px solid rgba(201,169,110,0.08)}
+.founder-strip-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:340px 1fr;gap:5rem;align-items:center;padding:7rem 2rem}
+.founder-img-wrap{position:relative}
+.founder-img{width:100%;height:460px;object-fit:cover;object-position:top;display:block;position:relative;z-index:1}
+.founder-img-border{position:absolute;bottom:-12px;right:-12px;left:12px;top:12px;border:1px solid rgba(201,169,110,0.18);pointer-events:none;z-index:0}
+.founder-quote{font-family:'Playfair Display',serif;font-size:1.32rem;font-style:italic;color:rgba(245,240,235,0.7);line-height:1.85;margin-bottom:2rem}
+.founder-quote em{color:#c9a96e;font-style:normal}
+.founder-byline{font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,240,235,0.28)}
+.founder-byline strong{color:#c9a96e;font-weight:400}
+
+/* ─── CTA ─── */
+.mission-cta{text-align:center;padding:9rem 2rem;background:#080808;border-top:1px solid rgba(201,169,110,0.06)}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:400;color:#f5f0eb;margin-bottom:1.5rem;line-height:1.1}
+.cta-title em{font-style:italic;color:#c9a96e}
+.cta-sub{font-size:0.85rem;color:rgba(245,240,235,0.35);max-width:480px;margin:0 auto 3rem;line-height:2}
+.btn-row{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{padding:17px 52px;background:#c9a96e;color:#080808;font-size:9.5px;letter-spacing:3.5px;text-transform:uppercase;text-decoration:none;font-weight:600;transition:all 0.35s}
+.btn-primary:hover{background:#b8935a;transform:translateY(-2px)}
+.btn-secondary{padding:16px 40px;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);font-size:9.5px;letter-spacing:3.5px;text-transform:uppercase;text-decoration:none;transition:all 0.35s}
+.btn-secondary:hover{border-color:#c9a96e;color:#c9a96e}
+
+/* ─── FOOTER ─── */
+footer{background:#040404;padding:3.5rem 2rem;text-align:center;border-top:1px solid rgba(201,169,110,0.08)}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;letter-spacing:2px;margin-bottom:0.6rem}
+.footer-tagline{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(201,169,110,0.4);margin-bottom:0.8rem}
+.footer-copy{font-size:8px;color:rgba(255,255,255,0.1);letter-spacing:1.5px}
+
+/* ─── ANIMATIONS ─── */
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1),transform 0.9s cubic-bezier(0.16,1,0.3,1)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-up.d1{transition-delay:0.1s}.fade-up.d2{transition-delay:0.2s}.fade-up.d3{transition-delay:0.3s}
+.fade-left{opacity:0;transform:translateX(-50px);transition:opacity 1s cubic-bezier(0.16,1,0.3,1),transform 1s cubic-bezier(0.16,1,0.3,1)}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(50px);transition:opacity 1s cubic-bezier(0.16,1,0.3,1),transform 1s cubic-bezier(0.16,1,0.3,1)}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+/* ─── MOBILE ─── */
+@media(max-width:900px){
+nav{padding:1.2rem 1.5rem}
+.nav-links{display:none}
+.hero-content{padding:0 1.5rem 4rem}
+.mv-grid,.impact-grid,.founder-strip-inner{grid-template-columns:1fr}
+.values-grid,.diff-grid{grid-template-columns:1fr 1fr}
+.founder-strip-inner{padding:4rem 1.5rem}
+.section-inner{padding:6rem 1.5rem}
+}
+@media(max-width:600px){
+.values-grid,.diff-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="logo.jpeg" alt="CN" class="nav-logo-img">
+    <div class="nav-logo-text">
+      <span class="nav-logo-main">Casa Nova</span>
+      <span class="nav-logo-sub">Interiors</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Portfolio</a>
+    <a href="mission.html" class="active">Our Mission</a>
+    <a href="founder.html">Our Founder</a>
+    <a href="index.html#contact" class="nav-cta">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<div class="mission-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Our Purpose</div>
+    <h1 class="hero-title">A Vision <em>Much Bigger</em><br>Than Design.</h1>
+    <p class="hero-sub">At Casa Nova Interiors, we believe that transforming a space means transforming a life. Our mission has always been about something greater than beautiful interiors — it is about people.</p>
+  </div>
+</div>
+
+<!-- ═══ MISSION & VISION ═══ -->
+<div class="mv-section">
+  <div class="section-inner" style="padding-bottom:0">
+    <div class="section-label fade-up">Our Purpose</div>
+    <div class="gold-line fade-up"></div>
+    <h2 class="section-title fade-up d1">What We Stand For.<br><em>Why We Exist.</em></h2>
+    <p class="body-text fade-up d2" style="margin-top:1.4rem;max-width:580px">Casa Nova was not built on ambition alone. It was built on belief — that quality design should be accessible, that spaces can heal and inspire, and that a business can be both excellent and deeply human.</p>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:3rem 2rem 8rem">
+    <div class="mv-grid">
+      <div class="mv-card fade-up">
+        <div class="mv-num">01</div>
+        <div class="mv-label">Our Vision</div>
+        <div class="mv-card-title">Africa's Most Trusted Design Partner</div>
+        <div class="mv-text">To become Africa's most trusted global interior design, construction, and lifestyle solutions partner — delivering world-class spaces while creating opportunities and empowering communities across the continent and beyond.<br><br>We are building toward a future where the Casa Nova name stands for excellence, integrity, and genuine human impact — from Nairobi to the world.</div>
+      </div>
+      <div class="mv-card fade-up d2">
+        <div class="mv-num">02</div>
+        <div class="mv-label">Our Mission</div>
+        <div class="mv-card-title">Design. Build. Transform.</div>
+        <div class="mv-text">To design, build, furnish, and transform spaces through creativity, innovation, quality craftsmanship, and exceptional client service — making quality design more accessible to families while creating opportunities that uplift communities.<br><br>Every project we take on is an expression of this mission. Every space delivered is a step toward a better Africa.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PROMISE ═══ -->
+<div class="promise-break">
+  <div class="promise-inner">
+    <span class="promise-mark fade-up">"</span>
+    <p class="promise-text fade-up d1">We do not simply design spaces. We create environments where families <em>thrive</em>, businesses <em>grow</em>, communities <em>flourish</em>, and dreams become <em>reality.</em></p>
+    <div class="promise-sig fade-up d2">Casa Nova Interiors · Elevating Spaces. Enriching Lives.</div>
+  </div>
+</div>
+
+<!-- ═══ CORE VALUES ═══ -->
+<div class="values-section">
+  <div class="section-inner" style="padding-bottom:0">
+    <div class="section-label fade-up" style="text-align:center">What Drives Us</div>
+    <div class="gold-line fade-up" style="margin:0 auto 2rem"></div>
+    <h2 class="section-title fade-up d1" style="text-align:center;max-width:480px;margin:0 auto">Our Core <em>Values</em></h2>
+    <p class="body-text fade-up d2" style="text-align:center;margin:1.4rem auto 0;max-width:440px">Six principles that shape every decision, every project, and every relationship we build.</p>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:3rem 2rem 8rem">
+    <div class="values-grid">
+      <div class="value-card fade-up">
+        <span class="v-icon">✦</span>
+        <div class="v-num">01</div>
+        <div class="v-title">Purpose</div>
+        <div class="v-text">Every space we design carries a deeper intention — to give families dignity, safety, and a place they are proud to call home. We do not treat projects as transactions; we treat them as opportunities to make a meaningful difference.</div>
+      </div>
+      <div class="value-card fade-up d1">
+        <span class="v-icon">✦</span>
+        <div class="v-num">02</div>
+        <div class="v-title">Compassion</div>
+        <div class="v-text">We serve our clients and communities with genuine care — placing people before profit, always. We listen before we design, and we deliver with the sensitivity that every client deserves.</div>
+      </div>
+      <div class="value-card fade-up d2">
+        <span class="v-icon">✦</span>
+        <div class="v-num">03</div>
+        <div class="v-title">Excellence</div>
+        <div class="v-text">We hold ourselves to the highest standard in design, craftsmanship, and client experience — because our clients deserve nothing less. Excellence is not a goal; it is a baseline.</div>
+      </div>
+      <div class="value-card fade-up">
+        <span class="v-icon">✦</span>
+        <div class="v-num">04</div>
+        <div class="v-title">Impact</div>
+        <div class="v-text">Beyond beautiful interiors, we are building a legacy — one that creates jobs, empowers youth, and restores hope in communities across Kenya and Africa. Every project contributes to something larger than itself.</div>
+      </div>
+      <div class="value-card fade-up d1">
+        <span class="v-icon">✦</span>
+        <div class="v-num">05</div>
+        <div class="v-title">Integrity</div>
+        <div class="v-text">We honour every commitment, every relationship, and every project with honesty, transparency, and accountability. When we make a promise, we keep it — regardless of the cost.</div>
+      </div>
+      <div class="value-card fade-up d2">
+        <span class="v-icon">✦</span>
+        <div class="v-num">06</div>
+        <div class="v-title">Innovation</div>
+        <div class="v-text">We bring global thinking and forward-looking design to every project — blending African identity with world-class standards. We never stop learning, sourcing, and evolving.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ THE DIFFERENCE ═══ -->
+<div class="difference-section">
+  <div class="section-inner" style="padding-bottom:0">
+    <div class="section-label fade-up">How We Live It</div>
+    <div class="gold-line fade-up"></div>
+    <h2 class="section-title fade-up d1">Mission in Practice.<br><em>Every Day.</em></h2>
+    <p class="body-text fade-up d2" style="margin-top:1.4rem;max-width:540px">Our values are not words on a wall. They show up in the way we work, the choices we make, and the results we deliver for every client.</p>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:3rem 2rem 8rem">
+    <div class="diff-grid">
+      <div class="diff-card fade-up">
+        <div class="diff-num">01</div>
+        <div class="diff-title">End-to-End Delivery</div>
+        <div class="diff-text">One partner, zero gaps — from concept to completion. We manage every stage so nothing falls through the cracks and your project arrives exactly as envisioned.</div>
+      </div>
+      <div class="diff-card fade-up d1">
+        <div class="diff-num">02</div>
+        <div class="diff-title">Global Procurement</div>
+        <div class="diff-text">Direct access to premium suppliers across 6 global regions. World-class materials delivered to your project in Kenya, without compromise and without the middleman.</div>
+      </div>
+      <div class="diff-card fade-up d2">
+        <div class="diff-num">03</div>
+        <div class="diff-title">Design Excellence</div>
+        <div class="diff-text">Creative vision meets technical precision. Every space we deliver is as functional as it is beautiful — designed for the way you actually live and work.</div>
+      </div>
+      <div class="diff-card fade-up">
+        <div class="diff-num">04</div>
+        <div class="diff-title">Quality Assurance</div>
+        <div class="diff-text">Rigorous standards at every stage — every material, every finish, every detail held to the highest benchmark before we consider a project complete.</div>
+      </div>
+      <div class="diff-card fade-up d1">
+        <div class="diff-num">05</div>
+        <div class="diff-title">Client-First Approach</div>
+        <div class="diff-text">Your vision drives everything. We listen deeply, collaborate openly, and adapt fully — delivering exactly what you need, on time and within budget.</div>
+      </div>
+      <div class="diff-card fade-up d2">
+        <div class="diff-num">06</div>
+        <div class="diff-title">Community Impact</div>
+        <div class="diff-text">A portion of every project we complete flows back into our community impact work — creating employment, empowering youth, and building toward a better Kenya.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ IMPACT / COMMUNITY ═══ -->
+<div class="impact-section">
+  <div style="max-width:1100px;margin:0 auto;padding:8rem 2rem">
+    <div class="impact-grid">
+      <div class="fade-left">
+        <img src="esther.jpeg" alt="Esther Nyambura Ngumi — Founder, Casa Nova Interiors" class="impact-img">
+      </div>
+      <div class="impact-text fade-right">
+        <div class="section-label">Beyond Beautiful Spaces</div>
+        <div class="gold-line"></div>
+        <h2 class="section-title">Building a Legacy<br><em>That Lasts.</em></h2>
+        <p class="body-text" style="margin-top:1.4rem">Our founder Esther Nyambura Ngumi built Casa Nova with a vision that reaches far beyond interior design. The dream has always been to create a company that uplifts — not just the spaces we transform, but the people and communities around them.</p>
+        <p class="body-text" style="margin-top:1.2rem">Through our work, we aim to create meaningful employment, provide opportunities for young designers and craftspeople, and eventually establish support structures for vulnerable families — giving them access to the dignity of a well-designed home.</p>
+        <div class="scripture-block">
+          <div class="scripture-text">"The name Esther carries a powerful meaning. In Scripture, Esther was called for a purpose greater than herself — to stand in the gap and bring deliverance to her people."</div>
+          <div class="scripture-ref">The Book of Esther</div>
+        </div>
+        <p class="body-text">My prayer is that through this company, we may serve others with that same spirit of purpose, compassion, and lasting impact.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOUNDER QUOTE ═══ -->
+<div class="founder-strip">
+  <div class="founder-strip-inner">
+    <div style="position:relative" class="fade-left">
+      <div class="founder-img-border"></div>
+      <img src="p10.jpeg" alt="Casa Nova Interiors Showroom" class="founder-img" style="position:relative;z-index:1;object-position:center">
+    </div>
+    <div class="fade-right">
+      <div class="section-label">Our Commitment</div>
+      <div class="gold-line"></div>
+      <p class="founder-quote">"Every project we complete, every partnership we build, and every life we touch brings us one step closer to <em>that vision.</em> We are not just building spaces — we are building a better Africa, one room at a time."</p>
+      <div class="founder-byline" style="margin-bottom:2rem">— Esther Nyambura Ngumi &nbsp;·&nbsp; <strong>Founder & Lead Designer, Casa Nova Interiors</strong></div>
+      <a href="founder.html" class="btn-secondary">Read Her Full Message</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CTA ═══ -->
+<div class="mission-cta">
+  <div class="cta-title fade-up">Ready to Be Part of<br><em>Something Greater?</em></div>
+  <p class="cta-sub fade-up d1">Whether you're starting a home renovation, a commercial fit-out, or simply exploring what's possible — we'd love to hear about your vision. Our first consultation is always free.</p>
+  <div class="btn-row fade-up d2">
+    <a href="index.html#contact" class="btn-primary">Start a Project</a>
+    <a href="about.html" class="btn-secondary">Learn More About Us</a>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-logo">Casa Nova Interiors</div>
+  <div class="footer-tagline">Elevating Spaces. Enriching Lives.</div>
+  <div class="footer-copy">© 2025 Casa Nova Global Sourcing Interiors · Karen, Nairobi, Kenya · All Rights Reserved</div>
+</footer>
+
+<script>
+function reveal(){
+  document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight * 0.9) el.classList.add('visible');
+  });
+}
+window.addEventListener('scroll', reveal, {passive:true});
+reveal();
+</script>
+<script src="chatbot.js"></script>
+</body>
+</html>
