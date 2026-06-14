@@ -559,7 +559,7 @@ nav.solid{padding:1rem 1.5rem}
           </div>
           <div class="cf-field"><label>Project Budget (KES)</label><select><option value="">Select budget range...</option><option>Under 500,000</option><option>500,000 – 1,000,000</option><option>1,000,000 – 3,000,000</option><option>3,000,000 – 5,000,000</option><option>5,000,000+</option><option>Discuss on consultation</option></select></div>
           <div class="cf-field"><label>Project Description</label><textarea placeholder="Tell us about your space, timeline and what you're hoping to achieve..."></textarea></div>
-          <button class="btn-submit">Send Enquiry — It's Free</button>
+          <button class="btn-submit" onclick="submitForm(event)">Send Enquiry — It's Free</button>
         </div>
       </div>
     </div>
@@ -578,7 +578,7 @@ nav.solid{padding:1rem 1.5rem}
         <p>Nairobi's premier interior design, construction and global sourcing company. Transforming spaces, enriching lives, empowering communities across Africa and beyond.</p>
         <div class="footer-social">
           <a href="https://instagram.com/casa_nova_global_interior" target="_blank" class="fs-link">IG</a>
-          <a href="#" target="_blank" class="fs-link">FB</a>
+          <a href="https://www.facebook.com/casanovaglobalsourcinginteriors" target="_blank" class="fs-link">FB</a>
           <a href="https://wa.me/254716183011" target="_blank" class="fs-link">WA</a>
         </div>
       </div>
@@ -609,7 +609,7 @@ nav.solid{padding:1rem 1.5rem}
         <ul>
           <li><a href="tel:+254716183011">+254 716 183011</a></li>
           <li><a href="mailto:casanovaglobalsourcingltd@gmail.com">Email Us</a></li>
-          <li><a href="#">Karen, Nairobi 00100</a></li>
+          <li><a href="https://maps.google.com/?q=Karen,+Nairobi,+Kenya" target="_blank">Karen, Nairobi 00100</a></li>
           <li><a href="https://wa.me/254716183011" target="_blank">WhatsApp</a></li>
         </ul>
       </div>
@@ -622,6 +622,19 @@ nav.solid{padding:1rem 1.5rem}
 </footer>
 
 <script>
+function submitForm(e){
+  e.preventDefault();
+  const name = document.querySelector('.cf-field input[placeholder="Your name"]').value.trim();
+  const phone = document.querySelector('.cf-field input[placeholder="+254..."]').value.trim();
+  const email = document.querySelector('.cf-field input[placeholder="you@email.com"]').value.trim();
+  const service = document.querySelector('select').value;
+  const budget = document.querySelectorAll('select')[1].value;
+  const desc = document.querySelector('textarea').value.trim();
+  if(!name){ alert('Please enter your name.'); return; }
+  if(!phone && !email){ alert('Please enter a phone number or email.'); return; }
+  const msg = `Hi Casa Nova Interiors!%0A%0AI'd like to request a consultation.%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone||'Not provided')}%0A*Email:* ${encodeURIComponent(email||'Not provided')}%0A*Service:* ${encodeURIComponent(service||'Not specified')}%0A*Budget:* ${encodeURIComponent(budget||'To discuss')}%0A*Project:* ${encodeURIComponent(desc||'To discuss on call')}`;
+  window.open(`https://wa.me/254716183011?text=${msg}`, '_blank');
+}
 const heroPan = document.getElementById('heroPan');
 const heroContent = document.getElementById('heroContent');
 const navEl = document.getElementById('nav');

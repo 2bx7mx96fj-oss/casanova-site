@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Casa Nova Interiors | Our Projects</title>
+<meta name="description" content="Browse Casa Nova Interiors' portfolio of luxury residential, commercial and hospitality projects across Nairobi, Kenya.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#080808;color:#f5f0eb;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:1rem 4rem;background:rgba(8,8,8,0.96);backdrop-filter:blur(24px);border-bottom:1px solid rgba(201,169,110,0.12);display:flex;justify-content:space-between;align-items:center}
+.nav-logo-wrap{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-logo-img{width:40px;height:40px;object-fit:contain;mix-blend-mode:screen;filter:brightness(1.1)}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1}
+.nav-logo-main{font-family:'Playfair Display',serif;font-size:0.92rem;color:#fff;letter-spacing:3px;text-transform:uppercase}
+.nav-logo-sub{font-size:7px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:2.8rem}
+.nav-links a{font-size:9.5px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.3s}
+.nav-links a:hover,.nav-links a.active{color:#c9a96e}
+.nav-cta{padding:10px 28px;background:#c9a96e;color:#080808!important;font-size:9px!important;letter-spacing:3px;font-weight:600!important;transition:background 0.3s}
+.nav-cta:hover{background:#b8935a!important}
+
+.page-hero{padding:10rem 2rem 5rem;text-align:center;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,0.05) 0%,transparent 65%);pointer-events:none}
+.page-label{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;margin-bottom:1rem}
+.gold-line{width:36px;height:1px;background:#c9a96e;margin:0 auto 2rem}
+.page-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:400;line-height:1.08;color:#fff;margin-bottom:1rem}
+.page-title em{font-style:italic;color:#c9a96e}
+.page-sub{font-size:0.85rem;color:rgba(245,240,235,0.35);max-width:480px;margin:0 auto;line-height:2}
+
+/* FILTER TABS */
+.filter-bar{display:flex;justify-content:center;gap:0;flex-wrap:wrap;padding:3rem 2rem 2rem;border-bottom:1px solid rgba(201,169,110,0.08)}
+.filter-btn{padding:10px 24px;border:1px solid rgba(201,169,110,0.15);background:transparent;color:rgba(245,240,235,0.35);font-size:8.5px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;font-family:'Inter',sans-serif;margin:4px}
+.filter-btn:hover,.filter-btn.active{border-color:#c9a96e;color:#c9a96e;background:rgba(201,169,110,0.04)}
+
+/* MASONRY GRID */
+.gallery-wrap{max-width:1200px;margin:0 auto;padding:3rem 2rem 6rem}
+.gallery-grid{columns:3;column-gap:4px}
+.gallery-item{break-inside:avoid;margin-bottom:4px;overflow:hidden;position:relative;cursor:pointer;display:block}
+.gallery-item img{width:100%;display:block;transition:transform 0.7s cubic-bezier(0.4,0,0.2,1)}
+.gallery-item:hover img{transform:scale(1.04)}
+.gallery-item-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 50%);opacity:0;transition:opacity 0.4s}
+.gallery-item:hover .gallery-item-overlay{opacity:1}
+.gallery-item-label{position:absolute;bottom:1.2rem;left:1.2rem;opacity:0;transition:opacity 0.4s transform 0.4s;transform:translateY(6px)}
+.gallery-item:hover .gallery-item-label{opacity:1;transform:translateY(0)}
+.gil-cat{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;margin-bottom:3px}
+.gil-title{font-family:'Playfair Display',serif;font-size:0.9rem;color:#fff}
+
+/* LIGHTBOX */
+#lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:1000;display:none;align-items:center;justify-content:center;padding:2rem}
+#lightbox.open{display:flex}
+#lightbox img{max-width:90vw;max-height:90vh;object-fit:contain}
+#lightbox-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:#c9a96e;font-size:2rem;cursor:pointer;line-height:1}
+#lightbox-prev,#lightbox-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(201,169,110,0.1);border:1px solid rgba(201,169,110,0.3);color:#c9a96e;font-size:1.4rem;cursor:pointer;width:48px;height:48px;display:flex;align-items:center;justify-content:center;transition:all 0.3s}
+#lightbox-prev:hover,#lightbox-next:hover{background:#c9a96e;color:#080808}
+#lightbox-prev{left:1.5rem}
+#lightbox-next{right:1.5rem}
+
+/* CTA */
+.gallery-cta{text-align:center;padding:5rem 2rem;background:#0f0f0f;border-top:1px solid rgba(201,169,110,0.08)}
+.gallery-cta h2{font-family:'Playfair Display',serif;font-size:2rem;color:#fff;font-weight:400;margin-bottom:0.8rem}
+.gallery-cta h2 em{font-style:italic;color:#c9a96e}
+.gallery-cta p{font-size:0.85rem;color:rgba(245,240,235,0.3);margin-bottom:2.5rem}
+.btn-row{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{padding:16px 44px;background:#c9a96e;color:#080808;font-size:9.5px;letter-spacing:3.5px;text-transform:uppercase;text-decoration:none;font-weight:600;transition:all 0.3s;display:inline-block}
+.btn-primary:hover{background:#b8935a}
+.btn-secondary{padding:15px 36px;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);font-size:9.5px;letter-spacing:3.5px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;display:inline-block}
+.btn-secondary:hover{border-color:#c9a96e;color:#c9a96e}
+
+footer{background:#040404;padding:3rem 2rem;border-top:1px solid rgba(201,169,110,0.08);text-align:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;letter-spacing:2px;margin-bottom:0.3rem}
+.footer-tag{font-size:8.5px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem}
+.footer-copy{font-size:8px;color:rgba(255,255,255,0.1);letter-spacing:2px}
+
+.float-wa{position:fixed;bottom:2rem;right:2rem;z-index:400;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.3s;text-decoration:none}
+.float-wa:hover{transform:scale(1.1)}
+.float-wa svg{width:28px;height:28px;fill:#fff}
+
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.8s ease,transform 0.8s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.gallery-grid{columns:2}}
+@media(max-width:500px){.gallery-grid{columns:1}}
+</style>
+</head>
+<body>
+
+<a href="https://wa.me/254716183011" target="_blank" class="float-wa">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<nav>
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="logo.jpeg" alt="CN" class="nav-logo-img">
+    <div class="nav-logo-text">
+      <span class="nav-logo-main">Casa Nova</span>
+      <span class="nav-logo-sub">Interiors</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#about">About</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html" class="active">Portfolio</a>
+    <a href="founder.html">Our Founder</a>
+    <a href="faq.html">FAQs</a>
+    <a href="index.html#contact" class="nav-cta">Get a Quote</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-label fade-up">Portfolio</div>
+  <div class="gold-line fade-up"></div>
+  <h1 class="page-title fade-up">Projects That<br><em>Speak for Themselves</em></h1>
+  <p class="page-sub fade-up">A selection of our interior design, construction and furnishing projects across residential, commercial and hospitality sectors.</p>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filter('all',this)">All Projects</button>
+  <button class="filter-btn" onclick="filter('residential',this)">Residential</button>
+  <button class="filter-btn" onclick="filter('commercial',this)">Commercial</button>
+  <button class="filter-btn" onclick="filter('exterior',this)">Exterior & Build</button>
+  <button class="filter-btn" onclick="filter('outdoor',this)">Outdoor Living</button>
+</div>
+
+<div class="gallery-wrap">
+  <div class="gallery-grid" id="galleryGrid">
+
+    <div class="gallery-item" data-cat="residential" onclick="openLightbox(0)">
+      <img src="p9.jpeg" alt="Luxury Living Room">
+      <div class="gallery-item-overlay"></div>
+      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Luxury Living Room</div></div>
+    </div>
+
+    <div class="gallery-item" data-cat="exterior" onclick="openLightbox(1)">
+      <img src="project1.jpeg" alt="Contemporary Build">
+      <div class="gallery-item-overlay"></div>
+      <div class="gallery-item-label"><div class="gil-cat">Exterior & Build</div><div class="gil-title">Contemporary Residence</div></div>
+    </div>
+
+    <div class="gallery-item" data-cat="residential" onclick="openLightbox(2)">
+      <img src="p4.jpeg" alt="Luxury Bedroom Suite">
+      <div class="gallery-item-overlay"></div>
+      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Luxury Bedroom Suite</div></div>
+    </div>
+
+    <div class="gallery-item" data-cat="outdoor" onclick="openLightbox(3)">
+      <img src="p5.jpeg" alt="Outdoor Living Space">
+      <div class="gallery-item-overlay"></div>
+      <div class="gallery-item-label"><div class="gil-cat">Outdoor Living</div><div class="gil-title">Indoor-Outdoor Lounge</div></div>
+    </div>
+
+    <div class="gallery-item" data-cat="exterior" onclick="openLightbox(4)">
+      <img src="project2.jpeg" alt="Completed Build">
+      <div class="gallery-item-overlay"></div>
+      <div class="gallery-item-label"><div class="gil-cat">Exterior & Build</div><div class="gil-title">Finished Residence</div></div>
+    </div>
+
+    <div class="gallery-item" data-cat="outdoor" onclick="openLightbox(5)">
+      <img src="p6.jpeg" alt="Outdoor Terrace">
+      <div class="gallery-item-overlay"></div>
+      <div class="gallery-item-label"><div class="gil-cat">Outdoor Living</div><div class="gil-title">Terrace & Lighting</div></div>
+    </div>
+
+    <div class="gallery-item" data-cat="outdoor" onclick="openLightbox(6)">
+      <img src="p7.jpeg" alt="Outdoor Entertainment">
+      <div class="gallery-item-overlay"></div>
+      <div class="gallery-item-label"><div class="gil-cat">Outdoor Living</div><div class="gil-title">Entertainment Area</div></div>
+    </div>
+
+    <div class="gallery-item" data-cat="residential" onclick="openLightbox(7)">
+      <img src="p8.jpeg" alt="Open Plan Living">
+      <div class="gallery-item-overlay"></div>
+      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Open Plan Living</div></div>
+    </div>
+
+    <div class="gallery-item" data-cat="exterior" onclick="openLightbox(8)">
+      <img src="project3.jpeg" alt="Modern Build">
+      <div class="gallery-item-overlay"></div>
+      <div class="gallery-item-label"><div class="gil-cat">Exterior & Build</div><div class="gil-title">Modern Build — Karen</div></div>
+    </div>
+
+    <div class="gallery-item" data-cat="commercial" onclick="openLightbox(9)">
+      <img src="p10.jpeg" alt="Showroom & HQ">
+      <div class="gallery-item-overlay"></div>
+      <div class="gallery-item-label"><div class="gil-cat">Commercial</div><div class="gil-title">Casa Nova HQ Showroom</div></div>
+    </div>
+
+    <div class="gallery-item" data-cat="residential" onclick="openLightbox(10)">
+      <img src="p11.jpeg" alt="Interior Design Concept">
+      <div class="gallery-item-overlay"></div>
+      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Feature Wall Design</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">×</button>
+  <button id="lightbox-prev" onclick="prevImg()">‹</button>
+  <img id="lightbox-img" src="" alt="">
+  <button id="lightbox-next" onclick="nextImg()">›</button>
+</div>
+
+<div class="gallery-cta">
+  <h2 class="fade-up">Like What You <em>See?</em></h2>
+  <p class="fade-up">Let's create something extraordinary for your space. Get in touch for a free consultation.</p>
+  <div class="btn-row fade-up">
+    <a href="index.html#contact" class="btn-primary">Request a Free Consultation</a>
+    <a href="https://wa.me/254716183011?text=Hi%20Casa%20Nova%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" class="btn-secondary">WhatsApp Us</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Casa Nova Interiors</div>
+  <div class="footer-tag">Elevating Spaces. Enriching Lives.</div>
+  <div class="footer-copy">© 2025 Casa Nova Global Sourcing Interiors · Karen, Nairobi, Kenya</div>
+</footer>
+
+<script>
+const images = ['p9.jpeg','project1.jpeg','p4.jpeg','p5.jpeg','project2.jpeg','p6.jpeg','p7.jpeg','p8.jpeg','project3.jpeg','p10.jpeg','p11.jpeg'];
+let current = 0;
+
+function openLightbox(i){
+  current = i;
+  document.getElementById('lightbox-img').src = images[i];
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+function prevImg(){ current=(current-1+images.length)%images.length; document.getElementById('lightbox-img').src=images[current]; }
+function nextImg(){ current=(current+1)%images.length; document.getElementById('lightbox-img').src=images[current]; }
+document.getElementById('lightbox').addEventListener('click',function(e){ if(e.target===this) closeLightbox(); });
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowLeft') prevImg(); if(e.key==='ArrowRight') nextImg(); });
+
+function filter(cat, btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.gallery-item').forEach(item=>{
+    item.style.display = (cat==='all'||item.dataset.cat===cat) ? 'block' : 'none';
+  });
+}
+
+function reveal(){ document.querySelectorAll('.fade-up').forEach(el=>{ if(el.getBoundingClientRect().top<window.innerHeight*0.92) el.classList.add('visible'); }); }
+window.addEventListener('scroll',reveal,{passive:true});
+reveal();
+</script>
+<script src="chatbot.js"></script>
+</body>
+</html>

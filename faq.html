@@ -128,12 +128,12 @@ nav{padding:1rem 1.5rem}
 <!-- CATEGORY TABS -->
 <div class="faq-tabs">
   <div class="faq-tabs-inner">
-    <button class="faq-tab active" onclick="scrollTo('general')">General</button>
-    <button class="faq-tab" onclick="scrollTo('services')">Our Services</button>
-    <button class="faq-tab" onclick="scrollTo('process')">Process</button>
-    <button class="faq-tab" onclick="scrollTo('pricing')">Pricing</button>
-    <button class="faq-tab" onclick="scrollTo('sourcing')">Global Sourcing</button>
-    <button class="faq-tab" onclick="scrollTo('partnerships')">Partnerships</button>
+    <button class="faq-tab active" onclick="scrollToSection('general')">General</button>
+    <button class="faq-tab" onclick="scrollToSection('services')">Our Services</button>
+    <button class="faq-tab" onclick="scrollToSection('process')">Process</button>
+    <button class="faq-tab" onclick="scrollToSection('pricing')">Pricing</button>
+    <button class="faq-tab" onclick="scrollToSection('sourcing')">Global Sourcing</button>
+    <button class="faq-tab" onclick="scrollToSection('partnerships')">Partnerships</button>
   </div>
 </div>
 
@@ -490,7 +490,7 @@ function toggle(btn){
     answer.style.maxHeight=answer.scrollHeight+'px';
   }
 }
-function scrollTo(id){
+function scrollToSection(id){
   document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
   document.querySelectorAll('.faq-tab').forEach(t=>t.classList.remove('active'));
   event.target.classList.add('active');
