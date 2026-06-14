@@ -2,7 +2,7 @@
 const RESPONSES = [
   {
     patterns: ['hello','hi','hey','hiya','good morning','good afternoon','good evening','howdy','helo'],
-    reply: `Hi there! 👋 Welcome to Casa Nova Interiors. I'm here to help you with any questions about our services, pricing or how to get started.<br><br>What can I help you with today?`,
+    reply: `Welcome to Casa Nova Interiors. I'm here to help you with any questions about our services, pricing or how to get started.<br><br>What can I help you with today?`,
     quick: ['Our Services','Get a Quote','Contact Us','FAQ']
   },
   {
@@ -42,22 +42,22 @@ We typically respond within a few hours!`,
   {
     patterns: ['source','sourcing','import','china','india','turkey','uae','europe','international','material','furniture from'],
     reply: `Our global sourcing network covers <strong>6 regions:</strong><br><br>
-🇨🇳 China — furniture & materials<br>
-🇮🇳 India — textiles & soft furnishings<br>
-🇹🇷 Turkey — tiles & stone<br>
-🇦🇪 UAE — luxury fixtures<br>
-🇪🇺 Europe — designer lighting<br>
-🇿🇦 South Africa — local premium<br><br>
+China — furniture & materials<br>
+India — textiles & soft furnishings<br>
+Turkey — tiles & stone<br>
+UAE — luxury fixtures<br>
+Europe — designer lighting<br>
+South Africa — local premium<br><br>
 We handle shipping, customs and delivery to your door.`,
     quick: ['Get a Quote','Our Services','Contact Us']
   },
   {
     patterns: ['how long','timeline','duration','take','weeks','months','time'],
     reply: `Project timelines depend on scope:<br><br>
-🎨 Styling / soft furnishings: <strong>2–4 weeks</strong><br>
-🛋️ Single room fit-out: <strong>4–8 weeks</strong><br>
-🏠 Full home renovation: <strong>3–6 months</strong><br>
-🏢 Large commercial: <strong>6–12 months</strong><br><br>
+Styling / soft furnishings: <strong>2–4 weeks</strong><br>
+Single room fit-out: <strong>4–8 weeks</strong><br>
+Full home renovation: <strong>3–6 months</strong><br>
+Large commercial: <strong>6–12 months</strong><br><br>
 We provide a detailed timeline at the start of every project.`,
     quick: ['Our Process','Get a Quote','Contact Us']
   },
@@ -116,12 +116,12 @@ Get in touch to discuss how we can work together.`,
   },
   {
     patterns: ['thank','thanks','great','perfect','helpful','awesome','brilliant'],
-    reply: `You're very welcome! 😊 Is there anything else I can help you with?<br><br>Don't hesitate to reach out — our team is always happy to chat.`,
+    reply: `You're very welcome! Is there anything else I can help you with?<br><br>Don't hesitate to reach out — our team is always happy to chat.`,
     quick: ['Get a Quote','Contact Us','Our Services']
   },
   {
     patterns: ['bye','goodbye','see you','later','that\'s all','that is all','done'],
-    reply: `Thank you for visiting Casa Nova Interiors! 🌟<br><br>When you're ready to start your project, we're here. Have a wonderful day!`,
+    reply: `Thank you for visiting Casa Nova Interiors!<br><br>When you're ready to start your project, we're here. Have a wonderful day!`,
     quick: ['Get a Quote','Contact Us']
   }
 ];
@@ -214,7 +214,7 @@ const css = `
 const html = `
 <div id="cn-chat-widget">
   <div id="cn-chat-bubble" class="show">
-    <p>👋 Hi! Got a question about our <strong>design services?</strong> I'm here to help.</p>
+    <p>Got a question about our <strong>design services?</strong> I'm here to help.</p>
   </div>
   <button id="cn-chat-btn" aria-label="Open chat">
     <svg class="icon-chat" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
@@ -325,7 +325,7 @@ btn.addEventListener('click',()=>{
     if(!opened){
       opened = true;
       setTimeout(()=>{
-        addMsg(`Hi! 👋 I'm the <strong style="color:#c9a96e">Casa Nova</strong> assistant.<br><br>I can help you with questions about our services, pricing, process or how to get started. What would you like to know?`, 'bot', ['Our Services','Pricing','How it Works','Book a Consultation']);
+        addMsg(`Hi! I'm the <strong style="color:#c9a96e">Casa Nova</strong> assistant.<br><br>I can help you with questions about our services, pricing, process or how to get started. What would you like to know?`, 'bot', ['Our Services','Pricing','How it Works','Book a Consultation']);
       }, 300);
     }
   }
