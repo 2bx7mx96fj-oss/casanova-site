@@ -47,7 +47,7 @@ India — textiles & soft furnishings<br>
 Turkey — tiles & stone<br>
 UAE — luxury fixtures<br>
 Europe — designer lighting<br>
-South Africa — local premium<br><br>
+<br>
 We handle shipping, customs and delivery to your door.`,
     quick: ['Get a Quote','Our Services','Contact Us']
   },
