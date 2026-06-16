@@ -55,6 +55,27 @@ nav.solid{background:rgba(8,8,8,0.96);padding:1.2rem 4rem;backdrop-filter:blur(2
 .scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,rgba(201,169,110,0.5),transparent);animation:scrollPulse 2.5s ease-in-out infinite}
 @keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(0.7)}60%{opacity:1;transform:scaleY(1)}}
 
+/* LAYER REVEAL */
+.reveal-section{height:400vh;position:relative}
+.reveal-sticky{position:sticky;top:0;height:100vh;overflow:hidden;background:#080808}
+.reveal-layer{position:absolute;inset:0;clip-path:inset(100% 0 0 0);transition:none}
+.reveal-layer img{width:100%;height:100%;object-fit:cover;display:block}
+.reveal-layer::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.7) 0%,rgba(8,8,8,0.1) 50%,transparent 100%)}
+.reveal-layer.active{clip-path:inset(0% 0 0 0)}
+.reveal-headline{position:absolute;top:4rem;left:4rem;z-index:10;font-family:'Playfair Display',serif;font-size:clamp(1rem,2vw,1.3rem);color:rgba(255,255,255,0.18);letter-spacing:2px;pointer-events:none}
+.reveal-headline em{color:#c9a96e;font-style:italic}
+.reveal-label{position:absolute;bottom:3.5rem;left:4rem;z-index:10;pointer-events:none}
+.reveal-label-stage{font-size:8px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;margin-bottom:0.5rem;opacity:0;transform:translateY(6px);transition:opacity 0.5s,transform 0.5s}
+.reveal-label-stage.show{opacity:1;transform:translateY(0)}
+.reveal-label-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);color:#fff;font-weight:400;line-height:1.1;opacity:0;transform:translateY(10px);transition:opacity 0.6s 0.1s,transform 0.6s 0.1s}
+.reveal-label-title.show{opacity:1;transform:translateY(0)}
+.reveal-label-title em{font-style:italic;color:#c9a96e}
+.reveal-counter{position:absolute;bottom:3.5rem;right:4rem;z-index:10;font-size:8px;letter-spacing:4px;color:rgba(255,255,255,0.15);font-family:'Playfair Display',serif;font-style:italic}
+@media(max-width:900px){
+.reveal-headline,.reveal-label,.reveal-counter{left:1.5rem;right:1.5rem}
+.reveal-counter{right:1.5rem}
+}
+
 /* ABOUT */
 .about{background:#0a0a0a;padding:10rem 4rem}
 .about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center}
@@ -295,6 +316,28 @@ nav.solid{padding:1rem 1.5rem}
       <span>Scroll</span>
       <div class="scroll-line"></div>
     </div>
+  </div>
+</section>
+
+<!-- LAYER REVEAL -->
+<section class="reveal-section" id="revealSection">
+  <div class="reveal-sticky" id="revealSticky">
+
+    <div class="reveal-layer" id="rl0"><img src="p4.jpeg" alt="The Vision"></div>
+    <div class="reveal-layer" id="rl1"><img src="svc1.jpg" alt="Space Planning"></div>
+    <div class="reveal-layer" id="rl2"><img src="p5.jpeg" alt="Furniture"></div>
+    <div class="reveal-layer" id="rl3"><img src="p8.jpeg" alt="Lighting"></div>
+    <div class="reveal-layer" id="rl4"><img src="p7.jpeg" alt="Ambience"></div>
+    <div class="reveal-layer" id="rl5"><img src="svc4.jpg" alt="Final Styling"></div>
+
+    <div class="reveal-headline">A Casa Nova <em>Project</em></div>
+
+    <div class="reveal-label">
+      <div class="reveal-label-stage" id="rlStage">01 · The Vision</div>
+      <div class="reveal-label-title" id="rlTitle">Where it <em>Begins</em></div>
+    </div>
+
+    <div class="reveal-counter" id="rlCounter">01 / 06</div>
   </div>
 </section>
 
@@ -588,6 +631,45 @@ function submitForm(e){
   window.open(`https://wa.me/254716183011?text=${msg}`,'_blank');
 }
 
+// LAYER REVEAL
+const revealSection=document.getElementById('revealSection');
+const revealLayers=document.querySelectorAll('.reveal-layer');
+const rlStage=document.getElementById('rlStage');
+const rlTitle=document.getElementById('rlTitle');
+const rlCounter=document.getElementById('rlCounter');
+const LAYERS=[
+  {stage:'01 · The Vision',   title:'Where it <em>Begins</em>'},
+  {stage:'02 · Space Planning',title:'Structure &amp; <em>Form</em>'},
+  {stage:'03 · Furniture',     title:'Crafted for <em>Living</em>'},
+  {stage:'04 · Lighting',      title:'Setting the <em>Mood</em>'},
+  {stage:'05 · Ambience',      title:'Details that <em>Define</em>'},
+  {stage:'06 · Final Styling', title:'The <em>Finished</em> Space'},
+];
+let currentLayer=-1;
+function updateReveal(){
+  const rect=revealSection.getBoundingClientRect();
+  const total=revealSection.offsetHeight-window.innerHeight;
+  const scrolled=-rect.top;
+  const progress=Math.min(Math.max(scrolled/total,0),1);
+  const seg=1/LAYERS.length;
+  const idx=Math.min(Math.floor(progress/seg),LAYERS.length-1);
+  for(let i=0;i<revealLayers.length;i++){
+    revealLayers[i].classList.toggle('active',i<=idx);
+  }
+  if(idx!==currentLayer){
+    currentLayer=idx;
+    rlStage.classList.remove('show');
+    rlTitle.classList.remove('show');
+    setTimeout(()=>{
+      rlStage.innerHTML=LAYERS[idx].stage;
+      rlTitle.innerHTML=LAYERS[idx].title;
+      rlCounter.textContent=String(idx+1).padStart(2,'0')+' / '+String(LAYERS.length).padStart(2,'0');
+      rlStage.classList.add('show');
+      rlTitle.classList.add('show');
+    },80);
+  }
+}
+
 const navEl=document.getElementById('nav');
 const heroVideo=document.getElementById('heroVideo');
 const heroSection=document.getElementById('hero');
@@ -613,6 +695,8 @@ function onScroll(){
     if(el.getBoundingClientRect().top<window.innerHeight*0.9) el.classList.add('in');
   });
 }
+window.addEventListener('scroll',()=>{requestAnimationFrame(updateReveal);},{passive:true});
+updateReveal();
 window.addEventListener('scroll',onScroll,{passive:true});
 onScroll();
 
