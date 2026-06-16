@@ -126,7 +126,19 @@ footer{background:#040404;padding:3.5rem 2rem;text-align:center;border-top:1px s
 .fade-right.visible{opacity:1;transform:translateX(0)}
 
 /* ─── MOBILE ─── */
+
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.nav-hamburger span{display:block;width:22px;height:1px;background:#f5f0eb;transition:all 0.35s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;background:#080808;z-index:290;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;opacity:0;pointer-events:none;transition:opacity 0.4s}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.3s}
+.mobile-menu a:hover{color:#c9a96e}
+.mobile-menu .mob-cta{margin-top:1rem;padding:14px 40px;background:#c9a96e;color:#080808;font-size:9px;letter-spacing:3px;font-weight:600}
 @media(max-width:900px){
+.nav-hamburger{display:flex}
 nav{padding:1.2rem 1.5rem}
 .nav-links{display:none}
 .hero-content{padding:0 1.5rem 4rem}
@@ -368,6 +380,19 @@ function reveal(){
 window.addEventListener('scroll', reveal, {passive:true});
 reveal();
 </script>
-<script src="chatbot.js"></script>
+<script src="chatbot.js">
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+});
+function closeMob(){
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow='';
+}
+</script>
 </body>
 </html>
