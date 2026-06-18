@@ -35,33 +35,33 @@ nav.solid{background:rgba(8,8,8,0.96);padding:1.2rem 4rem;backdrop-filter:blur(2
 /* HERO */
 .hero{height:500vh;position:relative}
 .hero-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
-.hero-img{position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;transform-origin:center center;z-index:1}
-.room-mask{position:absolute;pointer-events:none;z-index:2;background:#080808}
-#maskTop{top:0;left:0;right:0;height:52%;transform-origin:top center}
-#maskLeft{top:45%;left:0;width:34%;bottom:0;transform-origin:left center}
-#maskRight{top:52%;right:0;width:27%;bottom:0;transform-origin:right center}
-#maskBed{top:40%;left:26%;right:20%;bottom:0;transform-origin:bottom center}
-.hero-vignette{position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,8,8,0.6) 0%,rgba(8,8,8,0.0) 55%,rgba(8,8,8,0.25) 100%);pointer-events:none;z-index:5}
-.hero-vignette2{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,1) 0%,rgba(8,8,8,0.5) 22%,rgba(8,8,8,0) 48%);pointer-events:none;z-index:5}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:translateZ(0)}
+.hero-vignette{position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,8,8,0.82) 0%,rgba(8,8,8,0.1) 50%,rgba(8,8,8,0.5) 100%);pointer-events:none}
+.hero-vignette2{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,1) 0%,rgba(8,8,8,0.4) 30%,rgba(8,8,8,0) 60%);pointer-events:none}
 
-/* STAGE OVERLAYS */
-.stage-overlay{position:absolute;inset:0;pointer-events:none;display:flex;align-items:flex-end;padding:0 4rem 5.5rem;opacity:0;z-index:6}
-.stage-overlay.cta-stage{pointer-events:all}
+/* HERO LAYERS */
+.hlayer{position:absolute;inset:0;pointer-events:none;display:flex;align-items:flex-end;padding:0 4rem 5.5rem}
+.hlayer.center{align-items:center;justify-content:center;text-align:center;padding:0 4rem}
+.hlayer.cta-layer{pointer-events:all}
 
-.stage-eyebrow{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,169,110,0.6);margin-bottom:1rem}
-.stage-headline{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3.8rem);font-weight:400;line-height:1.1;color:#f0ece4;max-width:680px;margin-bottom:1.8rem}
-.stage-headline em{font-style:italic;color:#c9a96e}
-.stage-stat{font-size:8.5px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,236,228,0.28);border-left:1px solid rgba(201,169,110,0.3);padding-left:1.2rem}
+.hero-eyebrow{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(240,236,228,0.4);margin-bottom:1rem;opacity:0}
+.hero-studio-name{font-family:'Playfair Display',serif;font-size:0.85rem;letter-spacing:4px;text-transform:uppercase;color:rgba(240,236,228,0.2);opacity:0}
 
-/* Stage 5 final — stats row */
-.hero-stats{display:flex;align-items:center;gap:3rem;margin-bottom:2.2rem}
+.hero-headline{font-family:'Playfair Display',serif;font-size:clamp(3rem,6.5vw,5.8rem);font-weight:400;line-height:1.03;color:#f0ece4;max-width:820px;opacity:0}
+.hero-headline em{font-style:italic;color:#c9a96e}
+.hc{display:inline-block;will-change:transform,opacity}
+
+.hero-stats-wrap{opacity:0;clip-path:inset(0 0 100% 0);width:100%}
+.hero-stats{display:flex;align-items:center;gap:3rem}
 .hero-stat-item{display:flex;flex-direction:column;gap:0.4rem}
 .stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-style:italic;color:#c9a96e;line-height:1}
 .stat-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,236,228,0.3)}
 .stat-div{width:1px;height:40px;background:rgba(240,236,228,0.1)}
 
-/* CTA */
-.hero-cta-wrap{margin-top:2rem}
+.hero-quote{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.8vw,2.2rem);font-style:italic;color:rgba(240,236,228,0.8);line-height:1.6;max-width:700px;opacity:0;filter:blur(12px)}
+.hero-quote-attr{font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,169,110,0.5);margin-top:1.5rem;opacity:0}
+
+.hero-cta-wrap{opacity:0;transform:translateY(20px)}
 .hero-cta-btn{display:inline-block;padding:15px 46px;background:#c9a96e;color:#080808;font-size:9px;letter-spacing:3.5px;text-transform:uppercase;text-decoration:none;font-weight:500;transition:background 0.3s;margin-right:2rem}
 .hero-cta-btn:hover{background:#b8935a}
 .hero-cta-ghost{display:inline-block;padding:14px 36px;border:1px solid rgba(240,236,228,0.2);color:rgba(240,236,228,0.5);font-size:9px;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:all 0.3s}
@@ -216,57 +216,23 @@ footer{padding:2.5rem 4rem;border-top:1px solid rgba(240,236,228,0.04);display:f
   <div class="hero-sticky" id="heroSticky">
 
     <!-- Base: fully styled room (always visible underneath) -->
-    <img class="hero-img" id="heroImgFull" src="hero-bedroom.jpg" alt="Casa Nova complete room">
-    <!-- Overlay layers that mask parts of the room — GSAP removes them progressively -->
-    <div class="room-mask" id="maskLeft"></div>
-    <div class="room-mask" id="maskRight"></div>
-    <div class="room-mask" id="maskTop"></div>
-    <div class="room-mask" id="maskBed"></div>
-
+    <video class="hero-video" id="heroVideo" src="hero.mp4" muted playsinline preload="auto"></video>
     <div class="hero-vignette"></div>
     <div class="hero-vignette2"></div>
 
-    <!-- Stage 1: Dark room, barely visible -->
-    <div class="stage-overlay" id="stage1">
+    <div class="hlayer" id="hLayer1">
       <div>
-        <p class="stage-eyebrow">Karen, Nairobi &nbsp;·&nbsp; Kenya</p>
-        <h1 class="stage-headline">Every masterpiece<br>begins with an<br><em>empty canvas.</em></h1>
-        <p class="stage-stat">Casa Nova Global Sourcing Interiors</p>
+        <p class="hero-eyebrow" id="hEyebrow">Karen, Nairobi &nbsp;·&nbsp; Kenya</p>
+        <p class="hero-studio-name" id="hStudio">Casa Nova Interiors</p>
       </div>
     </div>
 
-    <!-- Stage 2: Chandelier + botanical wall reveals -->
-    <div class="stage-overlay" id="stage2">
-      <div>
-        <p class="stage-eyebrow">Step 01 &nbsp;·&nbsp; Lighting & Ambience</p>
-        <h2 class="stage-headline">Light sets<br>the <em>mood</em><br>of a room.</h2>
-        <p class="stage-stat">Bespoke lighting — sourced from Italy, Dubai & beyond</p>
-      </div>
+    <div class="hlayer" id="hLayer2">
+      <h1 class="hero-headline" id="hHeadline">Elevating Spaces.<br><em>Enriching Lives.</em></h1>
     </div>
 
-    <!-- Stage 3: Pendant lights + side tables reveal -->
-    <div class="stage-overlay" id="stage3">
-      <div>
-        <p class="stage-eyebrow">Step 02 &nbsp;·&nbsp; Furniture & Storage</p>
-        <h2 class="stage-headline">Custom pieces,<br><em>globally</em><br>sourced.</h2>
-        <p class="stage-stat">Italy · Dubai · China · Egypt · Beyond</p>
-      </div>
-    </div>
-
-    <!-- Stage 4: Headboard + bed reveals -->
-    <div class="stage-overlay" id="stage4">
-      <div>
-        <p class="stage-eyebrow">Step 03 &nbsp;·&nbsp; The Centrepiece</p>
-        <h2 class="stage-headline">Every detail<br><em>placed with</em><br>intention.</h2>
-        <p class="stage-stat">Bespoke beds, soft furnishings & styling — end to end</p>
-      </div>
-    </div>
-
-    <!-- Stage 5: Complete room + CTA -->
-    <div class="stage-overlay cta-stage" id="stage5">
-      <div>
-        <p class="stage-eyebrow">The complete vision</p>
-        <h2 class="stage-headline">Elevating Spaces.<br><em>Enriching Lives.</em></h2>
+    <div class="hlayer" id="hLayer3">
+      <div class="hero-stats-wrap" id="hStats">
         <div class="hero-stats">
           <div class="hero-stat-item">
             <span class="stat-num">8</span>
@@ -283,10 +249,20 @@ footer{padding:2.5rem 4rem;border-top:1px solid rgba(240,236,228,0.04);display:f
             <span class="stat-label">End-to-End Delivery</span>
           </div>
         </div>
-        <div class="hero-cta-wrap">
-          <a href="#contact" class="hero-cta-btn">Start a Project</a>
-          <a href="services.html" class="hero-cta-ghost">View Services</a>
-        </div>
+      </div>
+    </div>
+
+    <div class="hlayer center" id="hLayer4">
+      <div>
+        <p class="hero-quote" id="hQuote">"We are building more than interiors.<br>We are building homes, opportunities,<br>hope, and futures."</p>
+        <p class="hero-quote-attr" id="hQuoteAttr">— Esther Nyambura Ngumi &nbsp;·&nbsp; Founder</p>
+      </div>
+    </div>
+
+    <div class="hlayer cta-layer" id="hLayer5">
+      <div class="hero-cta-wrap" id="hCTA">
+        <a href="#contact" class="hero-cta-btn">Start a Project</a>
+        <a href="services.html" class="hero-cta-ghost">View Services</a>
       </div>
     </div>
 
@@ -438,68 +414,47 @@ footer{padding:2.5rem 4rem;border-top:1px solid rgba(240,236,228,0.04);display:f
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-const heroSection  = document.getElementById('hero');
+const heroVideo   = document.getElementById('heroVideo');
+const heroSection = document.getElementById('hero');
+const navEl       = document.getElementById('nav');
 const progressFill = document.getElementById('hProgressFill');
-const stages = ['stage1','stage2','stage3','stage4','stage5'].map(id => document.getElementById(id));
 
-const stageBounds = [0, 0.2, 0.4, 0.6, 0.8, 1.0];
-const fadeW = 0.042;
+(function splitChars() {
+  const el = document.getElementById('hHeadline');
+  el.innerHTML = el.innerHTML.replace(/([^<>\n])/g, m => m.trim() === '' ? m : `<span class="hc">${m}</span>`);
+})();
 
-// ── Mask reveal timeline (scrubbed to scroll) ──────────────────────────────
-const tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: heroSection,
-    start: 'top top',
-    end: 'bottom bottom',
-    scrub: 1.4,
-  }
-});
+function initGSAP() {
+  heroVideo.pause();
+  heroVideo.currentTime = 0;
 
-// Gentle zoom on the image throughout
-tl.fromTo('#heroImgFull',
-  { scale: 1 },
-  { scale: 1.08, ease: 'none', duration: 1 }, 0);
+  ScrollTrigger.create({
+    trigger: heroSection, start: 'top top', end: 'bottom bottom', scrub: 0.4,
+    onUpdate(self) {
+      if (heroVideo.duration) heroVideo.currentTime = self.progress * heroVideo.duration;
+      progressFill.style.width = (self.progress * 100) + '%';
+    }
+  });
 
-// Stage 2 (20–38%): top mask wipes up → reveals chandelier + botanical wall
-tl.to('#maskTop',
-  { scaleY: 0, ease: 'power2.inOut', duration: 0.18 }, 0.20);
+  const tl = gsap.timeline({ scrollTrigger: { trigger: heroSection, start: 'top top', end: 'bottom bottom', scrub: 1.4 } });
 
-// Stage 3 (40–58%): sides wipe out → reveals pendant lights + side table
-tl.to('#maskLeft',
-  { scaleX: 0, ease: 'power2.inOut', duration: 0.18 }, 0.40);
-tl.to('#maskRight',
-  { scaleX: 0, ease: 'power2.inOut', duration: 0.18 }, 0.42);
+  tl.fromTo('#hEyebrow', { opacity:0, y:14, filter:'blur(6px)' }, { opacity:1, y:0, filter:'blur(0px)', duration:0.12, ease:'power2.out' }, 0)
+    .fromTo('#hStudio',  { opacity:0, y:10 }, { opacity:1, y:0, duration:0.1, ease:'power2.out' }, 0.04)
+    .fromTo('.hc', { opacity:0, y:22, rotateX:12 }, { opacity:1, y:0, rotateX:0, stagger:0.006, duration:0.2, ease:'power3.out' }, 0.08)
+    .to(['#hEyebrow','#hStudio'], { opacity:0, y:-10, filter:'blur(4px)', duration:0.08 }, 0.3)
+    .fromTo('#hStats', { opacity:0, clipPath:'inset(0 0 100% 0)', filter:'blur(4px)' }, { opacity:1, clipPath:'inset(0 0 0% 0)', filter:'blur(0px)', duration:0.14, ease:'power2.out' }, 0.35)
+    .to('#hHeadline', { opacity:0.12, duration:0.08 }, 0.5)
+    .to('#hStats', { opacity:0, y:-12, duration:0.08 }, 0.55)
+    .fromTo('#hQuote', { opacity:0, scale:0.96, filter:'blur(18px)' }, { opacity:1, scale:1, filter:'blur(0px)', duration:0.16, ease:'power1.out' }, 0.58)
+    .fromTo('#hQuoteAttr', { opacity:0, y:8 }, { opacity:1, y:0, duration:0.1 }, 0.66)
+    .to(['#hQuote','#hQuoteAttr'], { opacity:0, scale:1.02, filter:'blur(8px)', duration:0.1 }, 0.76)
+    .to('#hHeadline', { opacity:0.06, duration:0.06 }, 0.78)
+    .fromTo('#hCTA', { opacity:0, y:28 }, { opacity:1, y:0, duration:0.14, ease:'power2.out' }, 0.82)
+    .to('#heroScrollInd', { opacity:0, duration:0.06 }, 0.94);
+}
 
-// Stage 4 (60–78%): bed mask wipes up → reveals headboard + pillows
-tl.to('#maskBed',
-  { scaleY: 0, ease: 'power2.inOut', duration: 0.18 }, 0.60);
-
-// ── Progress bar + text stage fades (faster scrub for responsiveness) ───────
-ScrollTrigger.create({
-  trigger: heroSection,
-  start: 'top top',
-  end: 'bottom bottom',
-  scrub: 0.6,
-  onUpdate(self) {
-    const p = self.progress;
-    progressFill.style.width = (p * 100) + '%';
-
-    stages.forEach((el, i) => {
-      const start = stageBounds[i];
-      const end   = stageBounds[i + 1];
-      let op = 0;
-      if (p >= start && p <= end) {
-        op = Math.min(
-          Math.min(1, (p - start) / fadeW),
-          Math.min(1, (end - p) / fadeW)
-        );
-      }
-      el.style.opacity = op;
-    });
-  }
-});
-
-stages[0].style.opacity = 1;
+if (heroVideo.readyState >= 1) { initGSAP(); }
+else { heroVideo.addEventListener('loadedmetadata', initGSAP, { once: true }); }
 
 // — Nav solid on scroll —
 window.addEventListener('scroll', () => {
