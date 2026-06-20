@@ -52,11 +52,13 @@ nav.solid{background:rgba(8,8,8,0.96);padding:1.2rem 4rem;backdrop-filter:blur(2
 .hc{display:inline-block;will-change:transform,opacity}
 
 .hero-stats-wrap{opacity:0;clip-path:inset(0 0 100% 0);width:100%}
-.hero-stats{display:flex;align-items:center;gap:3rem}
-.hero-stat-item{display:flex;flex-direction:column;gap:0.4rem}
-.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-style:italic;color:#c9a96e;line-height:1}
-.stat-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,236,228,0.3)}
-.stat-div{width:1px;height:40px;background:rgba(240,236,228,0.1)}
+.hero-stats-wrap{padding:2rem 0 0}
+.hero-stats{display:flex;align-items:stretch;gap:0}
+.hero-stat-item{display:flex;flex-direction:column;gap:0.6rem;padding:0 3rem 0 0}
+.hero-stat-item:first-child{padding-left:0}
+.stat-num{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4rem);font-style:italic;color:#c9a96e;line-height:1;letter-spacing:-1px}
+.stat-label{font-size:8px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(240,236,228,0.35);max-width:120px;line-height:1.7}
+.stat-div{width:1px;background:linear-gradient(to bottom,transparent,rgba(201,169,110,0.3) 30%,rgba(201,169,110,0.3) 70%,transparent);margin:0 3rem 0 0;align-self:stretch;min-height:60px}
 
 .hero-quote{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.8vw,2.2rem);font-style:italic;color:rgba(240,236,228,0.8);line-height:1.6;max-width:700px;opacity:0;filter:blur(12px)}
 .hero-quote-attr{font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,169,110,0.5);margin-top:1.5rem;opacity:0}
