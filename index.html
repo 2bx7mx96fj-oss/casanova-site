@@ -494,7 +494,19 @@ const progressFill = document.getElementById('hProgressFill');
 
 (function splitChars() {
   const el = document.getElementById('hHeadline');
-  el.innerHTML = el.innerHTML.replace(/([^<>\n])/g, m => m.trim() === '' ? m : `<span class="hc">${m}</span>`);
+  function processNode(node) {
+    if (node.nodeType === 3) {
+      const frag = document.createDocumentFragment();
+      for (const ch of node.textContent) {
+        if (ch.trim() === '') { frag.appendChild(document.createTextNode(ch)); }
+        else { const s = document.createElement('span'); s.className = 'hc'; s.textContent = ch; frag.appendChild(s); }
+      }
+      node.parentNode.replaceChild(frag, node);
+    } else if (node.nodeType === 1) {
+      Array.from(node.childNodes).forEach(processNode);
+    }
+  }
+  Array.from(el.childNodes).forEach(processNode);
 })();
 
 function initGSAP() {
