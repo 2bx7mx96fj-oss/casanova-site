@@ -125,7 +125,20 @@ nav{padding:1.2rem 1.5rem}
     <a href="faq.html">FAQs</a>
     <a href="index.html#contact" class="nav-cta" style="padding:10px 28px;background:#c9a96e;color:#080808!important;font-size:9px!important;letter-spacing:3px;font-weight:600!important;transition:background 0.3s">Get a Quote</a>
   </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="about.html" onclick="closeMob()">About</a>
+  <a href="services.html" onclick="closeMob()">Services</a>
+  <a href="gallery.html" onclick="closeMob()">Portfolio</a>
+  <a href="mission.html" onclick="closeMob()">Our Mission</a>
+  <a href="founder.html" onclick="closeMob()">Our Founder</a>
+  <a href="faq.html" onclick="closeMob()">FAQs</a>
+  <a href="index.html#contact" class="mob-cta" onclick="closeMob()">Get a Quote</a>
+</div>
 
 <!-- HERO -->
 <div class="founder-hero">
@@ -247,7 +260,8 @@ const observer = () => {
 window.addEventListener('scroll', observer, {passive:true});
 observer();
 </script>
-<script src="chatbot.js">
+<script src="chatbot.js"></script>
+<script>
 const hamburger=document.getElementById('hamburger');
 const mobileMenu=document.getElementById('mobileMenu');
 hamburger.addEventListener('click',()=>{
