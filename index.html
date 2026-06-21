@@ -552,12 +552,12 @@ function initGSAP() {
     .fromTo('.hc', { opacity:0, y:22, rotateX:12 }, { opacity:1, y:0, rotateX:0, stagger:0.006, duration:0.2, ease:'power3.out' }, 0.08)
     .to(['#hEyebrow','#hStudio'], { opacity:0, y:-10, filter:'blur(4px)', duration:0.08 }, 0.3)
     .fromTo('#hStats', { opacity:0, clipPath:'inset(0 0 100% 0)', filter:'blur(4px)' }, { opacity:1, clipPath:'inset(0 0 0% 0)', filter:'blur(0px)', duration:0.14, ease:'power2.out' }, 0.35)
-    .to('#hHeadline', { opacity:0.12, duration:0.08 }, 0.5)
+    .to('#hHeadline', { opacity:0, duration:0.08 }, 0.5)
     .to('#hStats', { opacity:0, y:-12, duration:0.08 }, 0.55)
     .fromTo('#hQuote', { opacity:0, scale:0.96, filter:'blur(18px)' }, { opacity:1, scale:1, filter:'blur(0px)', duration:0.16, ease:'power1.out' }, 0.58)
     .fromTo('#hQuoteAttr', { opacity:0, y:8 }, { opacity:1, y:0, duration:0.1 }, 0.66)
     .to(['#hQuote','#hQuoteAttr'], { opacity:0, scale:1.02, filter:'blur(8px)', duration:0.1 }, 0.76)
-    .to('#hHeadline', { opacity:0.06, duration:0.06 }, 0.78)
+    .to('#hHeadline', { opacity:0, duration:0.06 }, 0.78)
     .fromTo('#hCTA', { opacity:0, y:28 }, { opacity:1, y:0, duration:0.14, ease:'power2.out' }, 0.82)
     .to('#heroScrollInd', { opacity:0, duration:0.06 }, 0.94);
 }
