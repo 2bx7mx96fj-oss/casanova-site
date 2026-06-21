@@ -118,7 +118,20 @@ footer{background:#040404;padding:3rem 2rem;border-top:1px solid rgba(201,169,11
     <a href="faq.html">FAQs</a>
     <a href="index.html#contact" class="nav-cta">Get a Quote</a>
   </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="about.html" onclick="closeMob()">About</a>
+  <a href="services.html" onclick="closeMob()">Services</a>
+  <a href="gallery.html" onclick="closeMob()">Portfolio</a>
+  <a href="mission.html" onclick="closeMob()">Our Mission</a>
+  <a href="founder.html" onclick="closeMob()">Our Founder</a>
+  <a href="faq.html" onclick="closeMob()">FAQs</a>
+  <a href="index.html#contact" class="mob-cta" onclick="closeMob()">Get a Quote</a>
+</div>
 
 <div class="page-hero">
   <div class="page-label fade-up">Portfolio</div>
@@ -228,70 +241,30 @@ footer{background:#040404;padding:3rem 2rem;border-top:1px solid rgba(201,169,11
       <div class="gallery-item-overlay"></div>
       <div class="gallery-item-label"><div class="gil-cat">Commercial</div><div class="gil-title">Commercial Interior</div></div>
     </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(18)">
-      <img src="PHOTO-2026-06-14-15-51-54.jpg" alt="Luxury Finish">
+    <div class="gallery-item" data-cat="commercial" onclick="openLightbox(18)">
+      <img src="PHOTO-2026-06-14-15-51-55 3.jpg" alt="Office Space">
       <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Luxury Finish</div></div>
+      <div class="gallery-item-label"><div class="gil-cat">Commercial</div><div class="gil-title">Executive Office</div></div>
     </div>
     <div class="gallery-item" data-cat="residential" onclick="openLightbox(19)">
-      <img src="PHOTO-2026-06-14-15-51-54 2.jpg" alt="Interior Styling">
+      <img src="PHOTO-2026-06-14-15-51-55 4.jpg" alt="Sitting Room">
       <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Interior Styling</div></div>
+      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Sitting Room</div></div>
     </div>
     <div class="gallery-item" data-cat="residential" onclick="openLightbox(20)">
-      <img src="PHOTO-2026-06-14-15-51-54 3.jpg" alt="Curated Space">
+      <img src="PHOTO-2026-06-14-15-51-56.jpg" alt="Hallway Design">
       <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Curated Space</div></div>
+      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Statement Hallway</div></div>
     </div>
     <div class="gallery-item" data-cat="residential" onclick="openLightbox(21)">
-      <img src="PHOTO-2026-06-14-15-51-54 4.jpg" alt="Designed Interior">
+      <img src="PHOTO-2026-06-14-15-51-56 3.jpg" alt="Bedroom Suite">
       <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Designed Interior</div></div>
+      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Tropical Bedroom Suite</div></div>
     </div>
-    <div class="gallery-item" data-cat="outdoor" onclick="openLightbox(22)">
-      <img src="PHOTO-2026-06-14-15-51-55.jpg" alt="Outdoor Living">
+    <div class="gallery-item" data-cat="residential" onclick="openLightbox(22)">
+      <img src="PHOTO-2026-06-14-15-51-56 4.jpg" alt="Sage Green Bedroom">
       <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Outdoor Living</div><div class="gil-title">Outdoor Living</div></div>
-    </div>
-    <div class="gallery-item" data-cat="outdoor" onclick="openLightbox(23)">
-      <img src="PHOTO-2026-06-14-15-51-55 2.jpg" alt="Terrace Design">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Outdoor Living</div><div class="gil-title">Terrace Design</div></div>
-    </div>
-    <div class="gallery-item" data-cat="outdoor" onclick="openLightbox(24)">
-      <img src="PHOTO-2026-06-14-15-51-55 3.jpg" alt="Exterior Space">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Outdoor Living</div><div class="gil-title">Exterior Space</div></div>
-    </div>
-    <div class="gallery-item" data-cat="outdoor" onclick="openLightbox(25)">
-      <img src="PHOTO-2026-06-14-15-51-55 4.jpg" alt="Outdoor Entertainment">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Outdoor Living</div><div class="gil-title">Outdoor Entertainment</div></div>
-    </div>
-    <div class="gallery-item" data-cat="outdoor" onclick="openLightbox(26)">
-      <img src="PHOTO-2026-06-14-15-51-55 5.jpg" alt="Garden Design">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Outdoor Living</div><div class="gil-title">Garden Design</div></div>
-    </div>
-    <div class="gallery-item" data-cat="exterior" onclick="openLightbox(27)">
-      <img src="PHOTO-2026-06-14-15-51-56.jpg" alt="Exterior Build">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Exterior & Build</div><div class="gil-title">Exterior Build</div></div>
-    </div>
-    <div class="gallery-item" data-cat="exterior" onclick="openLightbox(28)">
-      <img src="PHOTO-2026-06-14-15-51-56 2.jpg" alt="Completed Build">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Exterior & Build</div><div class="gil-title">Completed Build</div></div>
-    </div>
-    <div class="gallery-item" data-cat="exterior" onclick="openLightbox(29)">
-      <img src="PHOTO-2026-06-14-15-51-56 3.jpg" alt="Architecture">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Exterior & Build</div><div class="gil-title">Architecture</div></div>
-    </div>
-    <div class="gallery-item" data-cat="exterior" onclick="openLightbox(30)">
-      <img src="PHOTO-2026-06-14-15-51-56 4.jpg" alt="Modern Build">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Exterior & Build</div><div class="gil-title">Modern Build — Karen</div></div>
+      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Sage Green Bedroom</div></div>
     </div>
 
   </div>
@@ -321,7 +294,7 @@ footer{background:#040404;padding:3rem 2rem;border-top:1px solid rgba(201,169,11
 </footer>
 
 <script>
-const images = ['PHOTO-2026-06-14-15-50-47.jpg','PHOTO-2026-06-14-15-50-48.jpg','PHOTO-2026-06-14-15-50-48 2.jpg','PHOTO-2026-06-14-15-50-49.jpg','PHOTO-2026-06-14-15-50-50.jpg','PHOTO-2026-06-14-15-50-50 2.jpg','PHOTO-2026-06-14-15-50-50 3.jpg','PHOTO-2026-06-14-15-50-52.jpg','PHOTO-2026-06-14-15-50-52 2.jpg','PHOTO-2026-06-14-15-50-53.jpg','PHOTO-2026-06-14-15-50-54.jpg','PHOTO-2026-06-14-15-50-55.jpg','PHOTO-2026-06-14-15-50-56.jpg','PHOTO-2026-06-14-15-50-56 2.jpg','PHOTO-2026-06-14-15-50-56 3.jpg','PHOTO-2026-06-14-15-51-53.jpg','PHOTO-2026-06-14-15-51-53 2.jpg','PHOTO-2026-06-14-15-51-53 3.jpg','PHOTO-2026-06-14-15-51-54.jpg','PHOTO-2026-06-14-15-51-54 2.jpg','PHOTO-2026-06-14-15-51-54 3.jpg','PHOTO-2026-06-14-15-51-54 4.jpg','PHOTO-2026-06-14-15-51-55.jpg','PHOTO-2026-06-14-15-51-55 2.jpg','PHOTO-2026-06-14-15-51-55 3.jpg','PHOTO-2026-06-14-15-51-55 4.jpg','PHOTO-2026-06-14-15-51-55 5.jpg','PHOTO-2026-06-14-15-51-56.jpg','PHOTO-2026-06-14-15-51-56 2.jpg','PHOTO-2026-06-14-15-51-56 3.jpg','PHOTO-2026-06-14-15-51-56 4.jpg'];
+const images = ['PHOTO-2026-06-14-15-50-47.jpg','PHOTO-2026-06-14-15-50-48.jpg','PHOTO-2026-06-14-15-50-48 2.jpg','PHOTO-2026-06-14-15-50-49.jpg','PHOTO-2026-06-14-15-50-50.jpg','PHOTO-2026-06-14-15-50-50 2.jpg','PHOTO-2026-06-14-15-50-50 3.jpg','PHOTO-2026-06-14-15-50-52.jpg','PHOTO-2026-06-14-15-50-52 2.jpg','PHOTO-2026-06-14-15-50-53.jpg','PHOTO-2026-06-14-15-50-54.jpg','PHOTO-2026-06-14-15-50-55.jpg','PHOTO-2026-06-14-15-50-56.jpg','PHOTO-2026-06-14-15-50-56 2.jpg','PHOTO-2026-06-14-15-50-56 3.jpg','PHOTO-2026-06-14-15-51-53.jpg','PHOTO-2026-06-14-15-51-53 2.jpg','PHOTO-2026-06-14-15-51-53 3.jpg','PHOTO-2026-06-14-15-51-55 3.jpg','PHOTO-2026-06-14-15-51-55 4.jpg','PHOTO-2026-06-14-15-51-56.jpg','PHOTO-2026-06-14-15-51-56 3.jpg','PHOTO-2026-06-14-15-51-56 4.jpg'];
 let current = 0;
 
 function openLightbox(i){
@@ -351,7 +324,8 @@ function reveal(){ document.querySelectorAll('.fade-up').forEach(el=>{ if(el.get
 window.addEventListener('scroll',reveal,{passive:true});
 reveal();
 </script>
-<script src="chatbot.js">
+<script src="chatbot.js"></script>
+<script>
 const hamburger=document.getElementById('hamburger');
 const mobileMenu=document.getElementById('mobileMenu');
 hamburger.addEventListener('click',()=>{
