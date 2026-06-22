@@ -106,8 +106,10 @@ nav.solid{background:rgba(8,8,8,0.96);padding:1rem 4rem;backdrop-filter:blur(24p
 /* WHY */
 .why{padding:0;background:#080808;border-top:1px solid rgba(240,236,228,0.05)}
 .why-inner{max-width:none;display:grid;grid-template-columns:1fr 1fr}
-.why-img{height:700px;background:url('PHOTO-2026-06-14-15-50-56.jpg') center/cover;position:relative}
+.why-img{height:700px;overflow:hidden;position:relative}
+.why-img::before{content:'';position:absolute;inset:0;background:url('PHOTO-2026-06-14-15-50-56.jpg') center/cover;transform:scale(1.18);animation:whyZoom 7s cubic-bezier(0.25,0.46,0.45,0.94) forwards}
 .why-img::after{display:none}
+@keyframes whyZoom{to{transform:scale(1)}}
 .why-content{padding:8rem 6rem;display:flex;flex-direction:column;justify-content:center}
 .why-label{font-size:8.5px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,169,110,0.5);margin-bottom:2rem}
 .why-heading{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,3.5vw,3.4rem);font-weight:400;color:#f0ece4;line-height:1.1;letter-spacing:-0.5px}
