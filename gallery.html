@@ -31,33 +31,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;padding:1rem 4rem;background
 .page-title em{font-style:italic;color:#c9a96e}
 .page-sub{font-size:0.85rem;color:rgba(245,240,235,0.35);max-width:480px;margin:0 auto;line-height:2}
 
-/* FILTER TABS */
-.filter-bar{display:flex;justify-content:center;gap:0;flex-wrap:wrap;padding:3rem 2rem 2rem;border-bottom:1px solid rgba(201,169,110,0.08)}
-.filter-btn{padding:10px 24px;border:1px solid rgba(201,169,110,0.15);background:transparent;color:rgba(245,240,235,0.35);font-size:8.5px;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;font-family:'Inter',sans-serif;margin:4px}
-.filter-btn:hover,.filter-btn.active{border-color:#c9a96e;color:#c9a96e;background:rgba(201,169,110,0.04)}
-
-/* MASONRY GRID */
-.gallery-wrap{max-width:1200px;margin:0 auto;padding:3rem 2rem 6rem}
-.gallery-grid{columns:3;column-gap:2px}
-.gallery-item{break-inside:avoid;margin-bottom:2px;overflow:hidden;position:relative;cursor:pointer;display:block}
-.gallery-item img{width:100%;display:block;transition:transform 0.7s cubic-bezier(0.4,0,0.2,1)}
-.gallery-item:hover img{transform:scale(1.04)}
-.gallery-item-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 50%);opacity:0;transition:opacity 0.4s}
-.gallery-item:hover .gallery-item-overlay{opacity:1}
-.gallery-item-label{position:absolute;bottom:1.2rem;left:1.2rem;opacity:0;transition:opacity 0.4s transform 0.4s;transform:translateY(6px)}
-.gallery-item:hover .gallery-item-label{opacity:1;transform:translateY(0)}
-.gil-cat{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;margin-bottom:3px}
-.gil-title{font-family:'Playfair Display',serif;font-size:0.9rem;color:#fff}
-
-/* LIGHTBOX */
-#lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:1000;display:none;align-items:center;justify-content:center;padding:2rem}
-#lightbox.open{display:flex}
-#lightbox img{max-width:90vw;max-height:90vh;object-fit:contain}
-#lightbox-close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:#c9a96e;font-size:2rem;cursor:pointer;line-height:1}
-#lightbox-prev,#lightbox-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(201,169,110,0.1);border:1px solid rgba(201,169,110,0.3);color:#c9a96e;font-size:1.4rem;cursor:pointer;width:48px;height:48px;display:flex;align-items:center;justify-content:center;transition:all 0.3s}
-#lightbox-prev:hover,#lightbox-next:hover{background:#c9a96e;color:#080808}
-#lightbox-prev{left:1.5rem}
-#lightbox-next{right:1.5rem}
+/* COMING SOON */
+.coming-soon-wrap{min-height:70vh;display:flex;align-items:center;justify-content:center;padding:6rem 2rem}
+.cs-inner{max-width:620px;text-align:center}
+.cs-icon{margin-bottom:2.5rem;display:flex;justify-content:center}
+.cs-label{font-size:8.5px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;margin-bottom:1.2rem}
+.cs-heading{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:#fff;line-height:1.15;margin-bottom:1.8rem}
+.cs-heading em{font-style:italic;color:#c9a96e}
+.cs-sub{font-size:0.88rem;color:rgba(245,240,235,0.35);line-height:2;margin-bottom:2rem}
+.cs-divider{width:36px;height:1px;background:#c9a96e;margin:2rem auto}
+.cs-note{font-size:0.82rem;color:rgba(245,240,235,0.22);line-height:1.9;margin-bottom:2.5rem}
+.cs-actions{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
 
 /* CTA */
 .gallery-cta{text-align:center;padding:5rem 2rem;background:#0f0f0f;border-top:1px solid rgba(201,169,110,0.08)}
@@ -141,142 +125,27 @@ footer{background:#040404;padding:3rem 2rem;border-top:1px solid rgba(201,169,11
   <p class="page-sub fade-up">A selection of our interior design, construction and furnishing projects across residential, commercial and hospitality sectors.</p>
 </div>
 
-<div class="filter-bar">
-  <button class="filter-btn active" onclick="filter('all',this)">All Projects</button>
-  <button class="filter-btn" onclick="filter('residential',this)">Residential</button>
-  <button class="filter-btn" onclick="filter('commercial',this)">Commercial</button>
-  <button class="filter-btn" onclick="filter('exterior',this)">Exterior & Build</button>
-  <button class="filter-btn" onclick="filter('outdoor',this)">Outdoor Living</button>
-</div>
-
-<div class="gallery-wrap">
-  <div class="gallery-grid" id="galleryGrid">
-
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(0)">
-      <img src="PHOTO-2026-06-14-15-50-47.jpg" alt="Residential Interior">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Living Room</div></div>
+<div class="coming-soon-wrap">
+  <div class="cs-inner fade-up">
+    <div class="cs-icon">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="46" height="46" rx="0" stroke="#c9a96e" stroke-width="0.5"/>
+        <rect x="8" y="8" width="14" height="14" rx="0" stroke="#c9a96e" stroke-width="0.5" fill="rgba(201,169,110,0.04)"/>
+        <rect x="26" y="8" width="14" height="14" rx="0" stroke="#c9a96e" stroke-width="0.5" fill="rgba(201,169,110,0.04)"/>
+        <rect x="8" y="26" width="14" height="14" rx="0" stroke="#c9a96e" stroke-width="0.5" fill="rgba(201,169,110,0.04)"/>
+        <rect x="26" y="26" width="14" height="14" rx="0" stroke="#c9a96e" stroke-width="0.5" fill="rgba(201,169,110,0.04)"/>
+      </svg>
     </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(1)">
-      <img src="PHOTO-2026-06-14-15-50-48.jpg" alt="Residential Interior">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Bedroom Suite</div></div>
+    <p class="cs-label">Portfolio</p>
+    <h2 class="cs-heading">Our work speaks<br><em>for itself.</em></h2>
+    <p class="cs-sub">A curated collection of our residential, commercial and hospitality projects is being prepared. Professional photography is currently underway across our completed projects in Karen, Lavington and Westlands.</p>
+    <div class="cs-divider"></div>
+    <p class="cs-note">In the meantime, we'd love to show you our work directly — get in touch and we'll walk you through our portfolio personally.</p>
+    <div class="cs-actions">
+      <a href="index.html#contact" class="btn-primary">Book a Consultation</a>
+      <a href="https://wa.me/254716183011?text=Hi%20Casa%20Nova%2C%20I'd%20like%20to%20see%20your%20portfolio." target="_blank" class="btn-secondary">WhatsApp Us</a>
     </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(2)">
-      <img src="PHOTO-2026-06-14-15-50-48 2.jpg" alt="Residential Interior">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Dining Area</div></div>
-    </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(3)">
-      <img src="PHOTO-2026-06-14-15-50-49.jpg" alt="Interior Detail">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Interior Detail</div></div>
-    </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(4)">
-      <img src="PHOTO-2026-06-14-15-50-50.jpg" alt="Open Plan Living">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Open Plan Living</div></div>
-    </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(5)">
-      <img src="PHOTO-2026-06-14-15-50-50 2.jpg" alt="Luxury Residence">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Luxury Residence</div></div>
-    </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(6)">
-      <img src="PHOTO-2026-06-14-15-50-50 3.jpg" alt="Feature Design">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Feature Design</div></div>
-    </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(7)">
-      <img src="PHOTO-2026-06-14-15-50-52.jpg" alt="Residential Interior">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Custom Joinery</div></div>
-    </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(8)">
-      <img src="PHOTO-2026-06-14-15-50-52 2.jpg" alt="Interior Space">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Interior Space</div></div>
-    </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(9)">
-      <img src="PHOTO-2026-06-14-15-50-53.jpg" alt="Design Concept">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Design Concept</div></div>
-    </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(10)">
-      <img src="PHOTO-2026-06-14-15-50-54.jpg" alt="Soft Furnishings">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Soft Furnishings</div></div>
-    </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(11)">
-      <img src="PHOTO-2026-06-14-15-50-55.jpg" alt="Luxury Detail">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Luxury Detail</div></div>
-    </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(12)">
-      <img src="PHOTO-2026-06-14-15-50-56.jpg" alt="Interior Design">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Interior Design</div></div>
-    </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(13)">
-      <img src="PHOTO-2026-06-14-15-50-56 2.jpg" alt="Bespoke Interior">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Bespoke Interior</div></div>
-    </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(14)">
-      <img src="PHOTO-2026-06-14-15-50-56 3.jpg" alt="Residential Space">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Residential Space</div></div>
-    </div>
-    <div class="gallery-item" data-cat="commercial" onclick="openLightbox(15)">
-      <img src="PHOTO-2026-06-14-15-51-53.jpg" alt="Commercial Project">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Commercial</div><div class="gil-title">Commercial Project</div></div>
-    </div>
-    <div class="gallery-item" data-cat="commercial" onclick="openLightbox(16)">
-      <img src="PHOTO-2026-06-14-15-51-53 2.jpg" alt="Office Fit-Out">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Commercial</div><div class="gil-title">Office Fit-Out</div></div>
-    </div>
-    <div class="gallery-item" data-cat="commercial" onclick="openLightbox(17)">
-      <img src="PHOTO-2026-06-14-15-51-53 3.jpg" alt="Commercial Interior">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Commercial</div><div class="gil-title">Commercial Interior</div></div>
-    </div>
-    <div class="gallery-item" data-cat="commercial" onclick="openLightbox(18)">
-      <img src="PHOTO-2026-06-14-15-51-55 3.jpg" alt="Office Space">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Commercial</div><div class="gil-title">Executive Office</div></div>
-    </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(19)">
-      <img src="PHOTO-2026-06-14-15-51-55 4.jpg" alt="Sitting Room">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Sitting Room</div></div>
-    </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(20)">
-      <img src="PHOTO-2026-06-14-15-51-56.jpg" alt="Hallway Design">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Statement Hallway</div></div>
-    </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(21)">
-      <img src="PHOTO-2026-06-14-15-51-56 3.jpg" alt="Bedroom Suite">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Tropical Bedroom Suite</div></div>
-    </div>
-    <div class="gallery-item" data-cat="residential" onclick="openLightbox(22)">
-      <img src="PHOTO-2026-06-14-15-51-56 4.jpg" alt="Sage Green Bedroom">
-      <div class="gallery-item-overlay"></div>
-      <div class="gallery-item-label"><div class="gil-cat">Residential</div><div class="gil-title">Sage Green Bedroom</div></div>
-    </div>
-
   </div>
-</div>
-
-<!-- LIGHTBOX -->
-<div id="lightbox">
-  <button id="lightbox-close" onclick="closeLightbox()">×</button>
-  <button id="lightbox-prev" onclick="prevImg()">‹</button>
-  <img id="lightbox-img" src="" alt="">
-  <button id="lightbox-next" onclick="nextImg()">›</button>
 </div>
 
 <div class="gallery-cta">
@@ -295,32 +164,6 @@ footer{background:#040404;padding:3rem 2rem;border-top:1px solid rgba(201,169,11
 </footer>
 
 <script>
-const images = ['PHOTO-2026-06-14-15-50-47.jpg','PHOTO-2026-06-14-15-50-48.jpg','PHOTO-2026-06-14-15-50-48 2.jpg','PHOTO-2026-06-14-15-50-49.jpg','PHOTO-2026-06-14-15-50-50.jpg','PHOTO-2026-06-14-15-50-50 2.jpg','PHOTO-2026-06-14-15-50-50 3.jpg','PHOTO-2026-06-14-15-50-52.jpg','PHOTO-2026-06-14-15-50-52 2.jpg','PHOTO-2026-06-14-15-50-53.jpg','PHOTO-2026-06-14-15-50-54.jpg','PHOTO-2026-06-14-15-50-55.jpg','PHOTO-2026-06-14-15-50-56.jpg','PHOTO-2026-06-14-15-50-56 2.jpg','PHOTO-2026-06-14-15-50-56 3.jpg','PHOTO-2026-06-14-15-51-56.jpg','PHOTO-2026-06-14-15-51-55 4.jpg','PHOTO-2026-06-14-15-51-56.jpg','PHOTO-2026-06-14-15-51-56 3.jpg','PHOTO-2026-06-14-15-51-56 4.jpg'];
-let current = 0;
-
-function openLightbox(i){
-  current = i;
-  document.getElementById('lightbox-img').src = images[i];
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeLightbox(){
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow='';
-}
-function prevImg(){ current=(current-1+images.length)%images.length; document.getElementById('lightbox-img').src=images[current]; }
-function nextImg(){ current=(current+1)%images.length; document.getElementById('lightbox-img').src=images[current]; }
-document.getElementById('lightbox').addEventListener('click',function(e){ if(e.target===this) closeLightbox(); });
-document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowLeft') prevImg(); if(e.key==='ArrowRight') nextImg(); });
-
-function filter(cat, btn){
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.gallery-item').forEach(item=>{
-    item.style.display = (cat==='all'||item.dataset.cat===cat) ? 'block' : 'none';
-  });
-}
-
 function reveal(){ document.querySelectorAll('.fade-up').forEach(el=>{ if(el.getBoundingClientRect().top<window.innerHeight*0.92) el.classList.add('visible'); }); }
 window.addEventListener('scroll',reveal,{passive:true});
 reveal();
