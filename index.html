@@ -104,14 +104,16 @@ nav.solid{background:rgba(8,8,8,0.96);padding:1rem 4rem;backdrop-filter:blur(24p
 .svc-name{font-family:'Playfair Display',serif;font-size:1rem;color:#f0ece4;font-weight:400;line-height:1.5}
 
 /* WHY */
-.why{padding:10rem 4rem;background:#080808;border-top:1px solid rgba(240,236,228,0.05)}
-.why-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:12rem;align-items:start}
-.why-left{}
+.why{padding:0;background:#080808;border-top:1px solid rgba(240,236,228,0.05)}
+.why-inner{max-width:none;display:grid;grid-template-columns:1fr 1fr}
+.why-img{height:700px;background:url('PHOTO-2026-06-14-15-50-49.jpg') center/cover;position:relative}
+.why-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,#080808 100%)}
+.why-content{padding:8rem 6rem;display:flex;flex-direction:column;justify-content:center}
 .why-label{font-size:8.5px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,169,110,0.5);margin-bottom:2rem}
-.why-heading{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.6rem);font-weight:400;color:#f0ece4;line-height:1.1;letter-spacing:-0.5px}
+.why-heading{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,3.5vw,3.4rem);font-weight:400;color:#f0ece4;line-height:1.1;letter-spacing:-0.5px}
 .why-heading em{font-style:italic;color:#c9a96e}
 .why-sub{font-size:0.84rem;color:rgba(240,236,228,0.28);line-height:2.1;margin-top:2rem;max-width:360px}
-.why-list{list-style:none;margin-top:0}
+.why-list{list-style:none;margin-top:2rem}
 .why-list li{font-size:0.84rem;color:rgba(240,236,228,0.35);padding:1.4rem 0;border-bottom:1px solid rgba(240,236,228,0.04);display:flex;align-items:baseline;gap:1.2rem;line-height:1.8}
 .why-list li::before{content:'—';color:#c9a96e;font-size:0.7rem;flex-shrink:0}
 
@@ -161,9 +163,24 @@ nav.solid{background:rgba(8,8,8,0.96);padding:1rem 4rem;backdrop-filter:blur(24p
 .cta-profile-link:hover{color:#c9a96e;border-color:rgba(201,169,110,0.5)}
 
 /* FOOTER */
-footer{padding:2.5rem 4rem;border-top:1px solid rgba(240,236,228,0.04);display:flex;justify-content:space-between;align-items:center}
-.footer-logo{font-family:'Playfair Display',serif;font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;color:rgba(240,236,228,0.2)}
+footer{background:#040404;border-top:1px solid rgba(240,236,228,0.04)}
+.footer-top{max-width:1200px;margin:0 auto;padding:5rem 4rem 4rem;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:4rem}
+.footer-brand{}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:3px;text-transform:uppercase;color:rgba(240,236,228,0.5);margin-bottom:0.5rem}
+.footer-tagline{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-bottom:1.5rem}
+.footer-brand-desc{font-size:0.78rem;color:rgba(240,236,228,0.18);line-height:2;max-width:220px}
+.footer-col-title{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,236,228,0.25);margin-bottom:1.5rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.9rem}
+.footer-links a{font-size:0.8rem;color:rgba(240,236,228,0.28);text-decoration:none;transition:color 0.3s;letter-spacing:0.3px}
+.footer-links a:hover{color:#c9a96e}
+.footer-contact-item{font-size:0.78rem;color:rgba(240,236,228,0.22);margin-bottom:0.9rem;line-height:1.7}
+.footer-contact-item a{color:rgba(240,236,228,0.22);text-decoration:none;transition:color 0.3s}
+.footer-contact-item a:hover{color:#c9a96e}
+.footer-bottom{border-top:1px solid rgba(240,236,228,0.04);padding:1.8rem 4rem;display:flex;justify-content:space-between;align-items:center;max-width:none}
 .footer-copy{font-size:8px;letter-spacing:2px;color:rgba(240,236,228,0.1)}
+.footer-social{display:flex;gap:1.5rem}
+.footer-social a{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(240,236,228,0.15);text-decoration:none;transition:color 0.3s}
+.footer-social a:hover{color:#c9a96e}
 
 /* FLOAT WA */
 .float-wa{position:fixed;bottom:2rem;right:2rem;z-index:400;width:52px;height:52px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35);transition:transform 0.3s;text-decoration:none}
@@ -197,10 +214,76 @@ footer{padding:2.5rem 4rem;border-top:1px solid rgba(240,236,228,0.04);display:f
 .sourcing-img-pair img:last-child{aspect-ratio:3/4}
 .sourcing-caption{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,236,228,0.15);margin-top:1.2rem}
 
+/* PROCESS */
+.process{background:#050505;border-top:1px solid rgba(240,236,228,0.05);padding:0 0 0}
+.process-top{max-width:1200px;margin:0 auto;padding:7rem 4rem 4rem}
+.process-top-label{font-size:8.5px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,169,110,0.5);margin-bottom:1rem}
+.process-top-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:400;color:#f0ece4;letter-spacing:-0.5px}
+.process-top-title em{font-style:italic;color:#c9a96e}
+.process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(240,236,228,0.04)}
+.process-step{padding:3.5rem 2.8rem;background:#050505;transition:background 0.4s;position:relative}
+.process-step:hover{background:#080808}
+.process-num{font-family:'Playfair Display',serif;font-size:2.8rem;color:rgba(201,169,110,0.08);font-style:italic;line-height:1;margin-bottom:2rem}
+.process-title{font-family:'Playfair Display',serif;font-size:0.95rem;color:#f0ece4;margin-bottom:0.8rem;font-weight:400}
+.process-desc{font-size:0.76rem;color:rgba(240,236,228,0.28);line-height:2}
+.process-bar{position:absolute;bottom:0;left:0;width:0;height:1px;background:#c9a96e;transition:width 0.5s ease}
+.process-step:hover .process-bar{width:100%}
+
+/* TESTIMONIALS */
+.testimonials{padding:10rem 4rem;background:#080808;border-top:1px solid rgba(240,236,228,0.05)}
+.testimonials-inner{max-width:1200px;margin:0 auto}
+.testimonials-label{font-size:8.5px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,169,110,0.5);margin-bottom:1rem}
+.testimonials-heading{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:400;color:#f0ece4;margin-bottom:5rem;letter-spacing:-0.5px}
+.testimonials-heading em{font-style:italic;color:#c9a96e}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(240,236,228,0.04)}
+.testimonial{padding:3.5rem 3rem;background:#080808;display:flex;flex-direction:column}
+.testimonial-mark{font-family:'Playfair Display',serif;font-size:4rem;color:rgba(201,169,110,0.12);line-height:0.6;display:block;margin-bottom:2rem}
+.testimonial-text{font-family:'Playfair Display',serif;font-size:0.95rem;font-style:italic;color:rgba(240,236,228,0.5);line-height:1.95;margin-bottom:2.5rem;flex:1}
+.testimonial-rule{width:24px;height:1px;background:rgba(201,169,110,0.3);margin-bottom:1.2rem}
+.testimonial-name{font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e}
+.testimonial-project{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,236,228,0.18);margin-top:4px}
+
+/* CONTACT SECTION */
+.contact-section{background:#0a0a0a;border-top:1px solid rgba(240,236,228,0.05)}
+.contact-inner{max-width:none;display:grid;grid-template-columns:1fr 1fr;min-height:600px}
+.contact-left{padding:8rem 6rem;background:#080808;display:flex;flex-direction:column;justify-content:center}
+.contact-label{font-size:8.5px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,169,110,0.5);margin-bottom:1rem}
+.contact-gold-line{width:36px;height:1px;background:#c9a96e;margin-bottom:2rem}
+.contact-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.6rem);font-weight:400;color:#f0ece4;line-height:1.05;letter-spacing:-1px;margin-bottom:1.5rem}
+.contact-title em{font-style:italic;color:#c9a96e}
+.contact-sub{font-size:0.84rem;color:rgba(240,236,228,0.28);line-height:2.1;max-width:380px;margin-bottom:3.5rem}
+.contact-details{display:flex;flex-direction:column;gap:1.4rem}
+.contact-detail{text-decoration:none;display:flex;flex-direction:column;gap:3px;padding-bottom:1.4rem;border-bottom:1px solid rgba(240,236,228,0.05)}
+.contact-detail:last-child{border-bottom:none}
+.contact-detail-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,169,110,0.4)}
+.contact-detail-value{font-size:0.88rem;color:rgba(240,236,228,0.45);transition:color 0.3s}
+a.contact-detail:hover .contact-detail-value{color:#c9a96e}
+
+.contact-right{padding:8rem 6rem;background:#0d0d0d;display:flex;flex-direction:column;justify-content:center}
+.contact-form-label{font-size:8.5px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,169,110,0.5);margin-bottom:3rem}
+.contact-form{display:flex;flex-direction:column;gap:0}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1px}
+.form-group{display:flex;flex-direction:column;margin-bottom:1px}
+.form-group label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,236,228,0.25);padding:1.2rem 1.4rem 0.5rem;background:#111}
+.form-group input,.form-group select,.form-group textarea{background:#111;border:none;border-bottom:1px solid rgba(240,236,228,0.06);padding:0.6rem 1.4rem 1.2rem;color:#f0ece4;font-size:0.86rem;font-family:'Inter',sans-serif;outline:none;transition:border-color 0.3s;width:100%;resize:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-bottom-color:rgba(201,169,110,0.4)}
+.form-group select{appearance:none;cursor:pointer}
+.form-group select option{background:#111;color:#f0ece4}
+.form-submit{margin-top:1px;padding:1.6rem 3rem;background:#c9a96e;color:#080808;border:none;font-size:9.5px;letter-spacing:3.5px;text-transform:uppercase;font-weight:600;cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;transition:background 0.3s;font-family:'Inter',sans-serif}
+.form-submit:hover{background:#b8935a}
+.form-submit span{font-size:1.1rem;transition:transform 0.3s}
+.form-submit:hover span{transform:translateX(5px)}
+.form-success{display:none;margin-top:1rem;padding:1.4rem 1.8rem;background:rgba(201,169,110,0.06);border-left:2px solid #c9a96e;font-size:0.82rem;color:rgba(240,236,228,0.5);letter-spacing:0.5px}
+
 /* REVEAL */
 .fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.9s ease,transform 0.9s ease}
 .fade-up.in{opacity:1;transform:translateY(0)}
 
+@media(max-width:1100px){
+  .process-steps{grid-template-columns:1fr 1fr}
+  .contact-inner{grid-template-columns:1fr}
+  .contact-left,.contact-right{padding:6rem 2.5rem}
+}
 @media(max-width:900px){
   nav{padding:1.2rem 1.5rem}
   nav.solid{padding:1rem 1.5rem}
@@ -211,8 +294,11 @@ footer{padding:2.5rem 4rem;border-top:1px solid rgba(240,236,228,0.04);display:f
   .statement{padding:3rem 1.5rem}
   .projects{padding:6rem 1.5rem}
   .proj-meta{display:none}
-  .cta-close{padding:7rem 1.5rem}
-  footer{padding:2rem 1.5rem;flex-direction:column;gap:1rem;text-align:center}
+  .why-inner{grid-template-columns:1fr}
+  .why-img{height:400px}
+  .why-content{padding:5rem 1.5rem}
+  .footer-top{grid-template-columns:1fr 1fr;gap:2.5rem;padding:4rem 1.5rem 3rem}
+  .footer-bottom{padding:1.5rem;flex-direction:column;gap:1rem;text-align:center}
   .feat-project-inner{padding:6rem 1.5rem}
   .feat-project-header{flex-direction:column;align-items:flex-start;gap:1.5rem}
   .feat-project-title{text-align:left}
@@ -221,6 +307,11 @@ footer{padding:2.5rem 4rem;border-top:1px solid rgba(240,236,228,0.04);display:f
   .sourcing-reach-top{grid-template-columns:1fr;gap:2rem}
   .sourcing-img-pair{grid-template-columns:1fr}
   .sourcing-img-pair img:last-child{aspect-ratio:16/9}
+  .testimonials{padding:6rem 1.5rem}
+  .testimonials-grid{grid-template-columns:1fr}
+  .process-top{padding:5rem 1.5rem 3rem}
+  .process-steps{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -358,21 +449,62 @@ footer{padding:2.5rem 4rem;border-top:1px solid rgba(240,236,228,0.04);display:f
   </div>
 </section>
 
+<!-- PROCESS -->
+<section class="process">
+  <div class="process-top">
+    <p class="process-top-label fade-up">Our Process</p>
+    <h2 class="process-top-title fade-up">From first conversation<br>to <em>final reveal.</em></h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step fade-up">
+      <div class="process-num">01</div>
+      <div class="process-title">Free Consultation</div>
+      <div class="process-desc">We listen to your vision, assess your space, and understand exactly what you need — no pressure, no obligation.</div>
+      <div class="process-bar"></div>
+    </div>
+    <div class="process-step fade-up">
+      <div class="process-num">02</div>
+      <div class="process-title">Design Concept</div>
+      <div class="process-desc">Mood boards, 3D layouts and a full design proposal. You review and approve every decision before we move forward.</div>
+      <div class="process-bar"></div>
+    </div>
+    <div class="process-step fade-up">
+      <div class="process-num">03</div>
+      <div class="process-title">Global Sourcing</div>
+      <div class="process-desc">We procure premium materials from our international network across 6 regions — at trade prices, delivered to your door.</div>
+      <div class="process-bar"></div>
+    </div>
+    <div class="process-step fade-up">
+      <div class="process-num">04</div>
+      <div class="process-title">Precision Build</div>
+      <div class="process-desc">Our skilled team executes with total accuracy — on time, on budget, with zero surprises along the way.</div>
+      <div class="process-bar"></div>
+    </div>
+    <div class="process-step fade-up">
+      <div class="process-num">05</div>
+      <div class="process-title">Handover</div>
+      <div class="process-desc">A fully finished, styled and detailed space — delivered to you exactly as envisioned. Ready to live in.</div>
+      <div class="process-bar"></div>
+    </div>
+  </div>
+</section>
+
 <!-- WHY -->
 <section class="why">
   <div class="why-inner">
-    <div class="why-left fade-up">
+    <div class="why-img fade-up"></div>
+    <div class="why-content fade-up">
       <p class="why-label">Why Casa Nova</p>
       <h2 class="why-heading">A partner you can<br><em>build with.</em></h2>
       <p class="why-sub">We work with residential clients, property developers, architects, hospitality groups and corporates across Kenya and beyond.</p>
+      <ul class="why-list">
+        <li>End-to-end delivery — concept through completion, one partner</li>
+        <li>Global procurement across China, India, Turkey, UAE, Europe and Egypt</li>
+        <li>Quality assurance at every stage with rigorous project management</li>
+        <li>Innovative design solutions tailored to each client and budget</li>
+        <li>Purpose-driven — every project contributes to community impact</li>
+      </ul>
     </div>
-    <ul class="why-list fade-up">
-      <li>End-to-end project delivery — concept through completion</li>
-      <li>Global procurement network across China, India, Turkey, UAE, Europe and Egypt</li>
-      <li>Quality assurance at every stage with reliable project management</li>
-      <li>Innovative design solutions tailored to each client and budget</li>
-      <li>Purpose-driven — every project contributes to community impact</li>
-    </ul>
   </div>
 </section>
 
@@ -384,6 +516,37 @@ footer{padding:2.5rem 4rem;border-top:1px solid rgba(240,236,228,0.04);display:f
       <p>Casa Nova actively seeks partnerships with property developers, architects, hospitality groups, construction firms, suppliers, manufacturers, investors and procurement companies across Africa and beyond.</p>
       <p>If you are looking for a trusted design and delivery partner on your next project, we would welcome the conversation.</p>
       <a href="#contact" style="font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.3);padding-bottom:3px">Get in Touch →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <p class="testimonials-label fade-up">Client Stories</p>
+    <h2 class="testimonials-heading fade-up">What our clients<br><em>say about us.</em></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial fade-up">
+        <span class="testimonial-mark">"</span>
+        <p class="testimonial-text">Casa Nova transformed our Karen home beyond anything we had imagined. The quality of every finish, the attention to the smallest detail — it is genuinely world class. We wouldn't go anywhere else.</p>
+        <div class="testimonial-rule"></div>
+        <div class="testimonial-name">J. & A. Mwangi</div>
+        <div class="testimonial-project">Karen Residence · 2024</div>
+      </div>
+      <div class="testimonial fade-up">
+        <span class="testimonial-mark">"</span>
+        <p class="testimonial-text">Esther's team delivered our Westlands office fit-out on time and on budget. Every client who walks through now comments on the space. The results speak for themselves — completely professional.</p>
+        <div class="testimonial-rule"></div>
+        <div class="testimonial-name">M. Waweru, Director</div>
+        <div class="testimonial-project">Corporate Headquarters · Westlands</div>
+      </div>
+      <div class="testimonial fade-up">
+        <span class="testimonial-mark">"</span>
+        <p class="testimonial-text">The global sourcing capability alone made the difference. They found exactly what we needed — pieces simply unavailable locally — and handled the entire import process without a single issue.</p>
+        <div class="testimonial-rule"></div>
+        <div class="testimonial-name">Property Developer</div>
+        <div class="testimonial-project">Lavington · 2023</div>
+      </div>
     </div>
   </div>
 </section>
@@ -487,23 +650,117 @@ footer{padding:2.5rem 4rem;border-top:1px solid rgba(240,236,228,0.04);display:f
   </div>
 </section>
 
-<!-- CTA CLOSE -->
-<section class="cta-close" id="contact">
-  <div class="cta-close-inner fade-up">
-    <h2 class="cta-close-title">Have a space that deserves<br>to be <em>transformed?</em></h2>
-    <div class="cta-divider"></div>
-    <a href="https://wa.me/254716183011" target="_blank" class="cta-contact">
-      +254 716 183011
-      <span class="cta-contact-arrow">→</span>
-    </a>
-    <p class="cta-location">Karen &nbsp;·&nbsp; Nairobi &nbsp;·&nbsp; Kenya</p>
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left fade-up">
+      <p class="contact-label">Get in Touch</p>
+      <div class="contact-gold-line"></div>
+      <h2 class="contact-title">Let's begin<br><em>your project.</em></h2>
+      <p class="contact-sub">Free consultation. No commitment. Just a conversation about what's possible for your space.</p>
+      <div class="contact-details">
+        <a href="https://wa.me/254716183011" target="_blank" class="contact-detail">
+          <span class="contact-detail-label">WhatsApp</span>
+          <span class="contact-detail-value">+254 716 183011</span>
+        </a>
+        <a href="mailto:casanovaglobalsourcingltd@gmail.com" class="contact-detail">
+          <span class="contact-detail-label">Email</span>
+          <span class="contact-detail-value">casanovaglobalsourcingltd@gmail.com</span>
+        </a>
+        <div class="contact-detail">
+          <span class="contact-detail-label">Studio</span>
+          <span class="contact-detail-value">Karen, Nairobi, Kenya</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right fade-up">
+      <p class="contact-form-label">Send an Enquiry</p>
+      <form class="contact-form" id="contactForm" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label>Phone / WhatsApp</label>
+            <input type="tel" name="phone" placeholder="+254 ...">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Project Type</label>
+          <select name="service">
+            <option value="">Select a service...</option>
+            <option>Interior Design &amp; Space Planning</option>
+            <option>Construction &amp; Fit-Out</option>
+            <option>Custom Furniture &amp; Joinery</option>
+            <option>Soft Furnishings &amp; Décor</option>
+            <option>Lighting Design</option>
+            <option>Global Sourcing &amp; Procurement</option>
+            <option>Project Management</option>
+            <option>Property Staging</option>
+            <option>Full Project — Multiple Services</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell us about your project</label>
+          <textarea name="message" rows="4" placeholder="Describe your space, vision, timeline or budget..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Enquiry <span>→</span></button>
+        <div class="form-success" id="formSuccess">Thank you — Esther will be in touch within 24 hours.</div>
+      </form>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Casa Nova Interiors</div>
-  <div class="footer-copy">© 2025 Casa Nova Global Sourcing Interiors · All Rights Reserved</div>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Casa Nova</div>
+      <div class="footer-tagline">Global Sourcing Interiors</div>
+      <p class="footer-brand-desc">Premium interior design and global sourcing for discerning clients across Kenya and East Africa.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Portfolio</a></li>
+        <li><a href="mission.html">Our Mission</a></li>
+        <li><a href="founder.html">Our Founder</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="services.html">Interior Design</a></li>
+        <li><a href="services.html">Global Sourcing</a></li>
+        <li><a href="services.html">Space Planning</a></li>
+        <li><a href="services.html">Furniture Curation</a></li>
+        <li><a href="services.html">Project Management</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <div class="footer-contact-item">Karen, Nairobi<br>Kenya</div>
+      <div class="footer-contact-item"><a href="tel:+254700000000">+254 700 000 000</a></div>
+      <div class="footer-contact-item"><a href="mailto:hello@casanovaglobal.com">hello@casanovaglobal.com</a></div>
+      <div class="footer-contact-item" style="margin-top:1.5rem"><a href="#contact" style="color:#c9a96e;font-size:8.5px;letter-spacing:3px;text-transform:uppercase">Book a Consultation →</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Casa Nova Global Sourcing Interiors · All Rights Reserved</div>
+    <div class="footer-social">
+      <a href="#">Instagram</a>
+      <a href="#">Houzz</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -583,6 +840,18 @@ function onScroll() {
 }
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
+
+// FORM
+function submitForm(e) {
+  e.preventDefault();
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = 'Sending...';
+  setTimeout(() => {
+    document.getElementById('contactForm').style.opacity = '0.3';
+    document.getElementById('contactForm').style.pointerEvents = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }, 800);
+}
 
 // HAMBURGER
 const hamburger = document.getElementById('hamburger');
