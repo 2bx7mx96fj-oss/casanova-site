@@ -376,7 +376,7 @@ a.contact-detail:hover .contact-detail-value{color:#c9a96e}
   <div class="hero-sticky" id="heroSticky">
 
     <!-- Base: fully styled room (always visible underneath) -->
-    <video class="hero-video" id="heroVideo" src="hero.mp4" muted playsinline preload="auto"></video>
+    <img class="hero-video" id="heroVideo" src="hero-landing.jpg" alt="Casa Nova interior" />
     <div class="hero-vignette"></div>
     <div class="hero-vignette2"></div>
 
@@ -807,13 +807,12 @@ const progressFill = document.getElementById('hProgressFill');
 })();
 
 function initGSAP() {
-  heroVideo.pause();
-  heroVideo.currentTime = 0;
+  gsap.set(heroVideo, { scale: 1, transformOrigin: '50% 50%' });
 
   ScrollTrigger.create({
     trigger: heroSection, start: 'top top', end: 'bottom bottom', scrub: 0.4,
     onUpdate(self) {
-      if (heroVideo.duration) heroVideo.currentTime = self.progress * heroVideo.duration;
+      gsap.set(heroVideo, { scale: 1 + self.progress * 0.18 });
       progressFill.style.width = (self.progress * 100) + '%';
     }
   });
@@ -835,8 +834,8 @@ function initGSAP() {
     .to('#heroScrollInd', { opacity:0, duration:0.06 }, 0.94);
 }
 
-if (heroVideo.readyState >= 1) { initGSAP(); }
-else { heroVideo.addEventListener('loadedmetadata', initGSAP, { once: true }); }
+if (heroVideo.complete) { initGSAP(); }
+else { heroVideo.addEventListener('load', initGSAP, { once: true }); }
 
 // — Nav solid on scroll —
 window.addEventListener('scroll', () => {
