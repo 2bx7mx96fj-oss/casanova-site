@@ -53,7 +53,11 @@ c.setFillColor(DARK)
 c.setFont("Helvetica-Bold", 12)
 c.drawRightString(W - 32*mm, y - 16*mm, "INV-001")
 
-y -= 32*mm
+c.setFillColor(GOLD)
+c.setFont("Helvetica-Bold", 9.5)
+c.drawString(25*mm, y - 26*mm, "Payment due within 7 days — by 30 June 2026")
+
+y -= 33*mm
 
 # ---- Bank details heading ----
 c.setFillColor(DARK)
@@ -87,7 +91,7 @@ for label, value in rows:
     c.setStrokeColor(LINE)
     c.setLineWidth(0.5)
     c.line(25*mm, y, W - 25*mm, y)
-    y -= 6.5*mm
+    y -= 6*mm
 
 y -= 4*mm
 
@@ -116,7 +120,7 @@ for i, step in enumerate(steps, 1):
     c.setFillColor(GREY)
     c.setFont("Helvetica", 10.5)
     c.drawString(32*mm, y, step)
-    y -= 7.5*mm
+    y -= 7*mm
 
 # ---- Notes box (fixed position near bottom) ----
 note_h = 30*mm

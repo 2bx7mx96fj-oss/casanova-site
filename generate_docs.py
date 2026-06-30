@@ -179,7 +179,7 @@ c.setFont('Helvetica-Bold', 34); c.setFillColor(WHITE)
 c.drawString(20*mm, H-48*mm, 'INV-001')
 c.setFont('Helvetica', 10); c.setFillColor(MUTED)
 c.drawString(20*mm, H-59*mm, 'Date: 23 June 2026')
-c.drawString(20*mm, H-69*mm, 'Due: Upon receipt')
+c.drawString(20*mm, H-69*mm, 'Due: Within 7 days (by 30 June 2026)')
 
 # From / To boxes
 c.setFillColor(colors.HexColor('#111111'))
@@ -199,7 +199,7 @@ c.drawString(109*mm, H-104*mm, 'Esther Nyambura Ngumi')
 c.setFont('Helvetica', 8.5); c.setFillColor(MUTED)
 c.drawString(109*mm, H-112*mm, 'Casa Nova Global Sourcing Interiors')
 c.drawString(109*mm, H-120*mm, 'Karen, Nairobi, Kenya')
-c.drawString(109*mm, H-128*mm, 'hello@casanovaglobal.com')
+c.drawString(109*mm, H-128*mm, 'casanovaglobalsourcingltd@gmail.com')
 
 # Line items header
 y = H - 160*mm
@@ -259,7 +259,7 @@ for label, val in details:
 
 y -= 6*mm
 c.setFont('Helvetica', 8); c.setFillColor(DIM)
-c.drawString(20*mm, y, 'Payment is due upon receipt of this invoice. Thank you for your business.')
+c.drawString(20*mm, y, 'Payment is due within 7 days of this invoice (by 30 June 2026). Thank you for your business.')
 
 c.save()
 print('Saved: CN_Invoice.pdf')
