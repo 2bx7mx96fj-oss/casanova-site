@@ -98,10 +98,13 @@ nav.solid{background:rgba(8,8,8,0.96);padding:1rem 4rem;backdrop-filter:blur(24p
 .services-heading{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4.5vw,4rem);font-weight:400;color:#f0ece4;margin-bottom:6rem;line-height:1.1;max-width:700px;letter-spacing:-0.5px}
 .services-heading em{font-style:italic;color:#c9a96e}
 .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(240,236,228,0.04)}
-.svc-item{padding:3rem 2.5rem;background:#0a0a0a;transition:background 0.4s}
+.svc-item{padding:0 0 2.2rem;background:#0a0a0a;transition:background 0.4s;overflow:hidden}
 .svc-item:hover{background:#111}
-.svc-num{font-family:'Playfair Display',serif;font-size:2rem;color:rgba(201,169,110,0.08);font-style:italic;margin-bottom:2rem;line-height:1}
-.svc-name{font-family:'Playfair Display',serif;font-size:1rem;color:#f0ece4;font-weight:400;line-height:1.5}
+.svc-thumb{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;margin-bottom:1.8rem;filter:brightness(0.92);transition:filter 0.4s,transform 0.6s ease}
+.svc-item:hover .svc-thumb{filter:brightness(1);transform:scale(1.04)}
+.svc-thumb-wrap{overflow:hidden;margin-bottom:1.8rem}
+.svc-num{font-family:'Playfair Display',serif;font-size:1.7rem;color:rgba(201,169,110,0.3);font-style:italic;margin-bottom:0.6rem;line-height:1;padding:0 2rem}
+.svc-name{font-family:'Playfair Display',serif;font-size:1rem;color:#f0ece4;font-weight:400;line-height:1.5;padding:0 2rem}
 
 /* WHY */
 .why{padding:0;background:#080808;border-top:1px solid rgba(240,236,228,0.05)}
@@ -453,14 +456,14 @@ a.contact-detail:hover .contact-detail-value{color:#c9a96e}
     <p class="services-label fade-up">What We Do</p>
     <h2 class="services-heading fade-up">End-to-end delivery.<br><em>Every stage. No compromise.</em></h2>
     <div class="services-grid">
-      <div class="svc-item fade-up"><div class="svc-num">01</div><div class="svc-name">Interior Design &amp; Space Planning</div></div>
-      <div class="svc-item fade-up"><div class="svc-num">02</div><div class="svc-name">Construction &amp; Fit-Outs</div></div>
-      <div class="svc-item fade-up"><div class="svc-num">03</div><div class="svc-name">Custom Furniture &amp; Joinery</div></div>
-      <div class="svc-item fade-up"><div class="svc-num">04</div><div class="svc-name">Soft Furnishings &amp; Decor</div></div>
-      <div class="svc-item fade-up"><div class="svc-num">05</div><div class="svc-name">Lighting Design</div></div>
-      <div class="svc-item fade-up"><div class="svc-num">06</div><div class="svc-name">Global Sourcing &amp; Procurement</div></div>
-      <div class="svc-item fade-up"><div class="svc-num">07</div><div class="svc-name">Project Management</div></div>
-      <div class="svc-item fade-up"><div class="svc-num">08</div><div class="svc-name">Property Staging &amp; Real Estate Enhancement</div></div>
+      <div class="svc-item fade-up"><div class="svc-thumb-wrap"><img class="svc-thumb" src="hero-landing.jpg" alt="Interior design and space planning" loading="lazy"></div><div class="svc-num">01</div><div class="svc-name">Interior Design &amp; Space Planning</div></div>
+      <div class="svc-item fade-up"><div class="svc-thumb-wrap"><img class="svc-thumb" src="project1.jpeg" alt="Construction and fit-outs" loading="lazy"></div><div class="svc-num">02</div><div class="svc-name">Construction &amp; Fit-Outs</div></div>
+      <div class="svc-item fade-up"><div class="svc-thumb-wrap"><img class="svc-thumb" src="proj-dining.jpg" alt="Custom furniture and joinery" loading="lazy"></div><div class="svc-num">03</div><div class="svc-name">Custom Furniture &amp; Joinery</div></div>
+      <div class="svc-item fade-up"><div class="svc-thumb-wrap"><img class="svc-thumb" src="room4-decor.jpg" alt="Soft furnishings and decor" loading="lazy"></div><div class="svc-num">04</div><div class="svc-name">Soft Furnishings &amp; Decor</div></div>
+      <div class="svc-item fade-up"><div class="svc-thumb-wrap"><img class="svc-thumb" src="room5-complete.jpg" alt="Lighting design" loading="lazy"></div><div class="svc-num">05</div><div class="svc-name">Lighting Design</div></div>
+      <div class="svc-item fade-up"><div class="svc-thumb-wrap"><img class="svc-thumb" src="PHOTO-2026-06-14-15-50-52.jpg" alt="Global sourcing and procurement" loading="lazy"></div><div class="svc-num">06</div><div class="svc-name">Global Sourcing &amp; Procurement</div></div>
+      <div class="svc-item fade-up"><div class="svc-thumb-wrap"><img class="svc-thumb" src="project3.jpeg" alt="Project management" loading="lazy"></div><div class="svc-num">07</div><div class="svc-name">Project Management</div></div>
+      <div class="svc-item fade-up"><div class="svc-thumb-wrap"><img class="svc-thumb" src="project2.jpeg" alt="Property staging and real estate enhancement" loading="lazy"></div><div class="svc-num">08</div><div class="svc-name">Property Staging &amp; Real Estate Enhancement</div></div>
     </div>
   </div>
 </section>
