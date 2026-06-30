@@ -76,7 +76,27 @@ footer{background:#040404;padding:3rem 2rem;border-top:1px solid rgba(201,169,11
 .mobile-menu a{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.3s}
 .mobile-menu a:hover{color:#c9a96e}
 .mobile-menu .mob-cta{margin-top:1rem;padding:14px 40px;background:#c9a96e;color:#080808;font-size:9px;letter-spacing:3px;font-weight:600}
-@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.gallery-grid{columns:2}}
+/* TRANSFORMATION STORY */
+.transform-section{padding:6rem 2rem 4rem;max-width:1200px;margin:0 auto}
+.section-head{text-align:center;margin-bottom:3.5rem}
+.section-head .page-label{margin-bottom:1rem}
+.section-head h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:#fff;line-height:1.15}
+.section-head h2 em{font-style:italic;color:#c9a96e}
+.section-head p{font-size:0.88rem;color:rgba(245,240,235,0.35);max-width:560px;margin:1.2rem auto 0;line-height:2}
+.transform-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.transform-step{position:relative;overflow:hidden;aspect-ratio:3/4;background:#111}
+.transform-step img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s ease}
+.transform-step:hover img{transform:scale(1.05)}
+.transform-step .step-tag{position:absolute;bottom:0;left:0;right:0;padding:1.4rem 0.8rem 0.7rem;background:linear-gradient(to top,rgba(8,8,8,0.92),transparent);font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:#c9a96e;text-align:center}
+
+/* GALLERY GRID (masonry) */
+.gallery-section{padding:3rem 2rem 6rem;max-width:1200px;margin:0 auto}
+.gallery-grid{columns:3;column-gap:12px}
+.gallery-item{break-inside:avoid;margin-bottom:12px;overflow:hidden;position:relative;background:#111}
+.gallery-item img{width:100%;display:block;transition:transform 0.6s ease}
+.gallery-item:hover img{transform:scale(1.06)}
+@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.gallery-grid{columns:2}.transform-grid{grid-template-columns:repeat(5,1fr);gap:5px}}
+@media(max-width:600px){.transform-grid{grid-template-columns:1fr 1fr}.transform-step:last-child{grid-column:span 2;aspect-ratio:16/10}}
 @media(max-width:500px){.gallery-grid{columns:1}}
 </style>
 </head>
@@ -124,29 +144,46 @@ footer{background:#040404;padding:3rem 2rem;border-top:1px solid rgba(201,169,11
   <div class="page-label fade-up">Portfolio</div>
   <div class="gold-line fade-up"></div>
   <h1 class="page-title fade-up">Projects That<br><em>Speak for Themselves</em></h1>
-  <p class="page-sub fade-up">Residential, commercial and hospitality projects across Nairobi. Portfolio coming soon.</p>
+  <p class="page-sub fade-up">Residential, commercial and hospitality projects across Nairobi — from bare space to finished, lived-in luxury.</p>
 </div>
 
-<div class="coming-soon-wrap">
-  <div class="cs-inner fade-up">
-    <div class="cs-icon">
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1" y="1" width="46" height="46" rx="0" stroke="#c9a96e" stroke-width="0.5"/>
-        <rect x="8" y="8" width="14" height="14" rx="0" stroke="#c9a96e" stroke-width="0.5" fill="rgba(201,169,110,0.04)"/>
-        <rect x="26" y="8" width="14" height="14" rx="0" stroke="#c9a96e" stroke-width="0.5" fill="rgba(201,169,110,0.04)"/>
-        <rect x="8" y="26" width="14" height="14" rx="0" stroke="#c9a96e" stroke-width="0.5" fill="rgba(201,169,110,0.04)"/>
-        <rect x="26" y="26" width="14" height="14" rx="0" stroke="#c9a96e" stroke-width="0.5" fill="rgba(201,169,110,0.04)"/>
-      </svg>
-    </div>
-    <p class="cs-label">Portfolio</p>
-    <h2 class="cs-heading">Our work speaks<br><em>for itself.</em></h2>
-    <p class="cs-sub">A curated collection of our residential, commercial and hospitality projects is being prepared. Professional photography is currently underway across our completed projects in Karen, Lavington and Westlands.</p>
-    <div class="cs-divider"></div>
-    <p class="cs-note">In the meantime, we'd love to show you our work directly — get in touch and we'll walk you through our portfolio personally.</p>
-    <div class="cs-actions">
-      <a href="index.html#contact" class="btn-primary">Book a Consultation</a>
-      <a href="https://wa.me/254716183011?text=Hi%20Casa%20Nova%2C%20I'd%20like%20to%20see%20your%20portfolio." target="_blank" class="btn-secondary">WhatsApp Us</a>
-    </div>
+<!-- TRANSFORMATION STORY -->
+<div class="transform-section">
+  <div class="section-head fade-up">
+    <p class="page-label">The Process</p>
+    <div class="gold-line" style="margin:0 auto 2rem"></div>
+    <h2>From Empty Space to<br><em>Finished Sanctuary</em></h2>
+    <p>Every Casa Nova project follows a considered journey — structure, furniture, layering and the final styling that brings a room to life. This is one such transformation.</p>
+  </div>
+  <div class="transform-grid">
+    <div class="transform-step fade-up"><img src="room1-empty.jpg" alt="Bare panelled room before styling" loading="lazy"><div class="step-tag">01 · The Space</div></div>
+    <div class="transform-step fade-up"><img src="room2-dresser.jpg" alt="Statement dresser introduced" loading="lazy"><div class="step-tag">02 · Foundations</div></div>
+    <div class="transform-step fade-up"><img src="room3-bedframe.jpg" alt="Bed frame and key furniture" loading="lazy"><div class="step-tag">03 · Furniture</div></div>
+    <div class="transform-step fade-up"><img src="room4-decor.jpg" alt="Layering decor and textiles" loading="lazy"><div class="step-tag">04 · Layering</div></div>
+    <div class="transform-step fade-up"><img src="room5-complete.jpg" alt="Completed black and gold bedroom" loading="lazy"><div class="step-tag">05 · Complete</div></div>
+  </div>
+</div>
+
+<!-- FINISHED PROJECTS GRID -->
+<div class="gallery-section">
+  <div class="section-head fade-up">
+    <p class="page-label">Selected Work</p>
+    <div class="gold-line" style="margin:0 auto 2rem"></div>
+    <h2>A Portfolio of<br><em>Finished Spaces</em></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item fade-up"><img src="hero-landing.jpg" alt="Open-plan living and kitchen" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="proj-living-1.jpg" alt="Living room — main view" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="hero-bedroom.jpg" alt="Luxury bedroom suite" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="proj-dining.jpg" alt="Dining room" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="proj-living-2.jpg" alt="Living room — wide angle" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="PHOTO-2026-06-14-15-50-56.jpg" alt="Interior detail" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="proj-open-plan.jpg" alt="Open-plan living" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="PHOTO-2026-06-14-15-50-55.jpg" alt="Styled interior" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="proj-living-3.jpg" alt="Living room — evening" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="PHOTO-2026-06-14-15-50-52.jpg" alt="Sourced furnishings" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="sourcing-seychelles-1.jpg" alt="Seychelles project — terrace" loading="lazy"></div>
+    <div class="gallery-item fade-up"><img src="PHOTO-2026-06-14-15-50-53.jpg" alt="Interior styling detail" loading="lazy"></div>
   </div>
 </div>
 
