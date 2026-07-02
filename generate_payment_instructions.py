@@ -55,7 +55,7 @@ c.drawRightString(W - 32*mm, y - 16*mm, "INV-001")
 
 c.setFillColor(GOLD)
 c.setFont("Helvetica-Bold", 9.5)
-c.drawString(25*mm, y - 26*mm, "Payment due within 7 days — by 30 June 2026")
+c.drawString(25*mm, y - 26*mm, "Payment due within 7 days — by 9 July 2026")
 
 y -= 33*mm
 

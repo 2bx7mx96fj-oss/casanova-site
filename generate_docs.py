@@ -158,8 +158,11 @@ y = divline(c, y)
 y = step_row(c, y, 6, 'Transfer GitHub Repository',
     'Developer goes to: github.com/2bx7mx96fj-oss/casanova-site > Settings > scroll to Danger Zone > Transfer. Enter repository name to confirm, then enter your GitHub username. You will receive an email — click Accept Transfer within 24 hours.')
 y = divline(c, y)
-y = step_row(c, y, 7, 'Confirm Everything is Working',
-    'Visit your custom domain in a browser. Confirm the site loads correctly. Confirm HTTPS padlock is visible. The website is now fully yours.')
+y = step_row(c, y, 7, 'Activate the Enquiry Form',
+    'Go to web3forms.com and enter your email (casanovaglobalsourcingltd@gmail.com) to receive a free Access Key. Send the key to your developer, who will add it to the website. Once added, every enquiry submitted on the site is emailed directly to your inbox — name, phone, email, project type and message.')
+y = divline(c, y)
+y = step_row(c, y, 8, 'Confirm Everything is Working',
+    'Visit your custom domain in a browser. Confirm the site loads correctly and the HTTPS padlock is visible. Submit a test enquiry to confirm it reaches your inbox. The website is now fully yours.')
 
 c.save()
 print('Saved: CN_Handover.pdf')
@@ -178,8 +181,8 @@ gold_tag(c, 20*mm, H-28*mm, 'Invoice')
 c.setFont('Helvetica-Bold', 34); c.setFillColor(WHITE)
 c.drawString(20*mm, H-48*mm, 'INV-001')
 c.setFont('Helvetica', 10); c.setFillColor(MUTED)
-c.drawString(20*mm, H-59*mm, 'Date: 23 June 2026')
-c.drawString(20*mm, H-69*mm, 'Due: Within 7 days (by 30 June 2026)')
+c.drawString(20*mm, H-59*mm, 'Date: 2 July 2026')
+c.drawString(20*mm, H-69*mm, 'Due: Within 7 days (by 9 July 2026)')
 
 # From / To boxes
 c.setFillColor(colors.HexColor('#111111'))
@@ -259,7 +262,7 @@ for label, val in details:
 
 y -= 6*mm
 c.setFont('Helvetica', 8); c.setFillColor(DIM)
-c.drawString(20*mm, y, 'Payment is due within 7 days of this invoice (by 30 June 2026). Thank you for your business.')
+c.drawString(20*mm, y, 'Payment is due within 7 days of this invoice (by 9 July 2026). Thank you for your business.')
 
 c.save()
 print('Saved: CN_Invoice.pdf')
@@ -297,7 +300,7 @@ c.drawString(80*mm, H-121*mm, 'Esther Nyambura Ngumi  |  Casa Nova Global Sourci
 c.setFont('Helvetica-Bold', 9); c.setFillColor(WHITE)
 c.drawString(28*mm, H-132*mm, 'Date:')
 c.setFont('Helvetica', 9); c.setFillColor(MUTED)
-c.drawString(80*mm, H-132*mm, '23 June 2026')
+c.drawString(80*mm, H-132*mm, '2 July 2026')
 c.setFont('Helvetica-Bold', 9); c.setFillColor(WHITE)
 c.drawString(28*mm, H-143*mm, 'Project:')
 c.setFont('Helvetica', 9); c.setFillColor(MUTED)
